@@ -11,6 +11,8 @@
 		E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419AEC25EB064200ACD0B9 /* ContentView.swift */; };
 		E5419AEF25EB064200ACD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5419AEE25EB064200ACD0B9 /* Assets.xcassets */; };
 		E5419AF225EB064200ACD0B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5419AF125EB064200ACD0B9 /* Preview Assets.xcassets */; };
+		E5419B0225EB096000ACD0B9 /* StationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0125EB096000ACD0B9 /* StationsView.swift */; };
+		E5419B0525EB096C00ACD0B9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0425EB096C00ACD0B9 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		E5419AEE25EB064200ACD0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5419AF125EB064200ACD0B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E5419AF325EB064200ACD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5419B0125EB096000ACD0B9 /* StationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsView.swift; sourceTree = "<group>"; };
+		E5419B0425EB096C00ACD0B9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 		E5419AE925EB064200ACD0B9 /* MyFueliOS */ = {
 			isa = PBXGroup;
 			children = (
+				E5419AFF25EB08FB00ACD0B9 /* Map */,
+				E5419AFE25EB08F500ACD0B9 /* Stations */,
 				E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */,
 				E5419AEC25EB064200ACD0B9 /* ContentView.swift */,
 				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
@@ -67,6 +73,22 @@
 				E5419AF125EB064200ACD0B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E5419AFE25EB08F500ACD0B9 /* Stations */ = {
+			isa = PBXGroup;
+			children = (
+				E5419B0125EB096000ACD0B9 /* StationsView.swift */,
+			);
+			path = Stations;
+			sourceTree = "<group>";
+		};
+		E5419AFF25EB08FB00ACD0B9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E5419B0425EB096C00ACD0B9 /* MapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */,
+				E5419B0525EB096C00ACD0B9 /* MapView.swift in Sources */,
 				E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */,
+				E5419B0225EB096000ACD0B9 /* StationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
