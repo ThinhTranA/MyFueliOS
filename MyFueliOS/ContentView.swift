@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FontAwesome_swift
 
 struct ContentView: View {
     var body: some View {
@@ -13,7 +14,7 @@ struct ContentView: View {
             StationsView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "map")
+                        Image(uiImage: UIImage.fontAwesomeIcon(name: .gasPump, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))
                         Text("Stations")
                     }
                 }.tag(0)
@@ -24,7 +25,7 @@ struct ContentView: View {
                         Image(systemName: "map")
                         Text("Map")
                     }
-                }
+                }.tag(1)
         }
     }
 }
