@@ -12,11 +12,13 @@
 		E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419AEC25EB064200ACD0B9 /* ContentView.swift */; };
 		E5419AEF25EB064200ACD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5419AEE25EB064200ACD0B9 /* Assets.xcassets */; };
 		E5419AF225EB064200ACD0B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5419AF125EB064200ACD0B9 /* Preview Assets.xcassets */; };
-		E5419B0225EB096000ACD0B9 /* StationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0125EB096000ACD0B9 /* StationsView.swift */; };
+		E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0125EB096000ACD0B9 /* StationListView.swift */; };
 		E5419B0525EB096C00ACD0B9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0425EB096C00ACD0B9 /* MapView.swift */; };
 		E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */; };
 		E5690B6D25EE69EA00CDC5DB /* fuelWatchRSS.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */; };
 		E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */; };
+		E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7825EE793700CDC5DB /* StationsState.swift */; };
+		E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +31,13 @@
 		E5419AEE25EB064200ACD0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5419AF125EB064200ACD0B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E5419AF325EB064200ACD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E5419B0125EB096000ACD0B9 /* StationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsView.swift; sourceTree = "<group>"; };
+		E5419B0125EB096000ACD0B9 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		E5419B0425EB096C00ACD0B9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetrolStation.swift; sourceTree = "<group>"; };
 		E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fuelWatchRSS.xml; sourceTree = "<group>"; };
 		E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetrolStation+Mock.swift"; sourceTree = "<group>"; };
+		E5690B7825EE793700CDC5DB /* StationsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsState.swift; sourceTree = "<group>"; };
+		E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,9 @@
 		E5419AFE25EB08F500ACD0B9 /* Stations */ = {
 			isa = PBXGroup;
 			children = (
-				E5419B0125EB096000ACD0B9 /* StationsView.swift */,
+				E5419B0125EB096000ACD0B9 /* StationListView.swift */,
+				E5690B7825EE793700CDC5DB /* StationsState.swift */,
+				E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */,
 			);
 			path = Stations;
 			sourceTree = "<group>";
@@ -257,9 +263,11 @@
 				E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,
+				E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */,
+				E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */,
 				E5419B0525EB096C00ACD0B9 /* MapView.swift in Sources */,
 				E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */,
-				E5419B0225EB096000ACD0B9 /* StationsView.swift in Sources */,
+				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

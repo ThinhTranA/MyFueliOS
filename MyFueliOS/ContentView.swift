@@ -11,7 +11,7 @@ import FontAwesome_swift
 struct ContentView: View {
     var body: some View {
         TabView {
-            StationsView()
+            StationListView()
                 .tabItem {
                     VStack {
                         Image(uiImage: UIImage.fontAwesomeIcon(name: .gasPump, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))

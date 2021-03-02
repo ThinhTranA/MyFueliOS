@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct StationsView: View {
+struct StationListView: View {
+    var petrolList = PetrolStation.mockPetrolStations;
     var body: some View {
-        Text("Station Views")
+        List(petrolList, id: \.id) { station in
+            StationRowView(petrolStation: station)
+        }
     }
 }
 
 struct StationsView_Previews: PreviewProvider {
     static var previews: some View {
-        StationsView()
+        StationListView()
     }
 }
