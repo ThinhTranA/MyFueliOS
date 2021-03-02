@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>FuelWatch Prices For Belmont</title>
+        <ttl>720</ttl>
+        <link>https://www.fuelwatch.wa.gov.au</link>
+        <description>02/03/2021 - Belmont</description>
+        <language>en-us</language>
+        <copyright>Copyright 2005 FuelWatch. All Rights Reserved.</copyright>
+        <lastBuildDate>Tue Mar 02 20:40:41 AWST 2021Tue Mar 02 20:40:41 AWST 2021</lastBuildDate>
+        <image>
+            <url>/fuelwatch/art/fuelwatch-logo.gif</url>
+            <title>FuelWatch</title>
+            <link>https://www.fuelwatch.wa.gov.au</link>
+        </image>
+        <item>
+            <title>118.9: Caltex The Foodary Ascot</title>
+            <description>Address: 204 Great Eastern Hwy, ASCOT, Phone: (08) 9478 5029</description>
+            <brand>Caltex</brand>
+            <date>2021-03-02</date>
+            <price>118.9</price>
+            <trading-name>Caltex The Foodary Ascot</trading-name>
+            <location>ASCOT</location>
+            <address>204 Great Eastern Hwy</address>
+            <phone>(08) 9478 5029</phone>
+            <latitude>-31.94098</latitude>
+            <longitude>115.926337</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>118.9: Caltex The Foodary Belmont</title>
+            <description>Address: 303 Great Eastern Hwy, BELMONT, Phone: (08) 9277 2887</description>
+            <brand>Caltex</brand>
+            <date>2021-03-02</date>
+            <price>118.9</price>
+            <trading-name>Caltex The Foodary Belmont</trading-name>
+            <location>BELMONT</location>
+            <address>303 Great Eastern Hwy</address>
+            <phone>(08) 9277 2887</phone>
+            <latitude>-31.937734</latitude>
+            <longitude>115.933447</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>118.9: Caltex StarMart Kewdale</title>
+            <description>Address: 2 Fenton St (Cnr Kewdale Rd), KEWDALE, Phone: (08) 9353 2757</description>
+            <brand>Caltex</brand>
+            <date>2021-03-02</date>
+            <price>118.9</price>
+            <trading-name>Caltex StarMart Kewdale</trading-name>
+            <location>KEWDALE</location>
+            <address>2 Fenton St (Cnr Kewdale Rd)</address>
+            <phone>(08) 9353 2757</phone>
+            <latitude>-31.98365</latitude>
+            <longitude>115.955901</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>118.9: Caltex StarMart Rivervale</title>
+            <description>Address: 111 Great Eastern Hwy, RIVERVALE, Phone: (08) 9277 2886</description>
+            <brand>Caltex</brand>
+            <date>2021-03-02</date>
+            <price>118.9</price>
+            <trading-name>Caltex StarMart Rivervale</trading-name>
+            <location>RIVERVALE</location>
+            <address>111 Great Eastern Hwy</address>
+            <phone>(08) 9277 2886</phone>
+            <latitude>-31.953623</latitude>
+            <longitude>115.913619</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.5: Vibe Ascot IGA Xpress</title>
+            <description>Address: 268 Great Eastern Hwy, ASCOT, Phone: (08) 5955 2005</description>
+            <brand>Vibe</brand>
+            <date>2021-03-02</date>
+            <price>119.5</price>
+            <trading-name>Vibe Ascot IGA Xpress</trading-name>
+            <location>ASCOT</location>
+            <address>268 Great Eastern Hwy</address>
+            <phone>(08) 5955 2005</phone>
+            <latitude>-31.935968</latitude>
+            <longitude>115.934361</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.6: NightOwl Shell Redcliffe</title>
+            <description>Address: 443 Great Eastern Hwy, REDCLIFFE, Phone: (07) 3088 1200</description>
+            <brand>Shell</brand>
+            <date>2021-03-02</date>
+            <price>119.6</price>
+            <trading-name>NightOwl Shell Redcliffe</trading-name>
+            <location>REDCLIFFE</location>
+            <address>443 Great Eastern Hwy</address>
+            <phone>(07) 3088 1200</phone>
+            <latitude>-31.929508</latitude>
+            <longitude>115.945947</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.6: BP Redcliffe</title>
+            <description>Address: 419 Great Eastern Hwy, REDCLIFFE, Phone: (08) 9277 9755</description>
+            <brand>BP</brand>
+            <date>2021-03-02</date>
+            <price>119.6</price>
+            <trading-name>BP Redcliffe</trading-name>
+            <location>REDCLIFFE</location>
+            <address>419 Great Eastern Hwy</address>
+            <phone>(08) 9277 9755</phone>
+            <latitude>-31.930469</latitude>
+            <longitude>115.944728</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.7: Puma Belmont</title>
+            <description>Address: 33 Belvidere St (Cnr Keymer St), BELMONT, Phone: (08) 9479 4557, Site features: Full Driveway Service, Open Mon-Fri: 07:00-18:00, Sat: 07:00-18:00, Sun: 07:00-18:00</description>
+            <brand>Puma</brand>
+            <date>2021-03-02</date>
+            <price>119.7</price>
+            <trading-name>Puma Belmont</trading-name>
+            <location>BELMONT</location>
+            <address>33 Belvidere St (Cnr Keymer St)</address>
+            <phone>(08) 9479 4557</phone>
+            <latitude>-31.946289</latitude>
+            <longitude>115.939633</longitude>
+            <site-features>Full Driveway Service, Open Mon-Fri: 07:00-18:00, Sat: 07:00-18:00, Sun: 07:00-18:00</site-features>
+        </item>
+        <item>
+            <title>119.7: United Kewdale</title>
+            <description>Address: 410-412 Orrong Rd, KEWDALE, Phone: (08) 9451 6245</description>
+            <brand>United</brand>
+            <date>2021-03-02</date>
+            <price>119.7</price>
+            <trading-name>United Kewdale</trading-name>
+            <location>KEWDALE</location>
+            <address>410-412 Orrong Rd</address>
+            <phone>(08) 9451 6245</phone>
+            <latitude>-31.990047</latitude>
+            <longitude>115.939258</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: BP Connect Ascot (WA)</title>
+            <description>Address: 210 Great Eastern Hwy (Cnr Resolution Dr), ASCOT, Phone: (08) 9277 4758</description>
+            <brand>BP</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>BP Connect Ascot (WA)</trading-name>
+            <location>ASCOT</location>
+            <address>210 Great Eastern Hwy (Cnr Resolution Dr)</address>
+            <phone>(08) 9277 4758</phone>
+            <latitude>-31.940482</latitude>
+            <longitude>115.927498</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: 7-Eleven Ascot</title>
+            <description>Address: 194 Great Eastern Hwy, ASCOT, Phone: 0428 114 307</description>
+            <brand>7-Eleven</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>7-Eleven Ascot</trading-name>
+            <location>ASCOT</location>
+            <address>194 Great Eastern Hwy</address>
+            <phone>0428 114 307</phone>
+            <latitude>-31.941776</latitude>
+            <longitude>115.925077</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: Coles Express Cloverdale</title>
+            <description>Address: 223 Belmont Ave (Cnr Wright St), CLOVERDALE, Phone: (08) 6157 5602</description>
+            <brand>Coles Express</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>Coles Express Cloverdale</trading-name>
+            <location>CLOVERDALE</location>
+            <address>223 Belmont Ave (Cnr Wright St)</address>
+            <phone>(08) 6157 5602</phone>
+            <latitude>-31.965057</latitude>
+            <longitude>115.933164</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: BP Welshpool</title>
+            <description>Address: 1 Ballantyne Rd, KEWDALE, Phone: (08) 9353 1606</description>
+            <brand>BP</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>BP Welshpool</trading-name>
+            <location>KEWDALE</location>
+            <address>1 Ballantyne Rd</address>
+            <phone>(08) 9353 1606</phone>
+            <latitude>-31.986384</latitude>
+            <longitude>115.936881</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: Coles Express Kewdale</title>
+            <description>Address: 518 Abernethy Rd (Cnr Kewdale Rd), KEWDALE, Phone: (08) 6247 4390</description>
+            <brand>Coles Express</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>Coles Express Kewdale</trading-name>
+            <location>KEWDALE</location>
+            <address>518 Abernethy Rd (Cnr Kewdale Rd)</address>
+            <phone>(08) 6247 4390</phone>
+            <latitude>-31.980262</latitude>
+            <longitude>115.958507</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>119.9: BP Kewdale</title>
+            <description>Address: 549 Abernethy Rd, KEWDALE, Phone: (08) 9353 6945</description>
+            <brand>BP</brand>
+            <date>2021-03-02</date>
+            <price>119.9</price>
+            <trading-name>BP Kewdale</trading-name>
+            <location>KEWDALE</location>
+            <address>549 Abernethy Rd</address>
+            <phone>(08) 9353 6945</phone>
+            <latitude>-31.981726</latitude>
+            <longitude>115.975223</longitude>
+            <site-features>, </site-features>
+        </item>
+        <item>
+            <title>129.4: Shell Fresh Trading Co Ascot</title>
+            <description>Address: 472-480 Great Eastern Hwy, ASCOT, Phone: 0861461151, Site features:  ATM Air Bottled Gas EFTPOS Fuel Cards Ice Toilets Water, Open Mon: 4:00-21:00, Tue: 4:00-21:00, Wed: 4:00-21:00, Thu: 4:00-21:00, Fri: 4:00-21:00, Sat: 6:00-20:00, Sun: 7:00-19:00</description>
+            <brand>Shell</brand>
+            <date>2021-03-02</date>
+            <price>129.4</price>
+            <trading-name>Shell Fresh Trading Co Ascot</trading-name>
+            <location>ASCOT</location>
+            <address>472-480 Great Eastern Hwy</address>
+            <phone>0861461151</phone>
+            <latitude>-31.925213</latitude>
+            <longitude>115.951987</longitude>
+            <site-features> ATM Air Bottled Gas EFTPOS Fuel Cards Ice Toilets Water, Open Mon: 4:00-21:00, Tue: 4:00-21:00, Wed: 4:00-21:00, Thu: 4:00-21:00, Fri: 4:00-21:00, Sat: 6:00-20:00, Sun: 7:00-19:00</site-features>
+        </item>
+    </channel>
+</rss>

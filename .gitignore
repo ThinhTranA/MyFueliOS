@@ -1,0 +1,12 @@
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+*.xcuserdata
+project.xcworkspace/
+xcuserdata/
+MyFueliOS.xcodeproj/xcuserdata/ttran.xcuserdatad/xcschemes/xcschememanagement.plist
+MyFueliOS.xcodeproj/xcuserdata/ttran.xcuserdatad/xcschemes/xcschememanagement.plist
+Pods/Pods.xcodeproj/xcuserdata/ttran.xcuserdatad/xcschemes/xcschememanagement.plist
