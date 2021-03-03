@@ -19,6 +19,7 @@
 		E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */; };
 		E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7825EE793700CDC5DB /* StationsState.swift */; };
 		E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */; };
+		E5FCDCAE25EFCA7D0099C107 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCAD25EFCA7D0099C107 /* SegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetrolStation+Mock.swift"; sourceTree = "<group>"; };
 		E5690B7825EE793700CDC5DB /* StationsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsState.swift; sourceTree = "<group>"; };
 		E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRowView.swift; sourceTree = "<group>"; };
+		E5FCDCAD25EFCA7D0099C107 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				E5419B0125EB096000ACD0B9 /* StationListView.swift */,
 				E5690B7825EE793700CDC5DB /* StationsState.swift */,
 				E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */,
+				E5FCDCAD25EFCA7D0099C107 /* SegmentedControl.swift */,
 			);
 			path = Stations;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */,
 				E5419B0525EB096C00ACD0B9 /* MapView.swift in Sources */,
 				E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */,
+				E5FCDCAE25EFCA7D0099C107 /* SegmentedControl.swift in Sources */,
 				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

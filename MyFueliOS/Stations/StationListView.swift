@@ -9,9 +9,19 @@ import SwiftUI
 
 struct StationListView: View {
     var petrolList = PetrolStation.mockPetrolStations;
+    @State private var searchText : String = ""
+    
     var body: some View {
-        List(petrolList, id: \.id) { station in
-            StationRowView(petrolStation: station)
+        NavigationView {
+            VStack{
+                SegmentedControl()
+                List {
+                    
+                    ForEach(petrolList, id: \.id){ station in
+                            StationRowView(petrolStation: station)
+                        }
+                }
+            }.navigationTitle("Petrol Stations")
         }
     }
 }
