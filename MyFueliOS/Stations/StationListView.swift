@@ -13,13 +13,13 @@ struct StationListView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                SegmentedControl()
                 List {
+                    SegmentedControl()
                     
                     ForEach(petrolList, id: \.id){ station in
+                        NavigationLink (destination: StationDetailView()) {
                             StationRowView(petrolStation: station)
-                        }
+                    }
                 }
             }.navigationTitle("Petrol Stations")
         }

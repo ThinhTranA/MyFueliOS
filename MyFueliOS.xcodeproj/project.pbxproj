@@ -20,6 +20,7 @@
 		E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7825EE793700CDC5DB /* StationsState.swift */; };
 		E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */; };
 		E5FCDCAE25EFCA7D0099C107 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCAD25EFCA7D0099C107 /* SegmentedControl.swift */; };
+		E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E5690B7825EE793700CDC5DB /* StationsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsState.swift; sourceTree = "<group>"; };
 		E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRowView.swift; sourceTree = "<group>"; };
 		E5FCDCAD25EFCA7D0099C107 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +94,13 @@
 		E5419AE925EB064200ACD0B9 /* MyFueliOS */ = {
 			isa = PBXGroup;
 			children = (
+				E5FCDCB125EFD65A0099C107 /* Common */,
 				E5690B6725EE67A800CDC5DB /* Model */,
 				E5419AFF25EB08FB00ACD0B9 /* Map */,
 				E5419AFE25EB08F500ACD0B9 /* Stations */,
-				E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */,
+				E5FCDCB225EFD66C0099C107 /* StationDetail */,
 				E5419AEC25EB064200ACD0B9 /* ContentView.swift */,
+				E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */,
 				E5690B6B25EE69A000CDC5DB /* Resources */,
 				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
 				E5419AF325EB064200ACD0B9 /* Info.plist */,
@@ -147,6 +151,21 @@
 				E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E5FCDCB125EFD65A0099C107 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E5FCDCB225EFD66C0099C107 /* StationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */,
+			);
+			path = StationDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */,
 				E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,
