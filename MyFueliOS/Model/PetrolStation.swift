@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct PetrolStation: Decodable, Identifiable {
     let id: Int
@@ -22,4 +23,5 @@ struct PetrolStation: Decodable, Identifiable {
     let longitude: String
     let siteFeatures: String
 }
+
 
