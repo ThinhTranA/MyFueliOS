@@ -19,7 +19,7 @@ struct ContentView: View {
                     }
                 }.tag(0)
             
-            MapView()
+            StationsMapView()
                 .tabItem {
                     VStack {
                         Image(systemName: "map")

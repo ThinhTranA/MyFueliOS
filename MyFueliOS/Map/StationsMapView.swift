@@ -7,14 +7,17 @@
 
 import SwiftUI
 
-struct MapView: View {
+struct StationsMapView: View {
+    
+    @State var petrolList = PetrolStation.mockPetrolStations;
+    
     var body: some View {
-        Text("Map View")
+        MapView(stations: $petrolList)
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        StationsMapView()
     }
 }
