@@ -11,6 +11,13 @@ import FontAwesome_swift
 struct ContentView: View {
     var body: some View {
         TabView {
+            StationsMapView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "map")
+                        Text("Map")
+                    }
+                }.tag(1)
             StationListView()
                 .tabItem {
                     VStack {
@@ -19,13 +26,6 @@ struct ContentView: View {
                     }
                 }.tag(0)
             
-            StationsMapView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "map")
-                        Text("Map")
-                    }
-                }.tag(1)
         }
     }
 }

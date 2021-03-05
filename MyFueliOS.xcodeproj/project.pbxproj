@@ -105,9 +105,6 @@
 				E5419AEC25EB064200ACD0B9 /* ContentView.swift */,
 				E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */,
 				E5690B6B25EE69A000CDC5DB /* Resources */,
-				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
-				E5419AF325EB064200ACD0B9 /* Info.plist */,
-				E5419AF025EB064200ACD0B9 /* Preview Content */,
 			);
 			path = MyFueliOS;
 			sourceTree = "<group>";
@@ -159,7 +156,10 @@
 		E5690B6B25EE69A000CDC5DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
+				E5419AF325EB064200ACD0B9 /* Info.plist */,
 				E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */,
+				E5419AF025EB064200ACD0B9 /* Preview Content */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -433,10 +433,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"MyFueliOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MyFueliOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 589ZKTU4Y4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MyFueliOS/Info.plist;
+				INFOPLIST_FILE = MyFueliOS/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -456,10 +456,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"MyFueliOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MyFueliOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 589ZKTU4Y4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = MyFueliOS/Info.plist;
+				INFOPLIST_FILE = MyFueliOS/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

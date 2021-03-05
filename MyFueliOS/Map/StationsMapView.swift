@@ -10,9 +10,16 @@ import SwiftUI
 struct StationsMapView: View {
     
     @State var petrolList = PetrolStation.mockPetrolStations;
+    @State private var selectedPetrolStation: PetrolStation?
     
     var body: some View {
-        MapView(stations: $petrolList)
+        
+        ZStack {
+            MapView(stations: $petrolList, selectedStation: $selectedPetrolStation)
+            
+            Text(selectedPetrolStation?.title ?? "no selected station")
+        }
+        
     }
 }
 
