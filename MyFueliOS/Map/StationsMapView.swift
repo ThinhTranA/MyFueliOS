@@ -19,7 +19,6 @@ struct StationsMapView: View {
             
             Text(selectedPetrolStation?.title ?? "no selected station")
         }
-        
     }
 }
 

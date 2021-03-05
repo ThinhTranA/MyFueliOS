@@ -47,6 +47,7 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
 
+        //TODO: do not rerendered all of this on just selectedStation change, consider move this annotations block to makeUIView??
         //TODO: use something other than "phone" as id, though it is unique for that station :)
         let places = stations.map { StationAnnotation(id: "\($0.phone)",title: "\($0.title)", lat: $0.latitude, long: $0.longitude)}
 
