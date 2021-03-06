@@ -13,12 +13,71 @@ class StationAnnotation: NSObject, MKAnnotation {
     let title: String?
     let coordinate: CLLocationCoordinate2D
     let id: String
+    let price: String
+    let brand: String
     
-    init(id: String,title: String?, lat: String, long: String) {
-        self.id = id
-        self.title = title
-        self.coordinate = CLLocationCoordinate2D(latitude: Double(lat) ?? 0, longitude: Double(long) ?? 0)
+    init(station: PetrolStation) {
+        self.id = station.phone
+        self.title = station.title
+        self.price = station.price
+        self.brand = station.brand
+        self.coordinate = CLLocationCoordinate2D(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
     }
+}
+
+class CustomAnnotationView: MKAnnotationView {
+    private let annotationFrame = CGRect(x: 0, y: 0, width: 40, height: 50)
+    private let label: UILabel
+
+    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
+        self.label = UILabel(frame: annotationFrame.offsetBy(dx: 0, dy: -6))
+        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        self.frame = annotationFrame
+        self.label.font = UIFont.systemFont(ofSize: 16)
+        self.label.textColor = .black
+        self.label.textAlignment = .center
+        self.backgroundColor = .clear
+        self.addSubview(label)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) not implemented!")
+    }
+
+    public var number: String = "0"
+    
+    {
+        didSet {
+            self.label.text = String(number)
+        }
+    }
+
+    override func draw(_ rect: CGRect) {
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        
+        //// Resize to Target Frame
+        context.saveGState()
+
+        context.translateBy(x: rect.minX, y: rect.minY)
+        context.scaleBy(x: rect.width / 40, y: rect.height / 49)
+
+        //// Group
+        //// Oval Drawing
+        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40))
+        UIColor.white.setFill()
+        ovalPath.fill()
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 6, y: 34))
+        bezierPath.addLine(to: CGPoint(x: 20, y: 49))
+        bezierPath.addLine(to: CGPoint(x: 34, y: 34))
+        UIColor.white.setFill()
+        bezierPath.fill()
+        
+        context.restoreGState()
+    }
+
 }
 
 struct MapView: UIViewRepresentable {
@@ -41,7 +100,7 @@ struct MapView: UIViewRepresentable {
         
         mapView.isRotateEnabled = false
         //TODO: use something other than "phone" as id, though it is unique for that station :)
-        let places = stations.map { StationAnnotation(id: "\($0.phone)",title: "\($0.title)", lat: $0.latitude, long: $0.longitude)}
+        let places = stations.map { StationAnnotation(station: $0)}
 
         mapView.annotations.forEach { mapView.removeAnnotation($0) }
         mapView.addAnnotations(places)
@@ -64,6 +123,28 @@ struct MapView: UIViewRepresentable {
         var parent: MapView
         init(_ parent: MapView){
             self.parent = parent
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            //make sure it is our petrol stations annotation and not anything else (eg: user's gps blue dot)
+            guard let anno = annotation as?  StationAnnotation else { return nil }
+
+            let customAnnotationView = self.customAnnotationView(in: mapView, for: annotation)
+            customAnnotationView.number = anno.price
+            return customAnnotationView
+        }
+        
+        private func customAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CustomAnnotationView {
+            let identifier = "CustomAnnotationViewID"
+
+            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView {
+                annotationView.annotation = annotation
+                return annotationView
+            } else {
+                let customAnnotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                customAnnotationView.canShowCallout = true
+                return customAnnotationView
+            }
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
