@@ -23,13 +23,13 @@ extension PetrolStation {
                                brand: item["brand"].text ?? "",
                                date: item["date"].text ?? "",
                                price: item["price"].text ?? "",
-                               tradingName: item["tradingName"].text ?? "",
+                               tradingName: item["trading-name"].text ?? "",
                                location: item["location"].text ?? "",
                                address: item["address"].text ?? "",
                                phone: item["phone"].text ?? "",
                                latitude: item["latitude"].text ?? "",
                                longitude: item["longitude"].text ?? "",
-                               siteFeatures: item["siteFeatures"].text ?? ""
+                               siteFeatures: item["site-features"].text ?? ""
                     )
                     petrolStations.append(ps)
                 }

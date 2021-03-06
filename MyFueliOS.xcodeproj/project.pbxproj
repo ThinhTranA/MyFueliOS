@@ -15,6 +15,8 @@
 		E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0125EB096000ACD0B9 /* StationListView.swift */; };
 		E5419B0525EB096C00ACD0B9 /* StationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0425EB096C00ACD0B9 /* StationsMapView.swift */; };
 		E551173425F0F4FB00DC9EF3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E551173325F0F4FB00DC9EF3 /* MapView.swift */; };
+		E5664DA925F2EEFA005EEA8E /* SelectedStationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5664DA825F2EEFA005EEA8E /* SelectedStationDetailView.swift */; };
+		E5664DAE25F30A69005EEA8E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5664DAD25F30A69005EEA8E /* RoundedCorner.swift */; };
 		E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */; };
 		E5690B6D25EE69EA00CDC5DB /* fuelWatchRSS.xml in Resources */ = {isa = PBXBuildFile; fileRef = E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */; };
 		E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */; };
@@ -37,6 +39,8 @@
 		E5419B0125EB096000ACD0B9 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		E5419B0425EB096C00ACD0B9 /* StationsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsMapView.swift; sourceTree = "<group>"; };
 		E551173325F0F4FB00DC9EF3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E5664DA825F2EEFA005EEA8E /* SelectedStationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedStationDetailView.swift; sourceTree = "<group>"; };
+		E5664DAD25F30A69005EEA8E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetrolStation.swift; sourceTree = "<group>"; };
 		E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fuelWatchRSS.xml; sourceTree = "<group>"; };
 		E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetrolStation+Mock.swift"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E5419B0425EB096C00ACD0B9 /* StationsMapView.swift */,
+				E5664DA825F2EEFA005EEA8E /* SelectedStationDetailView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -142,6 +147,14 @@
 				E551173325F0F4FB00DC9EF3 /* MapView.swift */,
 			);
 			path = UIKitViews;
+			sourceTree = "<group>";
+		};
+		E5664DAC25F30A51005EEA8E /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				E5664DAD25F30A69005EEA8E /* RoundedCorner.swift */,
+			);
+			path = Modifier;
 			sourceTree = "<group>";
 		};
 		E5690B6725EE67A800CDC5DB /* Model */ = {
@@ -167,6 +180,7 @@
 		E5FCDCB125EFD65A0099C107 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E5664DAC25F30A51005EEA8E /* Modifier */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -295,7 +309,9 @@
 			files = (
 				E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */,
 				E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */,
+				E5664DA925F2EEFA005EEA8E /* SelectedStationDetailView.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
+				E5664DAE25F30A69005EEA8E /* RoundedCorner.swift in Sources */,
 				E551173425F0F4FB00DC9EF3 /* MapView.swift in Sources */,
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,
 				E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */,
