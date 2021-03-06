@@ -40,6 +40,11 @@ struct MapView: UIViewRepresentable {
         mapView.setRegion(region, animated: true)
         
         mapView.isRotateEnabled = false
+        //TODO: use something other than "phone" as id, though it is unique for that station :)
+        let places = stations.map { StationAnnotation(id: "\($0.phone)",title: "\($0.title)", lat: $0.latitude, long: $0.longitude)}
+
+        mapView.annotations.forEach { mapView.removeAnnotation($0) }
+        mapView.addAnnotations(places)
         mapView.delegate = context.coordinator
         
         return mapView
@@ -47,13 +52,7 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
 
-        //TODO: do not rerendered all of this on just selectedStation change, consider move this annotations block to makeUIView??
-        //TODO: use something other than "phone" as id, though it is unique for that station :)
-        let places = stations.map { StationAnnotation(id: "\($0.phone)",title: "\($0.title)", lat: $0.latitude, long: $0.longitude)}
-
-        uiView.annotations.forEach { uiView.removeAnnotation($0) }
-        uiView.addAnnotations(places)
-        uiView.delegate = context.coordinator
+        
     }
     
     //= viewDidLoad in UIKit
