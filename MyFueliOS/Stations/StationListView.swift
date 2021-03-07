@@ -17,7 +17,7 @@ struct StationListView: View {
                     SegmentedControl()
                     
                     ForEach(petrolList, id: \.id){ station in
-                        NavigationLink (destination: StationDetailView()) {
+                        NavigationLink (destination: StationDetailView(station: station)) {
                             StationRowView(petrolStation: station)
                     }
                 }

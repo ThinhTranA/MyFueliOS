@@ -8,7 +8,7 @@
 import SwiftUI
 struct SelectedStationDetailView: View {
     @Binding var station: PetrolStation
-
+    @State private var stationDetailIsShowing = false
     var body: some View {
       
         VStack{
@@ -38,6 +38,23 @@ struct SelectedStationDetailView: View {
                     }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
                     
                     HStack {
+                        
+                        Button(action: {
+                            stationDetailIsShowing = true
+                        }) {
+                          
+                            HStack {
+                                Image(systemName: "info.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30, alignment: .center)
+                            } .frame(minWidth: 0, maxWidth: 80, minHeight: 28, maxHeight: 36)
+                            .padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
+                            
+                        }.sheet(isPresented: $stationDetailIsShowing, onDismiss: {}, content: {
+                                StationDetailView(station: station)
+                        })
+            
+                        
                         Spacer()
                         Text(station.distance).italic()
                         
@@ -57,7 +74,7 @@ struct SelectedStationDetailView: View {
                                     .stroke(Color.blue, lineWidth: 2)
                             )
                         }
-                    }.padding(EdgeInsets(top: -2, leading: 0, bottom: 8, trailing: 8))
+                    }.padding(EdgeInsets(top: -2, leading: 0, bottom: 16, trailing: 8))
                 }
             }
     

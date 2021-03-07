@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct StationDetailView: View {
+     var station: PetrolStation
     var body: some View {
-        Text("Station details View")
+        Text(station.title)
     }
 }
 
 struct StationDetailView_Previews: PreviewProvider {
+   
     static var previews: some View {
-        StationDetailView()
+        StationDetailView(station: PetrolStation.mockPetrolStations[1])
     }
 }
