@@ -24,10 +24,14 @@ struct PetrolStation: Decodable, Identifiable {
     let longitude: String
     let siteFeatures: String
     
+    var coordinate2D: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
+    }
+    
     var distance: String {
         //TODO: calculate from user GPS location
         let distance = calDistance()
-        return distance > 1000 ? String(format: "%.2f km", distance/1000) : "\(distance) m"
+        return distance > 1000 ? String(format: "%.2f km", distance/1000) : String(format: "%.0f m", distance)
     }
     
     func calDistance() -> Double {
