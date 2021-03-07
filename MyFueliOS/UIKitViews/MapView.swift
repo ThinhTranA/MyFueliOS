@@ -9,76 +9,6 @@ import SwiftUI
 import UIKit
 import MapKit
 
-class StationAnnotation: NSObject, MKAnnotation {
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
-    let id: String
-    let price: String
-    let brand: String
-    
-    init(station: PetrolStation) {
-        self.id = station.phone
-        self.title = station.title
-        self.price = station.price
-        self.brand = station.brand
-        self.coordinate = CLLocationCoordinate2D(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
-    }
-}
-
-class CustomAnnotationView: MKAnnotationView {
-    private let annotationFrame = CGRect(x: 0, y: 0, width: 40, height: 50)
-    private let label: UILabel
-
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        self.label = UILabel(frame: annotationFrame.offsetBy(dx: 0, dy: -6))
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        self.frame = annotationFrame
-        self.label.font = UIFont.systemFont(ofSize: 16)
-        self.label.textColor = .black
-        self.label.textAlignment = .center
-        self.backgroundColor = .clear
-        self.addSubview(label)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) not implemented!")
-    }
-
-    public var number: String = "0"
-    
-    {
-        didSet {
-            self.label.text = String(number)
-        }
-    }
-
-    override func draw(_ rect: CGRect) {
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        
-        //// Resize to Target Frame
-        context.saveGState()
-
-        context.translateBy(x: rect.minX, y: rect.minY)
-        context.scaleBy(x: rect.width / 40, y: rect.height / 49)
-
-        //// Group
-        //// Oval Drawing
-        let ovalPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40))
-        UIColor.white.setFill()
-        ovalPath.fill()
-
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 6, y: 34))
-        bezierPath.addLine(to: CGPoint(x: 20, y: 49))
-        bezierPath.addLine(to: CGPoint(x: 34, y: 34))
-        UIColor.white.setFill()
-        bezierPath.fill()
-        
-        context.restoreGState()
-    }
-
-}
 
 struct MapView: UIViewRepresentable {
     
@@ -129,19 +59,20 @@ struct MapView: UIViewRepresentable {
             //make sure it is our petrol stations annotation and not anything else (eg: user's gps blue dot)
             guard let anno = annotation as?  StationAnnotation else { return nil }
 
-            let customAnnotationView = self.customAnnotationView(in: mapView, for: annotation)
-            customAnnotationView.number = anno.price
-            return customAnnotationView
+            let stationAnnotationView = self.stationAnnotationView(in: mapView, for: annotation)
+            stationAnnotationView.number = anno.price
+            stationAnnotationView.brand = anno.brand
+            return stationAnnotationView
         }
         
-        private func customAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> CustomAnnotationView {
+        private func stationAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> StationAnnotationView {
             let identifier = "CustomAnnotationViewID"
 
-            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? CustomAnnotationView {
+            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? StationAnnotationView {
                 annotationView.annotation = annotation
                 return annotationView
             } else {
-                let customAnnotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                let customAnnotationView = StationAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 customAnnotationView.canShowCallout = true
                 return customAnnotationView
             }
