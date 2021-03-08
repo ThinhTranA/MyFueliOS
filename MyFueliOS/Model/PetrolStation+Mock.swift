@@ -11,13 +11,15 @@ import SwiftyXMLParser
 extension PetrolStation {
     static var mockPetrolStations: [PetrolStation] {
         var petrolStations = [PetrolStation]()
+        //var logos = [String]()
         if let path = Bundle.main.path(forResource: "fuelWatchRSS", ofType: "xml") {
             do {
                 let contents = try String(contentsOfFile: path)
                 let xml = try! XML.parse(contents)
+                var i = 1
                 
                 for item in xml["rss"]["channel"]["item"] {
-                    let ps = PetrolStation(id: 1,
+                    let ps = PetrolStation(id: i,
                                title: item["title"].text ?? "",
                                description: item["description"].text ?? "",
                                brand: item["brand"].text ?? "",
@@ -31,6 +33,8 @@ extension PetrolStation {
                                longitude: item["longitude"].text ?? "",
                                siteFeatures: item["site-features"].text ?? ""
                     )
+                    //let logo : String = makeLogo(b: ps.brand)
+                    i += 1
                     petrolStations.append(ps)
                 }
                 
@@ -41,5 +45,11 @@ extension PetrolStation {
         }
         return petrolStations;
     }
+
+    
+
+
+
 }
+
 

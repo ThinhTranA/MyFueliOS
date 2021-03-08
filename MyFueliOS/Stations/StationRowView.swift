@@ -9,12 +9,15 @@ import SwiftUI
 
 struct StationRowView: View {
     var petrolStation: PetrolStation
+
     var body: some View {
         HStack(){
-            Image(systemName: "clock")
+            Image(petrolStation.logo)
                 .resizable()
                 .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+
             VStack() {
+                //Text(petrolStation.logo)
                 HStack() {
                     Text(petrolStation.location)
                     Spacer()
@@ -28,8 +31,10 @@ struct StationRowView: View {
             }
         
         }
+        
        
     }
+
 }
 
 struct StationRowView_Previews: PreviewProvider {
@@ -37,3 +42,6 @@ struct StationRowView_Previews: PreviewProvider {
         StationRowView(petrolStation: PetrolStation.mockPetrolStations[0])
     }
 }
+
+
+

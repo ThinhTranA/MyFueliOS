@@ -10,12 +10,17 @@ import SwiftUI
 struct StationDetailView: View {
      var station: PetrolStation
     var body: some View {
-        Text(station.title)
+        VStack{
+            StationDetailMap()
+            Spacer()
+            StationDetailPrice()
+            StationDetailOptions()
+        }
     }
 }
 
 struct StationDetailView_Previews: PreviewProvider {
-   
+
     static var previews: some View {
         StationDetailView(station: PetrolStation.mockPetrolStations[1])
     }
