@@ -9,17 +9,6 @@ import SwiftUI
 import UIKit
 import MapKit
 
-class StationAnnotation: NSObject, MKAnnotation {
-    let title: String?
-    let coordinate: CLLocationCoordinate2D
-    let id: String
-    
-    init(id: String,title: String?, lat: String, long: String) {
-        self.id = id
-        self.title = title
-        self.coordinate = CLLocationCoordinate2D(latitude: Double(lat) ?? 0, longitude: Double(long) ?? 0)
-    }
-}
 
 struct MapView: UIViewRepresentable {
     
@@ -40,6 +29,11 @@ struct MapView: UIViewRepresentable {
         mapView.setRegion(region, animated: true)
         
         mapView.isRotateEnabled = false
+        //TODO: use something other than "phone" as id, though it is unique for that station :)
+        let places = stations.map { StationAnnotation(station: $0)}
+
+        mapView.annotations.forEach { mapView.removeAnnotation($0) }
+        mapView.addAnnotations(places)
         mapView.delegate = context.coordinator
         
         return mapView
@@ -47,13 +41,7 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
 
-        //TODO: do not rerendered all of this on just selectedStation change, consider move this annotations block to makeUIView??
-        //TODO: use something other than "phone" as id, though it is unique for that station :)
-        let places = stations.map { StationAnnotation(id: "\($0.phone)",title: "\($0.title)", lat: $0.latitude, long: $0.longitude)}
-
-        uiView.annotations.forEach { uiView.removeAnnotation($0) }
-        uiView.addAnnotations(places)
-        uiView.delegate = context.coordinator
+        
     }
     
     //= viewDidLoad in UIKit
@@ -65,6 +53,29 @@ struct MapView: UIViewRepresentable {
         var parent: MapView
         init(_ parent: MapView){
             self.parent = parent
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            //make sure it is our petrol stations annotation and not anything else (eg: user's gps blue dot)
+            guard let anno = annotation as?  StationAnnotation else { return nil }
+
+            let stationAnnotationView = self.stationAnnotationView(in: mapView, for: annotation)
+            stationAnnotationView.number = anno.price
+            stationAnnotationView.brand = anno.brand
+            return stationAnnotationView
+        }
+        
+        private func stationAnnotationView(in mapView: MKMapView, for annotation: MKAnnotation) -> StationAnnotationView {
+            let identifier = "CustomAnnotationViewID"
+
+            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? StationAnnotationView {
+                annotationView.annotation = annotation
+                return annotationView
+            } else {
+                let customAnnotationView = StationAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                customAnnotationView.canShowCallout = true
+                return customAnnotationView
+            }
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

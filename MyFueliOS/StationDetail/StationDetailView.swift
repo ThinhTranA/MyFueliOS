@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StationDetailView: View {
+     var station: PetrolStation
     var body: some View {
         VStack{
             StationDetailMap()
@@ -19,7 +20,8 @@ struct StationDetailView: View {
 }
 
 struct StationDetailView_Previews: PreviewProvider {
+
     static var previews: some View {
-        StationDetailView()
+        StationDetailView(station: PetrolStation.mockPetrolStations[1])
     }
 }
