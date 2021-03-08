@@ -18,6 +18,7 @@ struct StationListView: View {
                     
                     ForEach(petrolList, id: \.id){ station in
                         NavigationLink (destination: StationDetailView()) {
+                            
                             StationRowView(petrolStation: station)
                     }
                 }

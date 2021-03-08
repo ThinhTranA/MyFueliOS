@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		78A4CBCD43D84E01B7C21E2D /* Pods_MyFueliOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */; };
+		C99983BB25F600FA008EBC57 /* StationDetailMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BA25F600FA008EBC57 /* StationDetailMap.swift */; };
+		C99983BE25F60472008EBC57 /* StationDetailOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BD25F60472008EBC57 /* StationDetailOptions.swift */; };
+		C99983C425F60BA4008EBC57 /* StationDetailPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983C325F60BA4008EBC57 /* StationDetailPrice.swift */; };
 		E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */; };
 		E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419AEC25EB064200ACD0B9 /* ContentView.swift */; };
 		E5419AEF25EB064200ACD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5419AEE25EB064200ACD0B9 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 		0DE06325616DD3894CDF050C /* Pods-MyFueliOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFueliOS.release.xcconfig"; path = "Target Support Files/Pods-MyFueliOS/Pods-MyFueliOS.release.xcconfig"; sourceTree = "<group>"; };
 		4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFueliOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBCA79CF5BFA31DF69EF105 /* Pods-MyFueliOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFueliOS.debug.xcconfig"; path = "Target Support Files/Pods-MyFueliOS/Pods-MyFueliOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C99983BA25F600FA008EBC57 /* StationDetailMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailMap.swift; sourceTree = "<group>"; };
+		C99983BD25F60472008EBC57 /* StationDetailOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailOptions.swift; sourceTree = "<group>"; };
+		C99983C325F60BA4008EBC57 /* StationDetailPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailPrice.swift; sourceTree = "<group>"; };
 		E5419AE725EB064200ACD0B9 /* MyFueliOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFueliOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFueliOSApp.swift; sourceTree = "<group>"; };
 		E5419AEC25EB064200ACD0B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -189,6 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */,
+				C99983BA25F600FA008EBC57 /* StationDetailMap.swift */,
+				C99983BD25F60472008EBC57 /* StationDetailOptions.swift */,
+				C99983C325F60BA4008EBC57 /* StationDetailPrice.swift */,
 			);
 			path = StationDetail;
 			sourceTree = "<group>";
@@ -310,7 +319,10 @@
 				E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */,
 				E5419AED25EB064200ACD0B9 /* ContentView.swift in Sources */,
 				E5664DA925F2EEFA005EEA8E /* SelectedStationDetailView.swift in Sources */,
+				C99983C425F60BA4008EBC57 /* StationDetailPrice.swift in Sources */,
+				C99983BE25F60472008EBC57 /* StationDetailOptions.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
+				C99983BB25F600FA008EBC57 /* StationDetailMap.swift in Sources */,
 				E5664DAE25F30A69005EEA8E /* RoundedCorner.swift in Sources */,
 				E551173425F0F4FB00DC9EF3 /* MapView.swift in Sources */,
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,

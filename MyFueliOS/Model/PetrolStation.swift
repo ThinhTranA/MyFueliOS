@@ -23,11 +23,14 @@ struct PetrolStation: Decodable, Identifiable {
     let latitude: String
     let longitude: String
     let siteFeatures: String
-    
+    var logo : String {
+        return makeLogo()
+    }
     var distance: String {
         //TODO: calculate from user GPS location
         let distance = calDistance()
         return distance > 1000 ? String(format: "%.2f km", distance/1000) : "\(distance) m"
+        
     }
     
     func calDistance() -> Double {
@@ -40,6 +43,37 @@ struct PetrolStation: Decodable, Identifiable {
         let distanceInMeters = userCoordinate.distance(from: stationCoordinate)
         return distanceInMeters
     }
+    
+    
+    func makeLogo() -> String{
+        var logo : String
+        //condition to load correct logo
+        switch brand {
+            case "7-Eleven":
+                logo = "7-Eleven"
+            case "BP":
+                logo = "BP"
+            case "Caltex":
+                logo = "Caltex"
+            case "Coles Express":
+                logo = "Coles"
+            case "Puma":
+                logo = "Puma"
+            case "Shell":
+                logo = "Shell"
+            default:
+                logo = "Fuel"
+        }
+        return logo
+
+    }
+
+
+    
+
+
+
 }
+
 
 
