@@ -14,13 +14,13 @@ class StationAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let id: String
     let price: String
-    let brand: String
+    let logo: String
     
     init(station: PetrolStation) {
         self.id = station.phone
         self.title = station.tradingName
         self.price = station.price
-        self.brand = station.brand
+        self.logo = station.logo
         self.coordinate = CLLocationCoordinate2D(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
     }
 }
@@ -28,16 +28,16 @@ class StationAnnotation: NSObject, MKAnnotation {
 class StationAnnotationView: MKAnnotationView {
     private let frameWidth = 42
     private let frameHeight = 64
-    private let logoWidth = 28
-    private let logoHeight = 28
+    private let logoWidth = 24
+    private let logoHeight = 24
     private let annotationFrame: CGRect
     private let label: UILabel
-    private let logo: UIImageView
+    private let logoImg: UIImageView
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         self.annotationFrame = CGRect(x: 0, y: 0, width: frameWidth, height: frameHeight)
         self.label = UILabel(frame: annotationFrame.offsetBy(dx: 0, dy: -6))
-        self.logo = UIImageView(frame:  CGRect(x: (frameWidth - logoWidth)/2, y: 0, width: logoWidth, height: logoHeight))
+        self.logoImg = UIImageView(frame:  CGRect(x: (frameWidth - logoWidth)/2, y: 0, width: logoWidth, height: logoHeight))
     
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         self.frame = annotationFrame
@@ -47,12 +47,12 @@ class StationAnnotationView: MKAnnotationView {
         self.label.textAlignment = .center
         self.label.center.y = self.frame.height/2 - 20
         
-        self.logo.center.y = self.frame.height/2
-        self.logo.center.x = self.frame.width/2 - 1
+        self.logoImg.center.y = self.frame.height/2
+        self.logoImg.center.x = self.frame.width/2 - 1
         
         self.backgroundColor = .clear
         self.addSubview(label)
-        self.addSubview(logo)
+        self.addSubview(logoImg)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -66,17 +66,10 @@ class StationAnnotationView: MKAnnotationView {
         }
     }
     
-    public var brand: String = "" {
+    public var logo: String = "" {
         didSet {
-//            //TODO: update to use brand logo
-//            switch brand {
-//            case "Caltex":
-//                UIImage("Caltex")
-//            default:
-//                UIImage(systemName: "pencil.circle.fill")
-//            }
-            let image = UIImage(systemName: "pencil.circle.fill")
-            self.logo.image =  image
+            let image = UIImage(imageLiteralResourceName: logo)
+            self.logoImg.image =  image
         }
     }
 

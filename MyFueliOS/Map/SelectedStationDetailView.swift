@@ -13,16 +13,9 @@ struct SelectedStationDetailView: View {
       
         VStack{
             HStack {
-                Text(station.brand)
-                    //TODO: replace this TextCircle with brand Logo
-                    .font(.footnote)
-                    .frame(width: 48, height: 48, alignment: .center)
-                    .padding()
-                    .overlay(
-                        Circle()
-                        .stroke(Color.blue, lineWidth: 4)
-                        .padding(6)
-                    )
+                Image(station.logo)
+                    .resizable()
+                    .frame(width: 54, height: 54, alignment: .center)
         
                 VStack (spacing: 4) {
                     HStack {

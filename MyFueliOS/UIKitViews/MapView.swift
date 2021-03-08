@@ -61,7 +61,7 @@ struct MapView: UIViewRepresentable {
 
             let stationAnnotationView = self.stationAnnotationView(in: mapView, for: annotation)
             stationAnnotationView.number = anno.price
-            stationAnnotationView.brand = anno.brand
+            stationAnnotationView.logo = anno.logo
             return stationAnnotationView
         }
         
