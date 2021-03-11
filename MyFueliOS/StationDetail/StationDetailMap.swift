@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct StationDetailMap: View {
+    var station : PetrolStation
     var body: some View {
         VStack{
+            Text(station.name)
             Color.gray
-            Text("Map goes here")
         }
         //.padding()
         .frame(maxHeight: 400)
@@ -21,6 +22,6 @@ struct StationDetailMap: View {
 
 struct StationDetailMap_Previews: PreviewProvider {
     static var previews: some View {
-        StationDetailMap()
+        StationDetailMap(station: PetrolStation.mockPetrolStations[1])
     }
 }

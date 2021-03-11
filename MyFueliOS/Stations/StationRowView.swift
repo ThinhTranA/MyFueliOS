@@ -17,9 +17,8 @@ struct StationRowView: View {
                 .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
 
             VStack() {
-                //Text(petrolStation.logo)
                 HStack() {
-                    Text(petrolStation.location)
+                    Text(petrolStation.name)
                     Spacer()
                     Text(petrolStation.price)
                 }
@@ -27,7 +26,10 @@ struct StationRowView: View {
                 HStack() {
                     Text(petrolStation.address)
                     Spacer()
+                    Text(petrolStation.distance)
                 }
+                .font(.footnote)
+                .foregroundColor(Color("SecondTextColor"))
             }
         
         }

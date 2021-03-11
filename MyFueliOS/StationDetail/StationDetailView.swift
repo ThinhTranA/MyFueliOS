@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct StationDetailView: View {
-     var station: PetrolStation
+    var station: PetrolStation
     var body: some View {
         VStack{
-            StationDetailMap()
+            StationDetailMap(station: station)
             Spacer()
-            StationDetailPrice()
+            StationDetailPrice(station: station)
             StationDetailOptions()
         }
     }
