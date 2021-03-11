@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct StationDetailPrice: View {
+    var station: PetrolStation
     var body: some View {
         VStack(){
             HStack{
-                Text("Type")
+                Text("E91")
                 Spacer()
-                Text("Price")
+                Text(station.price)
             }
             .padding()
         }
@@ -22,6 +23,6 @@ struct StationDetailPrice: View {
 
 struct StationDetailPrice_Previews: PreviewProvider {
     static var previews: some View {
-        StationDetailPrice()
+        StationDetailPrice(station: PetrolStation.mockPetrolStations[1])
     }
 }
