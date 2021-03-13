@@ -34,10 +34,10 @@ struct PetrolStation: Decodable, Identifiable {
     var logo : String {
         return makeLogo()
     }
-    var plaindistance: Double{
+    var distance: Double{
        return calDistance()
     }
-    var distance: String {
+    var distanceString: String {
         //TODO: calculate from user GPS location
         let distance = calDistance()
         return distance > 1000 ? String(format: "%.2f km", distance/1000) : String(format: "%.0f m", distance)

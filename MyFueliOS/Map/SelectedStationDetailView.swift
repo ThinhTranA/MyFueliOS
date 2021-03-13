@@ -49,7 +49,7 @@ struct SelectedStationDetailView: View {
             
                         
                         Spacer()
-                        Text(station.distance).italic()
+                        Text(station.distanceString).italic()
                         
                         Button(action: {
                             //TODO: Implement navigation
