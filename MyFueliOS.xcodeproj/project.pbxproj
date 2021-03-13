@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78A4CBCD43D84E01B7C21E2D /* Pods_MyFueliOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */; };
-		C915AEFC25FB472E00F76805 /* FavouriteScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915AEFB25FB472E00F76805 /* FavouriteScreenView.swift */; };
 		C99983BB25F600FA008EBC57 /* StationDetailMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BA25F600FA008EBC57 /* StationDetailMap.swift */; };
 		C99983BE25F60472008EBC57 /* StationDetailOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BD25F60472008EBC57 /* StationDetailOptions.swift */; };
 		C99983C425F60BA4008EBC57 /* StationDetailPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983C325F60BA4008EBC57 /* StationDetailPrice.swift */; };
@@ -27,6 +26,9 @@
 		E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */; };
 		E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7825EE793700CDC5DB /* StationsState.swift */; };
 		E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */; };
+		E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */; };
+		E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */; };
+		E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */; };
 		E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,6 @@
 		0DE06325616DD3894CDF050C /* Pods-MyFueliOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFueliOS.release.xcconfig"; path = "Target Support Files/Pods-MyFueliOS/Pods-MyFueliOS.release.xcconfig"; sourceTree = "<group>"; };
 		4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFueliOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBCA79CF5BFA31DF69EF105 /* Pods-MyFueliOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFueliOS.debug.xcconfig"; path = "Target Support Files/Pods-MyFueliOS/Pods-MyFueliOS.debug.xcconfig"; sourceTree = "<group>"; };
-		C915AEFB25FB472E00F76805 /* FavouriteScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteScreenView.swift; sourceTree = "<group>"; };
 		C99983BA25F600FA008EBC57 /* StationDetailMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailMap.swift; sourceTree = "<group>"; };
 		C99983BD25F60472008EBC57 /* StationDetailOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailOptions.swift; sourceTree = "<group>"; };
 		C99983C325F60BA4008EBC57 /* StationDetailPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailPrice.swift; sourceTree = "<group>"; };
@@ -55,6 +56,9 @@
 		E5690B6F25EE6A9C00CDC5DB /* PetrolStation+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PetrolStation+Mock.swift"; sourceTree = "<group>"; };
 		E5690B7825EE793700CDC5DB /* StationsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsState.swift; sourceTree = "<group>"; };
 		E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRowView.swift; sourceTree = "<group>"; };
+		E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelWatchAPIService.swift; sourceTree = "<group>"; };
+		E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,14 +81,6 @@
 				0DE06325616DD3894CDF050C /* Pods-MyFueliOS.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C915AEF525FB466000F76805 /* FavouriteScreen */ = {
-			isa = PBXGroup;
-			children = (
-				C915AEFB25FB472E00F76805 /* FavouriteScreenView.swift */,
-			);
-			path = FavouriteScreen;
 			sourceTree = "<group>";
 		};
 		D1678749F797EC74253831DD /* Frameworks */ = {
@@ -127,10 +123,11 @@
 				E551173225F0F4EF00DC9EF3 /* UIKitViews */,
 				E5FCDCB125EFD65A0099C107 /* Common */,
 				E5690B6725EE67A800CDC5DB /* Model */,
+				E5D5D1EE25F7A00D00528D11 /* Dashboard */,
 				E5419AFF25EB08FB00ACD0B9 /* Map */,
 				E5419AFE25EB08F500ACD0B9 /* Stations */,
 				E5FCDCB225EFD66C0099C107 /* StationDetail */,
-				C915AEF525FB466000F76805 /* FavouriteScreen */,
+				E5D5D1F225F7A4BD00528D11 /* Services */,
 				E5419AEC25EB064200ACD0B9 /* ContentView.swift */,
 				E5419AEA25EB064200ACD0B9 /* MyFueliOSApp.swift */,
 				E5690B6B25EE69A000CDC5DB /* Resources */,
@@ -199,6 +196,23 @@
 				E5419AF025EB064200ACD0B9 /* Preview Content */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		E5D5D1EE25F7A00D00528D11 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */,
+				E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E5D5D1F225F7A4BD00528D11 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E5FCDCB125EFD65A0099C107 /* Common */ = {
@@ -348,10 +362,12 @@
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,
 				E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */,
 				E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */,
+				E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */,
+				E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */,
 				E5419B0525EB096C00ACD0B9 /* StationsMapView.swift in Sources */,
 				E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */,
+				E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */,
 				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
-				C915AEFC25FB472E00F76805 /* FavouriteScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct MyFueliOSApp: App {
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject( DashboardViewModel())
         }
     }
 }

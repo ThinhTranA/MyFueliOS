@@ -11,20 +11,27 @@ import FontAwesome_swift
 struct ContentView: View {
     var body: some View {
         TabView {
+            DashboardView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "square.grid.2x2.fill")
+                        Text("Dashboard")
+                    }
+                }.tag(0)
             StationsMapView()
                 .tabItem {
                     VStack {
                         Image(systemName: "map")
                         Text("Map")
                     }
-                }.tag(1)
+                }.tag(2)
             StationListView()
                 .tabItem {
                     VStack {
                         Image(uiImage: UIImage.fontAwesomeIcon(name: .gasPump, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))
                         Text("Stations")
                     }
-                }.tag(0)
+                }.tag(1)
             
             FavouriteScreenView()
                 .tabItem {
