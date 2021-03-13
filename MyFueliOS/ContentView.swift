@@ -26,6 +26,14 @@ struct ContentView: View {
                     }
                 }.tag(0)
             
+            FavouriteScreenView()
+                .tabItem {
+                    VStack {
+                        Image(uiImage: UIImage.fontAwesomeIcon(name: .star, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))
+                        Text("Favourites")
+                    }
+                }.tag(2)
+            
         }
     }
 }

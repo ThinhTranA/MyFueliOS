@@ -34,6 +34,9 @@ struct PetrolStation: Decodable, Identifiable {
     var logo : String {
         return makeLogo()
     }
+    var plaindistance: Double{
+       return calDistance()
+    }
     var distance: String {
         //TODO: calculate from user GPS location
         let distance = calDistance()

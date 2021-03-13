@@ -40,7 +40,7 @@ struct StationListView: View {
             return list.sorted{ $0.price < $1.price}
         }
         else{
-            return list.sorted{$0.distance < $1.distance}
+            return list.sorted{$0.plaindistance < $1.plaindistance}
         }
     }
     
