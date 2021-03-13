@@ -25,14 +25,25 @@ class FuelWatchService {
     private let baseAPIURL = "https://www.fuelwatch.wa.gov.au/fuelwatch/fuelWatchRSS"
     //private let urlComponents = URLComponents(string: baseAPIURL)
     private let urlSession = URLSession.shared
+    private var stations: [String: [PetrolStation]] = [:]
+    
     
     func getSuburbFuel(product: Product, suburb: String, completion: @escaping ([PetrolStation]?) -> ()) {
         //TODO: cache API call if possile, invalidate cache if the day is not valid
+        let key = "\(product)\(suburb)"
+        if let sts = stations[key] {
+            completion(sts)
+            return
+        }
 
-        let url = URL(string: baseAPIURL + "?Product=\(product.rawValue)&Suburb=\(suburb)")
+        let url = URL(string: (baseAPIURL + "?Product=\(product.rawValue)&Suburb=\(suburb)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         var petrolStations = [PetrolStation]()
         
-        let task = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+     
+        
+        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy)
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
             
             guard let data = data, error == nil else {
                 completion(nil)
@@ -62,6 +73,8 @@ class FuelWatchService {
                     i += 1
                     petrolStations.append(ps)
                 }
+                
+                self.stations.updateValue(petrolStations, forKey: key)
                 
                 completion(petrolStations)
              }
