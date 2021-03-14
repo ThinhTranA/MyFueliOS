@@ -35,6 +35,7 @@ struct MapView: UIViewRepresentable {
         mapView.annotations.forEach { mapView.removeAnnotation($0) }
         mapView.addAnnotations(places)
         mapView.delegate = context.coordinator
+        mapView.showsUserLocation = true
         
         return mapView
     }
