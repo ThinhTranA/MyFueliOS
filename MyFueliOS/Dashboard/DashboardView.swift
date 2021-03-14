@@ -9,21 +9,27 @@ import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var dashboardVM: DashboardViewModel
+    @ObservedObject var locationManager = LocationManager()
     init() {
         self.dashboardVM = DashboardViewModel()
+        
     }
 
     var body: some View {
         VStack{
             if(dashboardVM.isLoading){
-                ProgressView()
+                ProgressView().onReceive(locationManager.$suburb){ suburb in
+                    if let suburb = suburb {
+                        dashboardVM.fetchPetrolStations(suburb: suburb)
+                    }
+                }
             }
-            TextField("Suburb", text: $dashboardVM.suburb)
-            Button(action: {
-                dashboardVM.fetchPetrolStations()
-            }) {
-                Text("Load fuel")
-            }
+//            TextField("Suburb", text: $dashboardVM.suburb)
+//            Button(action: {
+//              //  dashboardVM.fetchPetrolStations()
+//            }) {
+//                Text("Load fuel")
+//            }
             
            Text("Stations count:\(dashboardVM.count)")
            Text("First station on the list:")

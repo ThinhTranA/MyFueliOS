@@ -31,6 +31,12 @@ class LocationManager: NSObject, ObservableObject {
             objectWillChange.send()
         }
     }
+    
+    @Published var suburb: String? {
+        willSet{
+            objectWillChange.send()
+        }
+    }
 
     var statusString: String {
         guard let status = locationStatus else {
@@ -53,21 +59,15 @@ class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
 
-    private func geocode() {
-        guard let location = self.location else { return }
+    private func lookupSuburbFromLocation() {
+        guard let location = self.location else { return}
         geocoder.reverseGeocodeLocation(location, completionHandler: { (places, error) in
           if error == nil {
-            var placemark = places?[0]
-            let address = "\(placemark?.subThoroughfare ?? ""), \(placemark?.thoroughfare ?? ""), \(placemark?.locality ?? ""), \(placemark?.subLocality ?? ""), \(placemark?.administrativeArea ?? ""), \(placemark?.postalCode ?? ""), \(placemark?.country ?? "")"
+            let placemark = places?[0]
+//            let address = "\(placemark.subThoroughfare ?? ""), \(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.subLocality ?? ""), \(placemark?.administrativeArea ?? ""), \(placemark?.postalCode ?? ""), \(placemark?.country ?? "")"
 
-            //Locality = suburb
-            print(placemark?.locality)
-            
-            
+            self.suburb = placemark?.locality
           }
-            //          } else {
-//            self.placemark = nil
-//          }
         })
       }
 }
@@ -82,7 +82,10 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         self.location = location
-        geocode()
+        
+        if suburb == nil {
+            lookupSuburbFromLocation()
+        }
         print(#function, location)
     }
 
