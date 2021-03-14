@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct StationsMapView: View {
-    
+    @ObservedObject var dashboardVM: DashboardViewModel = DashboardViewModel()
     @State var petrolList = PetrolStation.mockPetrolStations;
     @State var selectedPetrolStation: PetrolStation?
     
     var body: some View {
         
         ZStack {
-            MapView(stations: $petrolList, selectedStation: $selectedPetrolStation)
+            MapView(stations: $dashboardVM.perthStations, selectedStation: $selectedPetrolStation)
             
             if selectedPetrolStation != nil {
                 VStack{
