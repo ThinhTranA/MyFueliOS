@@ -12,32 +12,41 @@ import SwiftUI
 class DashboardViewModel: ObservableObject {
     let fuelWatchService : FuelWatchService
     
-    @Published var stations = [PetrolStation]()
-   
+    @Published var nearByStations = [PetrolStation]()
+    @Published var perthStations = [PetrolStation]()
     
     init() {
         self.fuelWatchService = FuelWatchService.shared
-     
+        fetchPerthPetrolStations()
     }
     
     var isLoading: Bool = true;
     
     var count: String {
-        return String(stations.count)
+        return String(nearByStations.count)
     }
     
-//    var location: object {
-//        return locationManager.$lastLocation
-//    }
-
+    //TODO: Get user preference of petrol type
     var product: Product = Product.UnleadedPetrol
     
-    func fetchPetrolStations(suburb: String)  {
+    func fetchPetrolStations(near suburb: String)  {
         
         fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
-                    self.stations = stations
+                    self.nearByStations = stations
+                }
+            }
+            self.isLoading = false
+        }
+    }
+    
+    func fetchPerthPetrolStations()  {
+        
+        fuelWatchService.getPerthFuel(product: product) { stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.perthStations = stations
                 }
             }
             self.isLoading = false

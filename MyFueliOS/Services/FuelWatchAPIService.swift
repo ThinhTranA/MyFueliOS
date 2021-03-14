@@ -27,6 +27,7 @@ class FuelWatchService {
     private let urlSession = URLSession.shared
     private var stations: [String: [PetrolStation]] = [:]
     
+   
     
     func getSuburbFuel(product: Product, suburb: String, completion: @escaping ([PetrolStation]?) -> ()) {
         let key = "\(product)\(suburb)"
@@ -38,7 +39,61 @@ class FuelWatchService {
         let url = URL(string: (baseAPIURL + "?Product=\(product.rawValue)&Suburb=\(suburb)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         var petrolStations = [PetrolStation]()
         
-     
+        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy)
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                completion(nil)
+                return
+            }
+        
+            if let returnData = String(data: data, encoding: .utf8) {
+                let xml = try! XML.parse(returnData)
+                var i = 1
+                
+                for item in xml["rss"]["channel"]["item"] {
+                    let ps = PetrolStation(id: i,
+                               title: item["title"].text ?? "",
+                               description: item["description"].text ?? "",
+                               brand: item["brand"].text ?? "",
+                               date: item["date"].text ?? "",
+                               price: item["price"].text ?? "",
+                               tradingName: item["trading-name"].text ?? "",
+                               location: item["location"].text ?? "",
+                               address: item["address"].text ?? "",
+                               phone: item["phone"].text ?? "",
+                               latitude: item["latitude"].text ?? "",
+                               longitude: item["longitude"].text ?? "",
+                               siteFeatures: item["site-features"].text ?? ""
+                    )
+                    i += 1
+                    petrolStations.append(ps)
+                }
+                
+                self.stations.updateValue(petrolStations, forKey: key)
+                
+                completion(petrolStations)
+             }
+            else {
+                completion(nil)
+            }
+                
+        })
+        
+        task.resume()
+    }
+    
+    
+    func getPerthFuel(product: Product, completion: @escaping ([PetrolStation]?) -> ()) {
+        let key = "\(product)PerthRegion"
+        if let sts = stations[key] {
+            completion(sts)
+            return
+        }
+
+        let url = URL(string: (baseAPIURL + "?Product=\(product.rawValue)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        var petrolStations = [PetrolStation]()
         
         let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy)
         
@@ -48,7 +103,6 @@ class FuelWatchService {
                 completion(nil)
                 return
             }
-            
         
             if let returnData = String(data: data, encoding: .utf8) {
                 let xml = try! XML.parse(returnData)

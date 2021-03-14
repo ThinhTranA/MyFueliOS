@@ -20,7 +20,7 @@ struct DashboardView: View {
             if(dashboardVM.isLoading){
                 ProgressView().onReceive(locationManager.$suburb){ suburb in
                     if let suburb = suburb {
-                        dashboardVM.fetchPetrolStations(suburb: suburb)
+                        dashboardVM.fetchPetrolStations(near: suburb)
                     }
                 }
             }
@@ -33,11 +33,15 @@ struct DashboardView: View {
             
            Text("Stations count:\(dashboardVM.count)")
            Text("First station on the list:")
-            if(dashboardVM.stations.count > 0){
-                Text(dashboardVM.stations[0].brand)
-                Text(dashboardVM.stations[0].address)
+            if(dashboardVM.nearByStations.count > 0){
+                Text(dashboardVM.nearByStations[0].brand)
+                Text(dashboardVM.nearByStations[0].address)
                 Text("Price:")
-                Text(dashboardVM.stations[0].price)
+                Text(dashboardVM.nearByStations[0].price)
+            }
+            
+            if(dashboardVM.perthStations.count > 0) {
+                Text("Perth stations count:\(dashboardVM.perthStations.count)")
             }
  
         }
