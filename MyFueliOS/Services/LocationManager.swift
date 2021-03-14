@@ -11,7 +11,7 @@ import Combine
 
 
 class LocationManager: NSObject, ObservableObject {
-
+    static let shared = LocationManager()
     override init() {
         super.init()
         self.locationManager.delegate = self

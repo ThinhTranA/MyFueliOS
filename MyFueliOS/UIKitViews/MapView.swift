@@ -14,6 +14,7 @@ struct MapView: UIViewRepresentable {
     
     @Binding var stations: [PetrolStation]
     @Binding var selectedStation: PetrolStation?
+    @Binding var shouldFocusUserLocation: Bool
     
 
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
@@ -40,8 +41,22 @@ struct MapView: UIViewRepresentable {
         return mapView
     }
     
-    func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+    func updateUIView(_ mapView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+        if(shouldFocusUserLocation){
+            let locationManager = LocationManager.shared
 
+              //Zoom to user location
+              if let userLocation = locationManager.location?.coordinate {
+                // set span (radius of points)
+                let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+                let region = MKCoordinateRegion(center: userLocation, span: span)
+
+                // set the view
+                mapView.setRegion(region, animated: true)
+                shouldFocusUserLocation = true
+              }
+            
+        }
         
     }
     
@@ -77,6 +92,10 @@ struct MapView: UIViewRepresentable {
                 customAnnotationView.canShowCallout = true
                 return customAnnotationView
             }
+        }
+        
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            parent.shouldFocusUserLocation = false
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
