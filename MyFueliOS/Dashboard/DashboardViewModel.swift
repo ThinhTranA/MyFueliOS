@@ -12,9 +12,12 @@ class DashboardViewModel: ObservableObject {
     let fuelWatchService : FuelWatchService
     
     @Published var stations = [PetrolStation]()
+    var locationManager = LocationManager()
     
     init() {
         self.fuelWatchService = FuelWatchService.shared
+     
+        
         fetchPetrolStations()
     }
     
@@ -24,10 +27,17 @@ class DashboardViewModel: ObservableObject {
         return String(stations.count)
     }
     
+//    var location: object {
+//        return locationManager.$lastLocation
+//    }
+    
     var suburb: String = "Morley"
     var product: Product = Product.UnleadedPetrol
     
     func fetchPetrolStations()  {
+        
+        var aa = locationManager.location?.coordinate;
+        
         fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {

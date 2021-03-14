@@ -29,7 +29,6 @@ class FuelWatchService {
     
     
     func getSuburbFuel(product: Product, suburb: String, completion: @escaping ([PetrolStation]?) -> ()) {
-        //TODO: cache API call if possile, invalidate cache if the day is not valid
         let key = "\(product)\(suburb)"
         if let sts = stations[key] {
             completion(sts)

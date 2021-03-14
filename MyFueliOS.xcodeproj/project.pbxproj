@@ -19,6 +19,7 @@
 		E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0125EB096000ACD0B9 /* StationListView.swift */; };
 		E5419B0525EB096C00ACD0B9 /* StationsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5419B0425EB096C00ACD0B9 /* StationsMapView.swift */; };
 		E551173425F0F4FB00DC9EF3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E551173325F0F4FB00DC9EF3 /* MapView.swift */; };
+		E551760125FCF0F5006E9158 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E551760025FCF0F5006E9158 /* LocationManager.swift */; };
 		E5664DA925F2EEFA005EEA8E /* SelectedStationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5664DA825F2EEFA005EEA8E /* SelectedStationDetailView.swift */; };
 		E5664DAE25F30A69005EEA8E /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5664DAD25F30A69005EEA8E /* RoundedCorner.swift */; };
 		E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */; };
@@ -49,6 +50,7 @@
 		E5419B0125EB096000ACD0B9 /* StationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListView.swift; sourceTree = "<group>"; };
 		E5419B0425EB096C00ACD0B9 /* StationsMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsMapView.swift; sourceTree = "<group>"; };
 		E551173325F0F4FB00DC9EF3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		E551760025FCF0F5006E9158 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E5664DA825F2EEFA005EEA8E /* SelectedStationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedStationDetailView.swift; sourceTree = "<group>"; };
 		E5664DAD25F30A69005EEA8E /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		E5690B6825EE67DB00CDC5DB /* PetrolStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetrolStation.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */,
+				E551760025FCF0F5006E9158 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				E551173425F0F4FB00DC9EF3 /* MapView.swift in Sources */,
 				E5690B7025EE6A9C00CDC5DB /* PetrolStation+Mock.swift in Sources */,
 				E5690B7925EE793700CDC5DB /* StationsState.swift in Sources */,
+				E551760125FCF0F5006E9158 /* LocationManager.swift in Sources */,
 				E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */,
 				E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */,
 				E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */,
