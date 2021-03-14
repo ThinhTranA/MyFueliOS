@@ -26,7 +26,7 @@ struct StationRowView: View {
                 HStack() {
                     Text(petrolStation.address)
                     Spacer()
-                    Text(petrolStation.distance)
+                    Text(petrolStation.distanceString)
                 }
                 .font(.footnote)
                 .foregroundColor(Color("SecondTextColor"))

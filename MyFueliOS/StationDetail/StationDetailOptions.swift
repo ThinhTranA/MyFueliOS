@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct StationDetailOptions: View {
+    @State private var isFavourite : Bool = false
     var body: some View {
         VStack(){
             
-            Button(action: {}){
+            Button(action: {isFavourite = !isFavourite}){
                 HStack{
-                    Text("Add to Favorite")
-                    Spacer()
-                    Label("",systemImage: "star")
+                    if !isFavourite{
+                        Text("Add to Favourites")
+                        Spacer()
+                        Label("",systemImage: "star")
+                    }
+                    else{
+                        Text("Remove from Favourites")
+                        Spacer()
+                        Label("",systemImage: "star.slash")
+                    }
+
                 }
                 .padding()
             }
