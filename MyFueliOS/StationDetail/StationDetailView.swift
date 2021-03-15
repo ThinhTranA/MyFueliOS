@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct StationDetailView: View {
-    var station: PetrolStation
+    @State var station: PetrolStation
+
     var body: some View {
         VStack{
-            StationDetailMap(station: station)
+            Text(station.name)
+            StationDetailMap(station: station).frame(maxHeight: 300)
             Spacer()
             StationDetailPrice(station: station)
             StationDetailOptions()

@@ -6,17 +6,28 @@
 //
 
 import SwiftUI
+import MapKit
 
-struct StationDetailMap: View {
-    var station : PetrolStation
-    var body: some View {
-        VStack{
-            Text(station.name)
-            Color.gray
-        }
-        //.padding()
-        .frame(maxHeight: 400)
-    
+struct StationDetailMap: UIViewRepresentable {
+    @State var station: PetrolStation
+
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        view.mapType = MKMapType.standard
+      
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        let region = MKCoordinateRegion(center: station.coordinate2D, span: span)
+        view.setRegion(region, animated: true)
+
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = station.coordinate2D
+
+        annotation.title = station.address
+        annotation.subtitle = station.description
+        view.addAnnotation(annotation)
     }
 }
 
