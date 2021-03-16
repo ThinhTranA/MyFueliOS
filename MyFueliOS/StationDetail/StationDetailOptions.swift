@@ -11,12 +11,12 @@ struct StationDetailOptions: View {
     @State var station: PetrolStation
     @State private var isFavourite : Bool = false
     
-    private let favService = FavouriteService.shared
+    private let favService = CachedService.shared
     var body: some View {
         VStack(){
             Button(action: {
                 if(isFavourite){
-                    favService.RemoveFromFavourtes(station: station)
+                    favService.RemoveFromFavourites(station: station)
                 } else {
                     favService.AddToFavourites(station: station)
                 }

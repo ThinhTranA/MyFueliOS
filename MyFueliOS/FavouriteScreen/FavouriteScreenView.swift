@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FavouriteScreenView: View {
+    @ObservedObject var viewModel = FavouriteViewModel()
     @State private var currentTag = "Price"
     var body: some View {
         NavigationView {
@@ -18,12 +19,11 @@ struct FavouriteScreenView: View {
                                   Text("Distance").tag("Distance")
                               }
                               .pickerStyle(SegmentedPickerStyle())
-
-                        
                           }
-
-
             }.navigationTitle("Favourites")
+                .onAppear{
+                    viewModel.fetchFavouriteStations()
+                }
         }
     }
 }

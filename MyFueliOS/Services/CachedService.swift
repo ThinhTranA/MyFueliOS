@@ -7,10 +7,11 @@
 
 import Foundation
 
-class FavouriteService {
-    static let shared = FavouriteService()
+class CachedService {
+    static let shared = CachedService()
     
     private let favouriteListKey = "favouriteStations"
+    private let selectedProductFuelType = "selectedProductFuelType"
     private let userDefaults = UserDefaults.standard
     
     func AddToFavourites(station: PetrolStation){
@@ -22,7 +23,7 @@ class FavouriteService {
         
     }
     
-    func RemoveFromFavourtes(station: PetrolStation) {
+    func RemoveFromFavourites(station: PetrolStation) {
         var favList: [String] = userDefaults.object(forKey: favouriteListKey) as? [String] ?? []
         if favList.count == 0 {
             return
@@ -35,6 +36,15 @@ class FavouriteService {
     func GetFavourites() -> [String]{
         let favList: [String] = userDefaults.object(forKey: favouriteListKey) as? [String] ?? []
         return favList
+    }
+    
+    func GetSelectedFuelType() -> Product {
+        let product = userDefaults.object(forKey: selectedProductFuelType) as? Product ?? Product.UnleadedPetrol
+        return product
+    }
+    
+    func SetSelectedFuelType(type product: Product) {
+        userDefaults.setValue(product, forKey: selectedProductFuelType)
     }
     
 }
