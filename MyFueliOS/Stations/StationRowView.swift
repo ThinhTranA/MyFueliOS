@@ -18,7 +18,7 @@ struct StationRowView: View {
 
             VStack() {
                 HStack() {
-                    Text(petrolStation.name)
+                    Text(petrolStation.tradingName)
                     Spacer()
                     Text(petrolStation.price)
                 }

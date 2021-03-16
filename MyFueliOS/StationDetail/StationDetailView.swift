@@ -13,7 +13,7 @@ struct StationDetailView: View {
 
     var body: some View {
         VStack{
-            Text(station.name)
+            Text(station.tradingName)
             StationDetailMap(station: station).frame(maxHeight: 300)
             Spacer()
             StationDetailPrice(station: station)
