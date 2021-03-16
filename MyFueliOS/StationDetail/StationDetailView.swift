@@ -22,7 +22,7 @@ struct StationDetailView: View {
                 StationDetailMap(station: station).frame(maxHeight: geometry.size.height * 0.5)
               
                 StationDetailPrice(station: station)
-                StationDetailOptions()
+                StationDetailOptions(station: station)
                 Spacer()
             }.navigationTitle(station.tradingName)
         }

@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct StationDetailOptions: View {
+    @State var station: PetrolStation
     @State private var isFavourite : Bool = false
+    
+    private let favService = FavouriteService.shared
     var body: some View {
         VStack(){
-            
-            Button(action: {isFavourite = !isFavourite}){
+            Button(action: {
+                if(isFavourite){
+                    favService.RemoveFromFavourtes(station: station)
+                } else {
+                    favService.AddToFavourites(station: station)
+                }
+                
+                isFavourite.toggle()
+            }){
                 HStack{
                     if !isFavourite{
                         Text("Add to Favourites")
@@ -24,7 +34,6 @@ struct StationDetailOptions: View {
                         Spacer()
                         Label("",systemImage: "star.slash")
                     }
-
                 }
                 .padding()
             }
@@ -34,11 +43,9 @@ struct StationDetailOptions: View {
                     Text("Get directions")
                     Spacer()
                     Label("",systemImage: "car")
-                    
                 }
                 .padding()
             }
-
 
         }
         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
@@ -47,6 +54,6 @@ struct StationDetailOptions: View {
 
 struct StationDetailOptions_Previews: PreviewProvider {
     static var previews: some View {
-        StationDetailOptions()
+        StationDetailOptions(station: PetrolStation.mockPetrolStations[0])
     }
 }
