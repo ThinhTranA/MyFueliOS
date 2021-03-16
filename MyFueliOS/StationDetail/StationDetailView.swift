@@ -10,14 +10,21 @@ import MapKit
 
 struct StationDetailView: View {
     @State var station: PetrolStation
+    @State var hasNavigationBar = true
 
     var body: some View {
-        VStack{
-            Text(station.tradingName)
-            StationDetailMap(station: station).frame(maxHeight: 300)
-            Spacer()
-            StationDetailPrice(station: station)
-            StationDetailOptions()
+        GeometryReader { geometry in
+            VStack{
+                if(!hasNavigationBar){
+                    Text(station.tradingName).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).padding(.top)
+                }
+            
+                StationDetailMap(station: station).frame(maxHeight: geometry.size.height * 0.5)
+              
+                StationDetailPrice(station: station)
+                StationDetailOptions()
+                Spacer()
+            }.navigationTitle(station.tradingName)
         }
     }
 }

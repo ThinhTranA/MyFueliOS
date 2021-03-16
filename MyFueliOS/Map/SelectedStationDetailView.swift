@@ -44,7 +44,7 @@ struct SelectedStationDetailView: View {
                             .padding(EdgeInsets(top: 0, leading: -24, bottom: 0, trailing: 0))
                             
                         }.sheet(isPresented: $stationDetailIsShowing, onDismiss: {}, content: {
-                                StationDetailView(station: station)
+                                StationDetailView(station: station, hasNavigationBar: false)
                         })
             
                         
