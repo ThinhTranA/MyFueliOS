@@ -14,6 +14,10 @@ class DashboardViewModel: ObservableObject {
     
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
+    @Published var lowestPrice: String = ""
+    @Published var highestPrice: String = ""
+    @Published var priceRange: String = ""
+    @Published var product: Product = Product.UnleadedPetrol
     
     init() {
         self.fuelWatchService = FuelWatchService.shared
@@ -26,8 +30,6 @@ class DashboardViewModel: ObservableObject {
         return String(nearByStations.count)
     }
     
-    //TODO: Get user preference of petrol type
-    var product: Product = Product.UnleadedPetrol
     
     func fetchPetrolStations(near suburb: String)  {
         
@@ -47,6 +49,9 @@ class DashboardViewModel: ObservableObject {
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.perthStations = stations
+                    self.lowestPrice = (stations.min {$0.price < $1.price})!.price
+                    self.highestPrice = (stations.min {$0.price > $1.price})!.price
+                    self.priceRange = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.lowestPrice)!)
                 }
             }
             self.isLoading = false

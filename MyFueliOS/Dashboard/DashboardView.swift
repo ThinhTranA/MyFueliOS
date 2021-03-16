@@ -12,7 +12,6 @@ struct DashboardView: View {
     @ObservedObject var locationManager = LocationManager()
     init() {
         self.dashboardVM = DashboardViewModel()
-        
     }
 
     var body: some View {
@@ -33,6 +32,10 @@ struct DashboardView: View {
             
            Text("Stations count:\(dashboardVM.count)")
            Text("First station on the list:")
+            Text("Perth \(dashboardVM.product.description) price range")
+            Text("Lowest price: \(dashboardVM.lowestPrice)")
+            Text("Highest price: \(dashboardVM.highestPrice)")
+            Text("Price range: \(dashboardVM.priceRange)")
             if(dashboardVM.nearByStations.count > 0){
                 Text(dashboardVM.nearByStations[0].brand)
                 Text(dashboardVM.nearByStations[0].address)
