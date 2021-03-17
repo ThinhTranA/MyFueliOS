@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StationsMapView: View {
-    @ObservedObject var dashboardVM: DashboardViewModel = DashboardViewModel()
+    @ObservedObject var dashboardVM = StationsMapViewModel()
     @State var petrolList = PetrolStation.mockPetrolStations;
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true

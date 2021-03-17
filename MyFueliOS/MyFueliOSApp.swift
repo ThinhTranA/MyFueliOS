@@ -12,7 +12,7 @@ struct MyFueliOSApp: App {
     var body: some Scene {
         
         WindowGroup {
-            ContentView().environmentObject( DashboardViewModel())
+            ContentView()
         }
     }
 }
