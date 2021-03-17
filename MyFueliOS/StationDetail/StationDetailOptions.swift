@@ -49,6 +49,9 @@ struct StationDetailOptions: View {
 
         }
         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+        .onAppear{
+            isFavourite = favService.GetFavourites().contains(station.address)
+        }
     }
 }
 

@@ -22,8 +22,6 @@ struct StationListView: View {
                                   Text("Distance").tag("Distance")
                               }
                               .pickerStyle(SegmentedPickerStyle())
-
-                        
                           }
                     ForEach(setList(tag: currentTag, list: petrolList), id: \.id){ station in
                         NavigationLink (destination: StationDetailView(station: station)) {

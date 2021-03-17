@@ -13,21 +13,17 @@ struct FavouriteScreenView: View {
     var body: some View {
         NavigationView {
                 List {
-                    VStack {
-                              Picker(selection: $currentTag, label: Text("Sort by price or by distance")) {
-                                  Text("Price").tag("Price")
-                                  Text("Distance").tag("Distance")
-                              }
-                              .pickerStyle(SegmentedPickerStyle())
-                          }
-            }.navigationTitle("Favourites")
-                .onAppear{
-                    viewModel.fetchFavouriteStations()
-                }
-        }
+                    ForEach(viewModel.favStations){ station in
+                        NavigationLink (destination: StationDetailView(station: station)) {
+                            StationRowView(petrolStation: station)
+                    }
+            }   
+        }.onAppear{
+            viewModel.fetchFavouriteStations()
+        }.navigationTitle("Favourites")
     }
 }
-
+}
 struct FavouriteScreen_Previews: PreviewProvider {
     static var previews: some View {
         FavouriteScreenView()
