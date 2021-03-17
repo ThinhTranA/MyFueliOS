@@ -16,14 +16,19 @@ struct StationListView: View {
         NavigationView {
                 List {
                     SearchBar(text: $searchText, placeholder: "Search all stations")
-                    VStack {
-                        Picker(selection: $currentTag, label: Text("Sort by price or by distance")) {
-                                  Text("Price").tag("Price")
-                                  Text("Distance").tag("Distance")
-                              }
-                              .pickerStyle(SegmentedPickerStyle())
-                        
-                    }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    
+                    if(searchText.isEmpty){
+                        VStack {
+                            Picker(selection: $currentTag, label: Text("Sort by price or by distance")) {
+                                      Text("Price").tag("Price")
+                                      Text("Distance").tag("Distance")
+                                  }
+                                  .pickerStyle(SegmentedPickerStyle())
+                            
+                        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                    }
+                
+                    
                     ForEach((currentTag == "Price" ? viewModel.perthStations : viewModel.perthStationsSortedByDistance).filter{
                         self.searchText.isEmpty ? true : $0.tradingName.lowercased().contains(self.searchText.lowercased())
                     }){ station in
@@ -31,6 +36,8 @@ struct StationListView: View {
                         NavigationLink (destination: StationDetailView(station: station)) {
                             StationRowView(petrolStation: station)
                     }
+                        
+                        
                 }
 
             }.navigationTitle("Petrol Stations")
@@ -39,7 +46,6 @@ struct StationListView: View {
     }
     
   
-    
 }
 
 
