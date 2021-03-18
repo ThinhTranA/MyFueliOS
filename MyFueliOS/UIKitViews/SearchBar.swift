@@ -27,6 +27,11 @@ struct SearchBar: UIViewRepresentable {
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             text = searchText
         }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+    
     }
 
     func makeCoordinator() -> SearchBar.Coordinator {
@@ -35,9 +40,12 @@ struct SearchBar: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
-        searchBar.delegate = context.coordinator
+   
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = placeholder
+        searchBar.delegate = context.coordinator
+        searchBar.enablesReturnKeyAutomatically = false
+        searchBar.returnKeyType = UIReturnKeyType.done
         return searchBar
     }
 
@@ -45,3 +53,13 @@ struct SearchBar: UIViewRepresentable {
         uiView.text = text
     }
 }
+
+
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
