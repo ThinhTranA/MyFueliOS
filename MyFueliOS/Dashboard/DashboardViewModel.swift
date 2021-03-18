@@ -14,8 +14,10 @@ class DashboardViewModel: ObservableObject {
     
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
+    @Published var cheapest3Stations = [PetrolStation]()
     @Published var lowestPrice: String = ""
     @Published var highestPrice: String = ""
+    @Published var averagePrice: String = ""
     @Published var priceRange: String = ""
     @Published var product: Product = Product.UnleadedPetrol
     
@@ -52,6 +54,8 @@ class DashboardViewModel: ObservableObject {
                     self.lowestPrice = (stations.min {$0.price < $1.price})!.price
                     self.highestPrice = (stations.min {$0.price > $1.price})!.price
                     self.priceRange = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.lowestPrice)!)
+                    self.averagePrice = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.priceRange)!)
+                    self.cheapest3Stations = Array( stations.prefix(3)) //default return from FuelWatch order by cheapest price
                 }
             }
             self.isLoading = false
