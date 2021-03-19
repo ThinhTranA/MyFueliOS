@@ -36,6 +36,10 @@
 		E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */; };
 		E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */; };
 		E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */; };
+		E5DE67002604E068008C98DE /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE66FF2604E068008C98DE /* Font.swift */; };
+		E5DE67022604E26B008C98DE /* American Captain.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FE2604DF4B008C98DE /* American Captain.otf */; };
+		E5DE67042604E26E008C98DE /* FHACondFrenchNC.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FC2604DF4A008C98DE /* FHACondFrenchNC.otf */; };
+		E5DE67062604E2B4008C98DE /* FjallaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */; };
 		E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +77,10 @@
 		E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelWatchAPIService.swift; sourceTree = "<group>"; };
 		E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		E5DE66FC2604DF4A008C98DE /* FHACondFrenchNC.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FHACondFrenchNC.otf; sourceTree = "<group>"; };
+		E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FjallaOne-Regular.ttf"; sourceTree = "<group>"; };
+		E5DE66FE2604DF4B008C98DE /* American Captain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "American Captain.otf"; sourceTree = "<group>"; };
+		E5DE66FF2604E068008C98DE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +225,7 @@
 		E5690B6B25EE69A000CDC5DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E5DE66FB2604DF3A008C98DE /* Fonts */,
 				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
 				E5419AF325EB064200ACD0B9 /* Info.plist */,
 				E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */,
@@ -242,6 +251,17 @@
 				E50C90D02600F922007269FD /* CachedService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		E5DE66FB2604DF3A008C98DE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E5DE66FE2604DF4B008C98DE /* American Captain.otf */,
+				E5DE66FC2604DF4A008C98DE /* FHACondFrenchNC.otf */,
+				E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */,
+				E5DE66FF2604E068008C98DE /* Font.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		E5FCDCB125EFD65A0099C107 /* Common */ = {
@@ -323,9 +343,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5DE67042604E26E008C98DE /* FHACondFrenchNC.otf in Resources */,
 				E5419AF225EB064200ACD0B9 /* Preview Assets.xcassets in Resources */,
+				E5DE67062604E2B4008C98DE /* FjallaOne-Regular.ttf in Resources */,
 				E5690B6D25EE69EA00CDC5DB /* fuelWatchRSS.xml in Resources */,
 				E5419AEF25EB064200ACD0B9 /* Assets.xcassets in Resources */,
+				E5DE67022604E26B008C98DE /* American Captain.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +424,7 @@
 				E5419B0525EB096C00ACD0B9 /* StationsMapView.swift in Sources */,
 				E5419AEB25EB064200ACD0B9 /* MyFueliOSApp.swift in Sources */,
 				E50C90D42601007A007269FD /* FavouriteViewModel.swift in Sources */,
+				E5DE67002604E068008C98DE /* Font.swift in Sources */,
 				E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */,
 				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
 				224A4CFCF5191720CD04ED75 /* FavouriteScreenView.swift in Sources */,
