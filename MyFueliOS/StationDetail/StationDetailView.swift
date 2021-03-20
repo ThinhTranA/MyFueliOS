@@ -10,7 +10,6 @@ import MapKit
 
 struct StationDetailView: View {
     @State var station: PetrolStation
-    @State var hasNavigationBar = true
 
     var body: some View {
         GeometryReader { geometry in
