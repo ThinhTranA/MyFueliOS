@@ -18,6 +18,9 @@ struct StationDetailView: View {
               
                 StationDetailPrice(station: station)
                 StationDetailOptions(station: station)
+                Button("Copy Address"){
+                    UIPasteboard.general.string = station.address
+                }
                 Spacer()
             }.navigationTitle(station.tradingName)
         }

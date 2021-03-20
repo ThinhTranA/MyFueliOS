@@ -54,8 +54,11 @@ struct SelectedStationDetailView: View {
                         Text(station.distanceString).italic()
                         
                         Button(action: {
-                            //TODO: Implement navigation
-                            print("Navigate button was tapped")
+                            //Open apple map
+                            let url = URL(string: "http://maps.apple.com/?address=\(station.address.replacingOccurrences(of: " ", with: "+"))")
+                            if let url = url {
+                                UIApplication.shared.open(url)
+                            }
                         }) {
                           
                             HStack(spacing: 10) {

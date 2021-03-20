@@ -38,7 +38,13 @@ struct StationDetailOptions: View {
                 .padding()
             }
             
-            Button(action:{}){
+            Button(action:{
+                let url = URL(string: "http://maps.apple.com/?address=\(station.address.replacingOccurrences(of: " ", with: "+"))")
+                if let url = url {
+                    UIApplication.shared.open(url)
+                }
+              
+            }){
                 HStack{
                     Text("Get directions")
                     Spacer()
