@@ -40,6 +40,7 @@
 		E5DE67022604E26B008C98DE /* American Captain.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FE2604DF4B008C98DE /* American Captain.otf */; };
 		E5DE67042604E26E008C98DE /* FHACondFrenchNC.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FC2604DF4A008C98DE /* FHACondFrenchNC.otf */; };
 		E5DE67062604E2B4008C98DE /* FjallaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */; };
+		E5DE67092604E450008C98DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE67082604E450008C98DE /* Color.swift */; };
 		E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FjallaOne-Regular.ttf"; sourceTree = "<group>"; };
 		E5DE66FE2604DF4B008C98DE /* American Captain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "American Captain.otf"; sourceTree = "<group>"; };
 		E5DE66FF2604E068008C98DE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		E5DE67082604E450008C98DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +229,7 @@
 			children = (
 				E5DE66FB2604DF3A008C98DE /* Fonts */,
 				E5419AEE25EB064200ACD0B9 /* Assets.xcassets */,
+				E5DE67082604E450008C98DE /* Color.swift */,
 				E5419AF325EB064200ACD0B9 /* Info.plist */,
 				E5690B6C25EE69EA00CDC5DB /* fuelWatchRSS.xml */,
 				E5419AF025EB064200ACD0B9 /* Preview Content */,
@@ -410,6 +413,7 @@
 				E50C90D12600F922007269FD /* CachedService.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
 				E5403EBE26023F8D00FA3F73 /* SearchBar.swift in Sources */,
+				E5DE67092604E450008C98DE /* Color.swift in Sources */,
 				C99983BB25F600FA008EBC57 /* StationDetailMap.swift in Sources */,
 				E5664DAE25F30A69005EEA8E /* RoundedCorner.swift in Sources */,
 				E532774725F45F4F0089D349 /* StationAnnotation.swift in Sources */,

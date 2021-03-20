@@ -15,10 +15,6 @@ struct StationDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack{
-                if(!hasNavigationBar){
-                    Text(station.tradingName).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).padding(.top)
-                }
-            
                 StationDetailMap(station: station).frame(maxHeight: geometry.size.height * 0.5)
               
                 StationDetailPrice(station: station)

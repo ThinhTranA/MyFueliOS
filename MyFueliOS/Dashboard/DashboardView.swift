@@ -19,6 +19,13 @@ struct DashboardView: View {
         ZStack {
             Color.gray.opacity(0.1)
             VStack{
+                Group{
+                    Text("ABCDEFGHIJKLM123456").font(.AmericanCaptain(size: 20))
+                    Text("ABCDEFGHIJKLM123456").font(.FHACondFrenchNC(size: 20))
+                    Text("ABCDEFGHIJKLM123456").font(.FjallaOne(size: 20))
+                    Text("ABCDEFGHIJKLM123456").font(.system(size: 20))
+                }
+           
                 HStack{
                     Text("PERTH PRICE RANGE")
                     Spacer()
