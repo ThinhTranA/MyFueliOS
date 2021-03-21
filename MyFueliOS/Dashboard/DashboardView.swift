@@ -15,22 +15,26 @@ struct DashboardView: View {
     }
 
     var body: some View {
-        
-        ZStack {
-            Color.gray.opacity(0.1)
-            VStack{
-                priceRangeView
-                Spacer()
-                averagePriceView
-                Spacer()
-                cheapestStationsView
-                selectFuelTypeView
-                    .padding(EdgeInsets(top: 4, leading: 16, bottom: 16, trailing: 16))
+        NavigationView {
+                ZStack {
+                    Color.gray.opacity(0.1).ignoresSafeArea()
+                    ScrollView {
+                    VStack{
+                       
+                        priceRangeView
+                        Spacer()
+                        averagePriceView
+                        Spacer()
+                        cheapestStationsView
+                        selectFuelTypeView
+                            .padding(EdgeInsets(top: 4, leading: 16, bottom: 16, trailing: 16))
+                    }
+                }.navigationTitle("Today")
+                    .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)))
             }
-           
         }
-        
     }
+    
     
     
     private var priceRangeView: some View {
