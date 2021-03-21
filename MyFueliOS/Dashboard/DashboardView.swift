@@ -26,8 +26,7 @@ struct DashboardView: View {
                         averagePriceView
                         Spacer()
                         cheapestStationsView
-                        selectFuelTypeView
-                            .padding(EdgeInsets(top: 4, leading: 16, bottom: 16, trailing: 16))
+                    
                     }
                 }.navigationTitle("Today")
                     .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)))
@@ -110,22 +109,6 @@ struct DashboardView: View {
         }
     }
     
-    private var selectFuelTypeView: some View {
-            ZStack{
-                Color.white
-                HStack{
-                    Text("Fuel Type").font(.title3).opacity(0.6)
-                    Spacer()
-                    Text(viewModel.product.description).font(.title3)
-                    Image(systemName: "chevron.right")
-                }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-            }.frame( height: 60, alignment: .center)
-            .cornerRadius(20)
-       
-        .onTapGesture {
-            print("change fuel type tapped")
-        }
-    }
 }
 
 

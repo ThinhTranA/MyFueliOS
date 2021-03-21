@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FavouriteScreenView: View {
+struct FavouriteView: View {
     @ObservedObject var viewModel = FavouriteViewModel()
     @State private var currentTag = "Price"
     var body: some View {
@@ -26,6 +26,6 @@ struct FavouriteScreenView: View {
 }
 struct FavouriteScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FavouriteScreenView()
+        FavouriteView()
     }
 }

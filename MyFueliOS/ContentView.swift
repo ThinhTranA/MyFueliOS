@@ -24,23 +24,30 @@ struct ContentView: View {
                         Image(systemName: "map")
                         Text("Map")
                     }
-                }.tag(2)
+                }.tag(1)
             StationListView()
                 .tabItem {
                     VStack {
                         Image(uiImage: UIImage.fontAwesomeIcon(name: .gasPump, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))
                         Text("Stations")
                     }
-                }.tag(1)
+                }.tag(2)
             
-            FavouriteScreenView()
+            FavouriteView()
                 .tabItem {
                     VStack {
                         Image(uiImage: UIImage.fontAwesomeIcon(name: .star, style: .solid, textColor: .black, size: CGSize(width: 30, height: 30)))
                         Text("Favourites")
                     }
-                }.tag(2)
+                }.tag(3)
             
+            SettingsView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                    }
+                }.tag(4)
         }
     }
 }
