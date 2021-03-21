@@ -24,6 +24,8 @@ struct FavouriteView: View {
                     }.onDelete(perform: { indexSet in
                         let stationToDelete = indexSet.map { self.viewModel.favStations[$0] }[0]
                         favService.RemoveFromFavourites(station: stationToDelete)
+                    //TODO: FIX AFTER DELETE AN ITEM SUCCESSFULLY AND TAP THE GEAR BUTTON,
+                        //THAT ITEM REAPPEAR AGAIN, TILL RELOAD
                     })
                     
         }.onAppear{
@@ -33,7 +35,7 @@ struct FavouriteView: View {
         .navigationTitle("Favourites")
                 
         //Binding List edit mode to isEditing var instead of using EditButton()
-        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive)).animation(Animation.spring())
+        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
         .navigationBarItems(trailing: Button(action: {
             isEditing.toggle()
         }, label: {
