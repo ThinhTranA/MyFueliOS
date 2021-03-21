@@ -9,43 +9,47 @@ import SwiftUI
 
 struct StationListView: View {
     @StateObject var viewModel = StationListViewModel()
-    @State private var searchText : String = ""
+    @State private var searchText: String = ""
     @State private var currentTag = "Price"
+    @State private var isSortActionSheetPresented = false
 
     var body: some View {
         NavigationView {
-                List {
-                    SearchBar(text: $searchText, placeholder: "Search all stations")
-                    
-                    if(searchText.isEmpty){
-                        VStack {
-                            Picker(selection: $currentTag, label: Text("Sort by price or by distance")) {
-                                      Text("Price").tag("Price")
-                                      Text("Distance").tag("Distance")
-                                  }
-                                  .pickerStyle(SegmentedPickerStyle())
-                            
-                        }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+
+            List {
+                SearchBar(text: $searchText, placeholder: "Search all stations")
+
+                ForEach((currentTag == "Price" ? viewModel.perthStations : viewModel.perthStationsSortedByDistance).filter {
+                    self.searchText.isEmpty ? true : $0.tradingName.lowercased().contains(self.searchText.lowercased())
+                }) { station in
+
+                    NavigationLink(destination: StationDetailView(station: station)) {
+                        StationRowView(petrolStation: station)
                     }
-                
-                    
-                    ForEach((currentTag == "Price" ? viewModel.perthStations : viewModel.perthStationsSortedByDistance).filter{
-                        self.searchText.isEmpty ? true : $0.tradingName.lowercased().contains(self.searchText.lowercased())
-                    }){ station in
-                       
-                        NavigationLink (destination: StationDetailView(station: station)) {
-                            StationRowView(petrolStation: station)
-                    }
-                        
-                        
                 }
 
-            }.navigationTitle("Petrol Stations")
-                .navigationBarTitleDisplayMode(.inline)
+            }
+            .listStyle(PlainListStyle())
+             .navigationTitle("Petrol Stations")
+            //   .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Button(action: {
+                  self.isSortActionSheetPresented.toggle()
+            }, label: {
+                Image(systemName: "line.horizontal.3.decrease.circle")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+            }))
+     
+        }.actionSheet(isPresented: $isSortActionSheetPresented) {
+            ActionSheet( title: Text("Sort stations by"), buttons: [
+                .default(Text("Sort by price")) {currentTag = "Price"},
+                .default(Text("Sort by distance")) {currentTag = "Distance"},
+                .cancel()
+            ])
         }
     }
-    
-  
+
+
 }
 
 
