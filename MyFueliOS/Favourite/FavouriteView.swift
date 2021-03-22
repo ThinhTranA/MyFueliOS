@@ -24,8 +24,7 @@ struct FavouriteView: View {
                     }.onDelete(perform: { indexSet in
                         let stationToDelete = indexSet.map { self.viewModel.favStations[$0] }[0]
                         favService.RemoveFromFavourites(station: stationToDelete)
-                    //TODO: FIX AFTER DELETE AN ITEM SUCCESSFULLY AND TAP THE GEAR BUTTON,
-                        //THAT ITEM REAPPEAR AGAIN, TILL RELOAD
+                        viewModel.fetchFavouriteStations()
                     })
                     
         }.onAppear{
