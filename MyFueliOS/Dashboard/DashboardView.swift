@@ -18,8 +18,10 @@ struct DashboardView: View {
         NavigationView {
                 ZStack {
                     Color.gray.opacity(0.1).ignoresSafeArea()
+                    //TODO: Fix Navigation title stop working in the scroll view
+                    // Top 3 cheapst station distance in km text is cut off on iphone Xs, not happening on simulator though.
                     ScrollView {
-                    VStack{
+                        VStack (spacing: 8){
                        
                         priceRangeView
                         Spacer()
@@ -27,9 +29,9 @@ struct DashboardView: View {
                         Spacer()
                         cheapestStationsView
                     
-                    }
+                    } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                 }.navigationTitle("Today")
-                    .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)))
+                    .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5))
             }
         }
     }
@@ -37,50 +39,82 @@ struct DashboardView: View {
     
     
     private var priceRangeView: some View {
-        Group{
+        VStack (spacing: 16){
             HStack{
-                Text("PERTH PRICE RANGE")
+                Text("Perth price range").font(.FjallaOne(size: 22))
                 Spacer()
-            }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 0))
+            }
             
-            HStack{
-                VStack {
-                    Text("Lowest")
-                    Text(viewModel.lowestPrice)
-                }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 0))
-                Spacer()
-                Image(systemName: "arrow.left")  .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 60, height: 30)
-                Spacer()
-                VStack {
-                    Text("Range")
-                    Text(viewModel.priceRange)
+            HStack(spacing: 16) {
+                VStack(spacing: 8) {
+                    Text("Lowest").font(.FjallaOne(size: 14))
+                    Text(viewModel.lowestPrice).font(.FjallaOne(size: 17))
                 }
-                Spacer()
-                Image(systemName: "arrow.right")  .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 60, height: 30)
-                Spacer()
-                VStack {
-                    Text("Highest")
-                    Text(viewModel.highestPrice)
-                }.padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 16))
+                Path { path in
+                    path.move(to: CGPoint(x: 80, y: 4.82))
+                    path.addLine(to: CGPoint(x: 11.02, y: 4.99))
+                    path.addLine(to: CGPoint(x: 6.91, y: 5))
+                    path.addLine(to: CGPoint(x: 6.91, y: -0))
+                    path.addLine(to: CGPoint(x: 0, y: 8))
+                    path.addLine(to: CGPoint(x: 6.91, y: 16))
+                    path.addLine(to: CGPoint(x: 6.91, y: 11))
+                    path.addLine(to: CGPoint(x: 80, y: 10.64))
+                    path.addLine(to: CGPoint(x: 80, y: 4.82))
+                                 
+                }
+                .fill(Color.SteamGold)
+                .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 8))
+  
+                VStack(spacing: 8) {
+                    Text("Range").font(.FjallaOne(size: 14))
+                    Text(viewModel.priceRange).font(.FjallaOne(size: 17))
+                }
+                
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: 4.82))
+                    path.addLine(to: CGPoint(x: 68.98, y: 4.99))
+                    path.addLine(to: CGPoint(x: 73.09, y: 5))
+                    path.addLine(to: CGPoint(x: 73.09, y: -0))
+                    path.addLine(to: CGPoint(x: 80, y: 8))
+                    path.addLine(to: CGPoint(x: 73.09, y: 16))
+                    path.addLine(to: CGPoint(x: 73.09, y: 11))
+                    path.addLine(to: CGPoint(x: 0, y: 10.64))
+                    path.addLine(to: CGPoint(x: 0, y: 4.82))
+                                 
+                }.fill(Color.SteamGold)
+                .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 0))
+
+                VStack(spacing: 8) {
+                    Text("Highest").font(.FjallaOne(size: 14))
+                    Text(viewModel.highestPrice).font(.FjallaOne(size: 17))
+                }
             }
         }
+        .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+        .background(Color.white)
+        .cornerRadius(16)
     }
     
     private var averagePriceView: some View {
-        Group{
-            Text("TODAY'S AVERAGE")
-            Text(viewModel.averagePrice)
-            Text(viewModel.product.description)
+        VStack (spacing: 8){
+            HStack{
+                Text("Today's average").font(.FjallaOne(size: 22))
+                Spacer()
+            }
+            Text(viewModel.averagePrice).font(.FjallaOne(size: 28))
+            Text(viewModel.product.description).font(.FjallaOne(size: 17))
         }
+        .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+        .background(Color.white)
+        .cornerRadius(16)
     }
     
     private var cheapestStationsView: some View {
-        Group{
-            Text("Top 3 cheapest stations")
+        VStack{
+            HStack{
+                Text("Top 3 cheapest stations").font(.FjallaOne(size: 22))
+                Spacer()
+            }
             VStack {
                 ForEach(viewModel.cheapest3Stations) { station in
                     cheapestStationRowView(station: station)
@@ -89,7 +123,9 @@ struct DashboardView: View {
             }
             
             Spacer()
-        }
+        } .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+        .background(Color.white)
+        .cornerRadius(16)
     }
     
     private func cheapestStationRowView(station: PetrolStation) -> some View {
