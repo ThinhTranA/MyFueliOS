@@ -12,6 +12,7 @@ struct StationsMapView: View {
     @State var petrolList = PetrolStation.mockPetrolStations;
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
+    @State var product: String = "U91"
 
     
     var body: some View {
@@ -26,32 +27,47 @@ struct StationsMapView: View {
                 }
             }
             
+            
             HStack {
-                Spacer()
-                VStack{
-                    Button(action: {
-                        mapFocusToUserLocation = true
-                    }, label: {
-                        
-                        //TODO: this is not working, fix this bug.
-                        if( mapFocusToUserLocation){
-                            Image(systemName: "location.fill")
-                                .font(.system(size: 24))
-                                .frame(width: 42, height: 42)
-                                .foregroundColor(Color.blue)
-                        } else {
-                            Image(systemName: "location")
-                                .font(.system(size: 24))
-                                .frame(width: 42, height: 42)
-                                .foregroundColor(Color.blue)
-                                
-                        }
+               // Spacer()
+                VStack(spacing: 24){
+                    //TODO: fix the picker is not selectable
+                    Picker(selection: $product, label: Text("Product?")) {
+                                 Text("U91").tag(0)
+                                 Text("U98").tag(1)
+                                 Text("U95").tag(2)
+                             }
+                    .pickerStyle(SegmentedPickerStyle())
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            mapFocusToUserLocation = true
+                        }, label: {
                             
-                    })
-                    .background(Color.white)
-                    .cornerRadius(20)
-                    .shadow(color: Color.black.opacity(0.3),
+                            //TODO: this is not working, fix this bug.
+                            if( mapFocusToUserLocation){
+                                Image(systemName: "location.fill")
+                                    .font(.system(size: 24))
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(Color.blue)
+                            } else {
+                                Image(systemName: "location")
+                                    .font(.system(size: 24))
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(Color.blue)
+                                    
+                            }
+                                
+                        })
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: Color.black.opacity(0.3),
                             radius: 3, x: 3,y: 3)
+                    }
+                    
+                   
+                    
                     Spacer()
                 }
             }.padding()
