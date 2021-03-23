@@ -15,7 +15,6 @@ struct StationListView: View {
 
     var body: some View {
         NavigationView {
-
             List {
                 SearchBar(text: $searchText, placeholder: "Search all stations")
 

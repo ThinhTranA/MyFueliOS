@@ -30,9 +30,9 @@ struct DashboardView: View {
                         cheapestStationsView
                     
                     } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                }.navigationTitle("Today")
-                    .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5))
-            }
+                }
+            }.navigationTitle("Today")
+                .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5))
         }
     }
     
@@ -118,7 +118,7 @@ struct DashboardView: View {
             VStack {
                 ForEach(viewModel.cheapest3Stations) { station in
                     cheapestStationRowView(station: station)
-                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 16, trailing: 8))
+                        .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                 }
             }
             
@@ -130,17 +130,26 @@ struct DashboardView: View {
     
     private func cheapestStationRowView(station: PetrolStation) -> some View {
         HStack{
-            Text(station.price)
-            Spacer()
             Image(station.logo)
                 .resizable()
-                .frame(width: 50, height: 50, alignment: .leading)
+                .frame(width: 50, height: 48, alignment: .leading)
+            VStack {
+                HStack {
+                    Text(station.price).font(.FjallaOne(size: 17))
+                    Spacer()
+                }
+                HStack {
+                    Text(station.tradingName).font(.FjallaOne(size: 14))
+                        .foregroundColor(Color.black.opacity(0.8))
+                    Spacer()
+                }
+            }
+          
             Spacer()
-            Text(station.tradingName).frame(width:150, alignment: .leading)
-            Spacer()
-            VStack{
+            VStack(spacing: 8){
                 Image(systemName: "mappin.and.ellipse")
-                Text(station.distanceString)
+                Text(station.distanceString).font(.FjallaOne(size: 14))
+                    .foregroundColor(Color.black.opacity(0.8))
             }
         }
     }
@@ -148,9 +157,42 @@ struct DashboardView: View {
 }
 
 
+struct StationRowView1:  View {
+    var station = PetrolStation.mockPetrolStations[0]
+    var body: some View {
+        HStack{
+            Image(station.logo)
+                .resizable()
+                .frame(width: 50, height: 50, alignment: .leading)
+            VStack {
+                HStack {
+                    Text(station.price).font(.FjallaOne(size: 17))
+                    Spacer()
+                }
+                HStack {
+                    Text(station.tradingName).font(.FjallaOne(size: 14))
+                        .foregroundColor(Color.black.opacity(0.8))
+                    Spacer()
+                }
+            }
+          
+            Spacer()
+            VStack(spacing: 8){
+                Image(systemName: "mappin.and.ellipse")
+                Text(station.distanceString).font(.FjallaOne(size: 17))
+            }
+        }.padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+    }
+}
+
+
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        VStack {
+            StationRowView1()
+            
+            DashboardView()
+        }
     }
 }
