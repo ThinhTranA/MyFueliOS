@@ -31,13 +31,23 @@ struct StationListView: View {
             .listStyle(PlainListStyle())
              .navigationTitle("Petrol Stations")
             //   .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Button(action: {
+            .navigationBarItems(
+                leading: Button(action: {
+                  self.isSortActionSheetPresented.toggle()
+            }, label: {
+                Text("Unleaded")
+                //TODO: do the picker/popover in of the tutorial.
+            }),
+                trailing: Button(action: {
                   self.isSortActionSheetPresented.toggle()
             }, label: {
                 Image(systemName: "line.horizontal.3.decrease.circle")
                         .resizable()
                         .frame(width: 25, height: 25)
-            }))
+            })
+            
+            )
+        
      
         }.actionSheet(isPresented: $isSortActionSheetPresented) {
             ActionSheet( title: Text("Sort stations by"), buttons: [
