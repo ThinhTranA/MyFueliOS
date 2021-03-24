@@ -13,6 +13,7 @@ struct StationListView: View {
     @State private var currentTag = "Price"
     @State private var isSortActionSheetPresented = false
 
+
     var body: some View {
         NavigationView {
             List {
@@ -27,32 +28,49 @@ struct StationListView: View {
                     }
                 }
 
+
             }
-            .listStyle(PlainListStyle())
-             .navigationTitle("Petrol Stations")
-            //   .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                leading: Button(action: {
-                  self.isSortActionSheetPresented.toggle()
-            }, label: {
-                Text("Unleaded")
-                //TODO: do the picker/popover in of the tutorial.
-            }),
-                trailing: Button(action: {
-                  self.isSortActionSheetPresented.toggle()
-            }, label: {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-            })
-            
-            )
-        
-     
+                    .listStyle(PlainListStyle())
+                    .navigationTitle("Petrol Stations")
+                    //   .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Menu(content: {
+                                ForEach(Product.allCases, id: \.self) { p in
+                                    Button(action: {
+                                        viewModel.product = p
+                                        print(p.description)
+                                    }, label: {
+                                        Text(p.description)
+                                    })
+                                }
+                            }) {
+                                HStack {
+                                    Text(viewModel.product.description)
+                                    Image(systemName: "chevron.down")
+                                }
+                            }
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                self.isSortActionSheetPresented.toggle()
+                            }, label: {
+                                Image(systemName: "line.horizontal.3.decrease.circle")
+                                        .resizable()
+                                        .frame(width: 25, height: 25)
+                            })
+                        }
+                    }
+
+
         }.actionSheet(isPresented: $isSortActionSheetPresented) {
-            ActionSheet( title: Text("Sort stations by"), buttons: [
-                .default(Text("Sort by price")) {currentTag = "Price"},
-                .default(Text("Sort by distance")) {currentTag = "Distance"},
+            ActionSheet(title: Text("Sort stations by"), buttons: [
+                .default(Text("Sort by price")) {
+                    currentTag = "Price"
+                },
+                .default(Text("Sort by distance")) {
+                    currentTag = "Distance"
+                },
                 .cancel()
             ])
         }

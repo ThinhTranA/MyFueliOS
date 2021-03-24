@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyXMLParser
 
-enum Product: Int {
+enum Product: Int, CaseIterable {
     case UnleadedPetrol = 1
     case PremiumUnleaded = 2
     case Diesel = 4
