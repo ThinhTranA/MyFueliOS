@@ -32,12 +32,29 @@ struct StationsMapView: View {
                // Spacer()
                 VStack(spacing: 24){
                     //TODO: fix the picker is not selectable
-                    Picker(selection: $product, label: Text("Product?")) {
-                                 Text("U91").tag(0)
-                                 Text("U98").tag(1)
-                                 Text("U95").tag(2)
-                             }
-                    .pickerStyle(SegmentedPickerStyle())
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            ForEach(Product.allCases, id: \.self) { p in
+                                Button(action: {
+                                    dashboardVM.product = p
+                                }){
+                                    Text(p.description)
+                                        .fontWeight(.bold)
+                                        .font(.FjallaOne(size: 14))
+                                        .padding(8)
+                                        .background(
+                                            p == dashboardVM.product ? Color.SteamGold : Color.white)
+                                        .cornerRadius(40)
+                                        .foregroundColor(.black)
+                                        .padding(4)
+                                      
+                                                        //.stroke(Color.white, lineWidth: 2)
+                                     
+                                }
+
+                            }
+                        }
+                    }
                     
                     HStack {
                         Spacer()
