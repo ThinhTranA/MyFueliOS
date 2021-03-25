@@ -38,8 +38,7 @@ struct StationListView: View {
                             Menu(content: {
                                 ForEach(Product.allCases, id: \.self) { p in
                                     Button(action: {
-                                        viewModel.product = p
-                                        print(p.description)
+                                        viewModel.fetchPetrolStations(by: p)
                                     }, label: {
                                         Text(p.description)
                                     })

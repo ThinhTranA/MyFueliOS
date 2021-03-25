@@ -20,7 +20,19 @@ class StationListViewModel: ObservableObject {
         fetchPerthPetrolStations()
         
     }
-    
+
+    func fetchPetrolStations(by product: Product){
+        fuelWatchService.getPerthFuel(product: product) { stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.perthStations = stations
+                    self.product = product
+                }
+            }
+        }
+
+        self.product = product
+    }
 
     func fetchPetrolStations(near suburb: String)  {
         
