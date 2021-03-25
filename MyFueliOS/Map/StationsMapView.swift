@@ -27,9 +27,7 @@ struct StationsMapView: View {
             }
 
             HStack {
-               // Spacer()
                 VStack(spacing: 24){
-                    //TODO: fix the picker is not selectable
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
                             ForEach(Product.allCases, id: \.self) { p in
@@ -78,13 +76,10 @@ struct StationsMapView: View {
                         .cornerRadius(20)
                         .shadow(color: Color.black.opacity(0.3),
                             radius: 3, x: 3,y: 3)
-                    }
-                    
-                   
-                    
+                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 16))
                     Spacer()
                 }
-            }.padding()
+            }.padding(EdgeInsets(top: 12, leading: 2, bottom: 0, trailing: 2))
           
             //TODO: add button to re focus map back go current user location
         }
