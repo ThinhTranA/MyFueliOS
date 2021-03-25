@@ -9,10 +9,9 @@ import SwiftUI
 
 struct StationsMapView: View {
     @ObservedObject var dashboardVM = StationsMapViewModel()
-    @State var petrolList = PetrolStation.mockPetrolStations;
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
-    @State var product: String = "U91"
+    @State var selectedProduct = Product.UnleadedPetrol
 
     
     var body: some View {
@@ -26,8 +25,7 @@ struct StationsMapView: View {
                     SelectedStationDetailView(station: Binding($selectedPetrolStation)!)
                 }
             }
-            
-            
+
             HStack {
                // Spacer()
                 VStack(spacing: 24){
@@ -36,20 +34,19 @@ struct StationsMapView: View {
                         HStack(spacing: 8) {
                             ForEach(Product.allCases, id: \.self) { p in
                                 Button(action: {
-                                    dashboardVM.product = p
+                                    dashboardVM.fetchPetrolStations(by: p)
+                                    //TODO only update this if success
+                                    selectedProduct = p
                                 }){
                                     Text(p.description)
                                         .fontWeight(.bold)
                                         .font(.FjallaOne(size: 14))
                                         .padding(8)
                                         .background(
-                                            p == dashboardVM.product ? Color.SteamGold : Color.white)
+                                            p == selectedProduct ? Color.SteamGold : Color.white)
                                         .cornerRadius(40)
                                         .foregroundColor(.black)
                                         .padding(4)
-                                      
-                                                        //.stroke(Color.white, lineWidth: 2)
-                                     
                                 }
 
                             }
@@ -97,6 +94,6 @@ struct StationsMapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        StationsMapView(petrolList: PetrolStation.mockPetrolStations, selectedPetrolStation: PetrolStation.mockPetrolStations[0])
+        StationsMapView( selectedPetrolStation: PetrolStation.mockPetrolStations[0])
     }
 }

@@ -31,10 +31,7 @@ struct MapView: UIViewRepresentable {
         
         mapView.isRotateEnabled = false
         //TODO: use something other than "phone" as id, though it is unique for that station :)
-        let places = stations.map { StationAnnotation(station: $0)}
 
-        mapView.annotations.forEach { mapView.removeAnnotation($0) }
-        mapView.addAnnotations(places)
         mapView.delegate = context.coordinator
         mapView.showsUserLocation = true
         
@@ -42,6 +39,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MKMapView, context: UIViewRepresentableContext<MapView>) {
+       // when focus button is tapped, unlikely that fuel type also changed. so, only re draw if necessary
         if(shouldFocusUserLocation){
             let locationManager = LocationManager.shared
 
@@ -55,9 +53,15 @@ struct MapView: UIViewRepresentable {
                 mapView.setRegion(region, animated: true)
                 shouldFocusUserLocation = true
               }
-            
+            return
         }
-        
+        //TODO: this block is still being called once, when shouldFocusUserLocation is set to false which trigger
+        //data binding change, no noticeable effect now, but if there is, this place is a good place for revisit.
+        let places = stations.map { StationAnnotation(station: $0)}
+
+        mapView.annotations.forEach { mapView.removeAnnotation($0) }
+        mapView.addAnnotations(places)
+
     }
     
     //= viewDidLoad in UIKit

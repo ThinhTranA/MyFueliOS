@@ -39,6 +39,19 @@ class StationsMapViewModel: ObservableObject {
             self.isLoading = false
         }
     }
+
+    func fetchPetrolStations(by product: Product){
+        fuelWatchService.getPerthFuel(product: product) { stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.perthStations = stations
+                    self.product = product
+                }
+            }
+        }
+
+        self.product = product
+    }
     
     func fetchPerthPetrolStations()  {
         
