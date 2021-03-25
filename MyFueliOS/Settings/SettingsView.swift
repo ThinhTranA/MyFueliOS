@@ -9,52 +9,75 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
+    @State var selectedProduct = Product.UnleadedPetrol
+    @State var selectedDate: Int = 0
+    let datesText = ["Today", "Tomorrow"]
+
     var body: some View {
-        VStack{
-            selectFuelTypeView
-                .padding(EdgeInsets(top: 4, leading: 16, bottom: 16, trailing: 16))
-            selectDateView
-                .padding(EdgeInsets(top: 4, leading: 16, bottom: 16, trailing: 16))
-            
-            Text("About")
-            Text("Share this App")
+        NavigationView {
+            Form {
+                fuelsSection
+                resetSection
+                shareThisAppSection
+            }.navigationBarTitle("Settings")
         }
+
+
     }
-    
-    
-    private var selectFuelTypeView: some View {
-            ZStack{
-                Color.white
-                HStack{
-                    Text("Fuel Type").font(.title3).opacity(0.6)
-                    Spacer()
-                  //  Text(viewModel.product.description).font(.title3)
-                    Image(systemName: "chevron.right")
-                }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-            }.frame( height: 60, alignment: .center)
-            .cornerRadius(20)
-       
-        .onTapGesture {
-            print("change fuel type tapped")
-        }
+
+    private var fuelsSection: some View {
+        Section(header: Text("Fuel settings"), content: {
+            Picker(selection: $selectedProduct,
+                    label: Text("Fuel Type"),
+                    content: {
+                        ForEach(Product.allCases, id: \.self) { p in
+                            Text(p.description)
+                        }
+                    })
+
+            Picker(selection: $selectedDate,
+                    label: Text("Date of Displayed Prices"),
+                    content: {
+                        ForEach(0..<self.datesText.count) {
+                            Text(self.datesText[$0]).tag($0)
+                        }
+                    })
+        })
     }
-    
-    private var selectDateView: some View {
-            ZStack{
-                Color.white
-                HStack{
-                    Text("Tomorrow").font(.title3).opacity(0.6)
-                    Spacer()
-                  //  Text(viewModel.product.description).font(.title3)
-                    Image(systemName: "chevron.right")
-                }.padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-            }.frame( height: 60, alignment: .center)
-            .cornerRadius(20)
-       
-        .onTapGesture {
-            print("change date tapped")
-        }
+
+    private var resetSection: some View {
+        Section(header: Text("About"), content: {
+            NavigationLink(destination: AboutView()) {
+                Text("About Fuel Lens")
+            }
+
+            NavigationLink(destination: FuelWatchDataSourceView()) {
+                Text("Fuel Watch Data source")
+            }
+        })
     }
+
+    private var shareThisAppSection: some View {
+        Section(header: Text("Others"), content: {
+            NavigationLink(destination: PrivacyView()) {
+                Text("Privacy Policy")
+            }
+
+            NavigationLink(destination: DisclaimerView()) {
+                Text("Disclaimer")
+            }
+
+            Text("Fuel Lens App version 1.0")
+
+            Button(action: {
+                print("todo: share this app")
+            }) {
+                Text("Share this App")
+            }
+        })
+    }
+
+
 }
 
 struct SettingsView_Previews: PreviewProvider {
