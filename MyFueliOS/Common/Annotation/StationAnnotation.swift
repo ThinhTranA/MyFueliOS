@@ -42,7 +42,8 @@ class StationAnnotationView: MKAnnotationView {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         self.frame = annotationFrame
         
-        self.label.font = UIFont.systemFont(ofSize: 15)
+        self.label.font = UIFont(name: "FjallaOne-Regular", size: 15)//    label.font = UIFont(name: "BabasNeue", size: 106)
+
         self.label.textColor = .black
         self.label.textAlignment = .center
         self.label.center.y = self.frame.height/2 - 20

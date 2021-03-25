@@ -19,18 +19,26 @@ struct StationRowView: View {
             VStack() {
                 HStack() {
                     Text(petrolStation.tradingName)
+                        .font(.FjallaOne(size: 17))
                     Spacer()
                     Text(petrolStation.price)
+                        .font(.FjallaOne(size: 22))
                 }
                 
                 HStack() {
                     Text(petrolStation.address)
+                        .font(.FjallaOne(size: 14))
                     Spacer()
                     Text(petrolStation.distanceString)
+                        .font(.FjallaOne(size: 14))
+                }
+                HStack {
+                    Spacer()
+                    Text("Today").font(.FjallaOne(size: 17))
                 }
                 .font(.footnote)
                 .foregroundColor(Color("SecondTextColor"))
-            }
+            }.padding()
         
         }
         

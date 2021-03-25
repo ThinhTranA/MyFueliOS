@@ -19,16 +19,16 @@ struct SelectedStationDetailView: View {
         
                 VStack (spacing: 4) {
                     HStack {
-                        Text(station.tradingName).font(.headline)
+                        Text(station.tradingName).font(.FjallaOne(size: 18))
                         Spacer()
-                        Text(station.price).font(.title2)
-                    }.padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 8))
+                        Text(station.price).font(.FjallaOne(size: 22))
+                    }
                     
                     HStack {
-                        Text(station.address).font(.subheadline)
+                        Text(station.address).font(.FjallaOne(size: 14)).foregroundColor(Color.black.opacity(0.8))
                         Spacer()
-                        Text("Fuel Watch WA").font(.caption2)
-                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
+                        Text("Today").font(.FjallaOne(size: 17)).foregroundColor(Color.black.opacity(0.8))
+                    }
                     
                     HStack {
                         
@@ -51,8 +51,7 @@ struct SelectedStationDetailView: View {
             
                         
                         Spacer()
-                        Text(station.distanceString).italic()
-                        
+                        Text(station.distanceString).font(.FjallaOne(size: 17))
                         Button(action: {
                             //Open apple map
                             let url = URL(string: "http://maps.apple.com/?address=\(station.address.replacingOccurrences(of: " ", with: "+"))")
@@ -77,6 +76,7 @@ struct SelectedStationDetailView: View {
             }
     
         }
+        .padding()
         .background(Color.white)
         .cornerRadius(20, corners: [.topLeft, .topRight])
     }
