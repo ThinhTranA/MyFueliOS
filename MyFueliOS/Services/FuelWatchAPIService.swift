@@ -28,6 +28,18 @@ enum Product: Int, CaseIterable {
           case .BrandDiesel : return "Brand Diesel"
       }
     }
+    
+    var shortDescription: String {
+        switch self {
+            case .UnleadedPetrol: return "ULP"
+            case .PremiumUnleaded: return "PULP"
+            case .Diesel: return "Diesel"
+            case .LPG : return "LPG"
+            case .Ron98 : return "98RON"
+            case .E85 : return "E85"
+            case .BrandDiesel : return "BDiesel"
+        }
+    }
 }
 
 
@@ -65,20 +77,7 @@ class FuelWatchService {
                 var i = 1
                 
                 for item in xml["rss"]["channel"]["item"] {
-                    let ps = PetrolStation(id: i,
-                               title: item["title"].text ?? "",
-                               description: item["description"].text ?? "",
-                               brand: item["brand"].text ?? "",
-                               date: item["date"].text ?? "",
-                               price: item["price"].text ?? "",
-                               tradingName: item["trading-name"].text ?? "",
-                               location: item["location"].text ?? "",
-                               address: item["address"].text ?? "",
-                               phone: item["phone"].text ?? "",
-                               latitude: item["latitude"].text ?? "",
-                               longitude: item["longitude"].text ?? "",
-                               siteFeatures: item["site-features"].text ?? ""
-                    )
+                    let ps = self.parseStation(stationXML: item, id: i, product: product)
                     i += 1
                     petrolStations.append(ps)
                 }
@@ -121,20 +120,7 @@ class FuelWatchService {
                 var i = 1
                 
                 for item in xml["rss"]["channel"]["item"] {
-                    let ps = PetrolStation(id: i,
-                               title: item["title"].text ?? "",
-                               description: item["description"].text ?? "",
-                               brand: item["brand"].text ?? "",
-                               date: item["date"].text ?? "",
-                               price: item["price"].text ?? "",
-                               tradingName: item["trading-name"].text ?? "",
-                               location: item["location"].text ?? "",
-                               address: item["address"].text ?? "",
-                               phone: item["phone"].text ?? "",
-                               latitude: item["latitude"].text ?? "",
-                               longitude: item["longitude"].text ?? "",
-                               siteFeatures: item["site-features"].text ?? ""
-                    )
+                    let ps = self.parseStation(stationXML: item, id: i, product: product)
                     i += 1
                     petrolStations.append(ps)
                 }
@@ -151,7 +137,24 @@ class FuelWatchService {
         
         task.resume()
     }
-    
+
+    private func parseStation(stationXML item : XML.Accessor, id: Int, product: Product) -> PetrolStation {
+        PetrolStation(id: id,
+                title: item["title"].text ?? "",
+                description: item["description"].text ?? "",
+                brand: item["brand"].text ?? "",
+                date: item["date"].text ?? "",
+                price: item["price"].text ?? "",
+                tradingName: item["trading-name"].text ?? "",
+                location: item["location"].text ?? "",
+                address: item["address"].text ?? "",
+                phone: item["phone"].text ?? "",
+                latitude: item["latitude"].text ?? "",
+                longitude: item["longitude"].text ?? "",
+                siteFeatures: item["site-features"].text ?? "",
+                fuelType: product.shortDescription
+        )
+    }
 }
 
 

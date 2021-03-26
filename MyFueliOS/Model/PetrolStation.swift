@@ -23,6 +23,7 @@ struct PetrolStation: Decodable, Identifiable {
     let latitude: String
     let longitude: String
     let siteFeatures: String
+    let fuelType: String
   
     var coordinate2D: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
