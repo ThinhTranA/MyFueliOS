@@ -15,6 +15,7 @@ struct MapView: UIViewRepresentable {
     @Binding var stations: [PetrolStation]
     @Binding var selectedStation: PetrolStation?
     @Binding var shouldFocusUserLocation: Bool
+    @State private var count = 0
     
 
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
@@ -34,7 +35,12 @@ struct MapView: UIViewRepresentable {
 
         mapView.delegate = context.coordinator
         mapView.showsUserLocation = true
-        
+
+    /*    let places = stations.map { StationAnnotation(station: $0)}
+
+        mapView.annotations.forEach { mapView.removeAnnotation($0) }
+        mapView.addAnnotations(places)*/
+
         return mapView
     }
     
@@ -55,8 +61,13 @@ struct MapView: UIViewRepresentable {
               }
             return
         }
-        //TODO: this block is still being called once, when shouldFocusUserLocation is set to false which trigger
-        //data binding change, no noticeable effect now, but if there is, this place is a good place for revisit.
+
+        //To avoid updating annotations of the same data on the map
+        if let currentFirstStationAnnotation = mapView.annotations[0] as? StationAnnotation {
+            if(currentFirstStationAnnotation.fuelType == stations[0].fuelType) {
+                return
+            }
+        }
         let places = stations.map { StationAnnotation(station: $0)}
 
         mapView.annotations.forEach { mapView.removeAnnotation($0) }

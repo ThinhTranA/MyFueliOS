@@ -15,12 +15,14 @@ class StationAnnotation: NSObject, MKAnnotation {
     let id: String
     let price: String
     let logo: String
+    let fuelType: String
     
     init(station: PetrolStation) {
         self.id = station.phone
         self.title = station.tradingName
         self.price = station.price
         self.logo = station.logo
+        self.fuelType = station.fuelType
         self.coordinate = CLLocationCoordinate2D(latitude: Double(station.latitude) ?? 0, longitude: Double(station.longitude) ?? 0)
     }
 }
