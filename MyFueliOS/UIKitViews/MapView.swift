@@ -64,6 +64,7 @@ struct MapView: UIViewRepresentable {
 
         //To avoid updating annotations of the same data on the map
         if let currentFirstStationAnnotation = mapView.annotations[0] as? StationAnnotation {
+            //TODO: cannot find self in scope crash trait here
             if(currentFirstStationAnnotation.fuelType == stations[0].fuelType) {
                 return
             }

@@ -71,8 +71,8 @@ class DashboardViewModel: ObservableObject {
 
     private func updateDashboardDetails(stations: [PetrolStation]){
         perthStations = stations
-        lowestPrice = (stations.min {$0.price < $1.price})!.price
-        highestPrice = (stations.min {$0.price > $1.price})!.price
+        lowestPrice = (stations.min {Double($0.price) ?? 0 < Double($1.price) ?? 0})!.price
+        highestPrice = (stations.min {Double($0.price) ?? 0 > Double($1.price) ?? 0})!.price
         priceRange = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.lowestPrice)!)
         averagePrice = String(format: "%.1f" , stations.compactMap { Double($0.price) }.reduce(0, +) / Double(stations.count))
         cheapest3Stations = Array( stations.prefix(3)) //default return from FuelWatch order by cheapest price
