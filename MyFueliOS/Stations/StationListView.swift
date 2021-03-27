@@ -29,56 +29,67 @@ struct StationListView: View {
                         }
                     }
                 }
-                        .listStyle(PlainListStyle())
-                        .navigationTitle("Petrol Stations")
-                        //   .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Menu(content: {
-                                    ForEach(Product.allCases, id: \.self) { p in
-                                        Button(action: {
-                                            viewModel.fetchPetrolStations(by: p)
-                                        }, label: {
-                                            Text(p.description)
-                                        })
-                                    }
-                                }) {
-                                    HStack(spacing:2) {
-                                        Text(viewModel.product.description)
-                                                .font(.FjallaOne(size: 18))
-                                        Image(systemName: "chevron.down")
-                                    }
-                                }
-                            }
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: {
-                                    self.isSortActionSheetPresented.toggle()
-                                }, label: {
-                                    Image(systemName: "line.horizontal.3.decrease.circle")
-                                            .resizable()
-                                            .frame(width: 25, height: 25)
-                                })
-                            }
-                        }
+                .listStyle(PlainListStyle())
+                .navigationTitle("Petrol Stations")
+                //   .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        selectFuelTypeView
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        sortButton
+                    }
+                }
             }.actionSheet(isPresented: $isSortActionSheetPresented) {
-                ActionSheet(title: Text("Sort stations by"), buttons: [
-                    .default(Text("Sort by price")) {
-                        currentTag = "Price"
-                    },
-                    .default(Text("Sort by distance")) {
-                        currentTag = "Distance"
-                    },
-                    .cancel()
-                ])
+                sortActionSheet
             }
 
-            if(viewModel.isLoading){
+            if (viewModel.isLoading) {
                 LoadingView()
             }
         }
     }
 
 
+    private var selectFuelTypeView: some View {
+        Menu(content: {
+            ForEach(Product.allCases, id: \.self) { p in
+                Button(action: {
+                    viewModel.fetchPetrolStations(by: p)
+                }, label: {
+                    Text(p.description)
+                })
+            }
+        }) {
+            HStack(spacing: 2) {
+                Text(viewModel.product.description)
+                        .font(.FjallaOne(size: 18))
+                Image(systemName: "chevron.down")
+            }
+        }
+    }
+
+    private var sortButton: some View {
+        Button(action: {
+            self.isSortActionSheetPresented.toggle()
+        }, label: {
+            Image(systemName: "line.horizontal.3.decrease.circle")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+        })
+    }
+
+    private var sortActionSheet: ActionSheet {
+        ActionSheet(title: Text("Sort stations by"), buttons: [
+            .default(Text("Sort by price")) {
+                currentTag = "Price"
+            },
+            .default(Text("Sort by distance")) {
+                currentTag = "Distance"
+            },
+            .cancel()
+        ])
+    }
 }
 
 
