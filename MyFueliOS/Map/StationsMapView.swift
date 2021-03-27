@@ -12,7 +12,6 @@ struct StationsMapView: View {
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
     @State var selectedProduct = Product.UnleadedPetrol
-
     
     var body: some View {
         
@@ -22,7 +21,7 @@ struct StationsMapView: View {
             if selectedPetrolStation != nil {
                 VStack{
                     Spacer()
-                    SelectedStationDetailView(station: Binding($selectedPetrolStation)!)
+                    SelectedStationDetailView(station: $selectedPetrolStation)
                 }
             }
 
