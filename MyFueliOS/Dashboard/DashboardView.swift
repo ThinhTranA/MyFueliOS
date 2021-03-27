@@ -14,7 +14,8 @@ struct DashboardView: View {
     init() {
         self.viewModel = DashboardViewModel()
     }
-
+    //TODO: Tomorrow price only available after 2:30pm, hence need to display some placeholder view if user
+    //select tomorrow before 2:30pm, also add addtional checking if the data loaded is actual tomorrow.
     var body: some View {
         NavigationView {
                 ZStack {
@@ -32,8 +33,43 @@ struct DashboardView: View {
                     } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                 }
             }.navigationTitle("Dashboard")
-                .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                  fuelTypePickerView
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                  dateTextView
+                }
+            }
         }
+    }
+
+    private var fuelTypePickerView: some View {
+        Menu(content: {
+            ForEach(Product.allCases, id: \.self) { p in
+                Button(action: {
+                    viewModel.product = p
+                }, label: {
+                    Text(p.description)
+                })
+            }
+        }) {
+            HStack(spacing:2) {
+                Text(viewModel.product.description)
+                        .font(.FjallaOne(size: 18))
+                Image(systemName: "chevron.down")
+            }
+        }
+    }
+
+    private var dateTextView: some View {
+        switch datePrice {
+        case .Today:
+               return Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5)
+        case .Tomorrow:
+               return Text(Date().addingTimeInterval(86400), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5)
+        }
+
     }
     
     private var datePriceSegmentedView: some View {
@@ -45,7 +81,7 @@ struct DashboardView: View {
             }
         }.pickerStyle(SegmentedPickerStyle())
         .onChange(of: datePrice, perform: { _ in
-            viewModel.fetchPerthPetrolStations(datePrice: datePrice)
+            viewModel.datePrice = datePrice
         })
     }
     

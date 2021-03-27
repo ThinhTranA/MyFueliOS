@@ -19,8 +19,20 @@ class DashboardViewModel: ObservableObject {
     @Published var highestPrice: String = ""
     @Published var averagePrice: String = ""
     @Published var priceRange: String = ""
-    @Published var product: Product = Product.UnleadedPetrol
-    
+
+    var datePrice = DatePrice.Today {
+        didSet {
+            fetchPerthPetrolStations()
+        }
+    }
+    var product = Product.UnleadedPetrol {
+        //similar to @Published to we manually published to reload prices for different products
+        didSet {
+            fetchPerthPetrolStations()
+            objectWillChange.send()
+        }
+    }
+
     init() {
         self.fuelWatchService = FuelWatchService.shared
         fetchPerthPetrolStations()
@@ -45,7 +57,7 @@ class DashboardViewModel: ObservableObject {
         }
     }
     
-    func fetchPerthPetrolStations(datePrice: DatePrice = DatePrice.Today)  {
+    func fetchPerthPetrolStations()  {
         
         fuelWatchService.getPerthFuel(product: product, datePrice: datePrice) { stations in
             if let stations = stations {
