@@ -9,7 +9,8 @@ import Foundation
 
 class StationListViewModel: ObservableObject {
     let fuelWatchService : FuelWatchService
-    
+
+    @Published var isLoading: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var perthStationsSortedByDistance = [PetrolStation]()
@@ -22,11 +23,13 @@ class StationListViewModel: ObservableObject {
     }
 
     func fetchPetrolStations(by product: Product){
+        isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.perthStations = stations
                     self.product = product
+                    self.isLoading = false
                 }
             }
         }
@@ -35,23 +38,25 @@ class StationListViewModel: ObservableObject {
     }
 
     func fetchPetrolStations(near suburb: String)  {
-        
+        isLoading = true
         fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.nearByStations = stations
+                    self.isLoading = false
                 }
             }
         }
     }
     
     func fetchPerthPetrolStations()  {
-        
+        isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.perthStations = stations.sorted{$0.price < $1.price} //defautl response is always sorted by price, this is just for consistency
                     self.perthStationsSortedByDistance = stations.sorted{$0.distance < $1.distance}
+                    self.isLoading = false
                 }
             }
         }

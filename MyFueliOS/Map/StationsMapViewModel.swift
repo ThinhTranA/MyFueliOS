@@ -14,7 +14,8 @@ import SwiftUI
 
 class StationsMapViewModel: ObservableObject {
     let fuelWatchService : FuelWatchService
-    
+
+    @Published var isLoading: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     
@@ -23,29 +24,29 @@ class StationsMapViewModel: ObservableObject {
         fetchPerthPetrolStations()
     }
     
-    var isLoading: Bool = true;
-    
     //TODO: Get user preference of petrol type
     var product: Product = Product.UnleadedPetrol
     
     func fetchPetrolStations(near suburb: String)  {
-        
+        isLoading = true
         fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.nearByStations = stations
+                    self.isLoading = false
                 }
             }
-            self.isLoading = false
         }
     }
 
     func fetchPetrolStations(by product: Product){
+        isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.perthStations = stations
                     self.product = product
+                    self.isLoading = false
                 }
             }
         }
@@ -54,14 +55,14 @@ class StationsMapViewModel: ObservableObject {
     }
     
     func fetchPerthPetrolStations()  {
-        
+        isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
                     self.perthStations = stations
+                    self.isLoading = false
                 }
             }
-            self.isLoading = false
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StationsMapView: View {
-    @ObservedObject var dashboardVM = StationsMapViewModel()
+    @ObservedObject var viewModel = StationsMapViewModel()
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
     @State var selectedProduct = Product.UnleadedPetrol
@@ -16,7 +16,7 @@ struct StationsMapView: View {
     var body: some View {
         
         ZStack {
-            MapView(stations: $dashboardVM.perthStations, selectedStation: $selectedPetrolStation, shouldFocusUserLocation: $mapFocusToUserLocation)
+            MapView(stations: $viewModel.perthStations, selectedStation: $selectedPetrolStation, shouldFocusUserLocation: $mapFocusToUserLocation)
             
             if selectedPetrolStation != nil {
                 VStack{
@@ -31,7 +31,7 @@ struct StationsMapView: View {
                         HStack(spacing: 8) {
                             ForEach(Product.allCases, id: \.self) { p in
                                 Button(action: {
-                                    dashboardVM.fetchPetrolStations(by: p)
+                                    viewModel.fetchPetrolStations(by: p)
                                     //TODO only update this if success
                                     selectedProduct = p
                                 }){
@@ -80,7 +80,9 @@ struct StationsMapView: View {
                 }
             }.padding(EdgeInsets(top: 12, leading: 2, bottom: 0, trailing: 2))
           
-            //TODO: add button to re focus map back go current user location
+            if(viewModel.isLoading){
+                LoadingView()
+            }
         }
     }
 }

@@ -17,11 +17,12 @@ struct DashboardView: View {
     //TODO: Tomorrow price only available after 2:30pm, hence need to display some placeholder view if user
     //select tomorrow before 2:30pm, also add addtional checking if the data loaded is actual tomorrow.
     var body: some View {
-        NavigationView {
-                ZStack {
-                    Color.gray.opacity(0.1).ignoresSafeArea()
-                    ScrollView {
-                        VStack (spacing: 8){
+        ZStack{
+            NavigationView {
+            ZStack {
+                Color.gray.opacity(0.1).ignoresSafeArea()
+                ScrollView {
+                    VStack (spacing: 8){
                         datePriceSegmentedView
                         Spacer()
                         priceRangeView
@@ -29,19 +30,27 @@ struct DashboardView: View {
                         averagePriceView
                         Spacer()
                         cheapestStationsView
-                    
+
                     } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+
+
+
                 }
             }.navigationTitle("Dashboard")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                  fuelTypePickerView
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                  dateTextView
-                }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            fuelTypePickerView
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            dateTextView
+                        }
+                    }
+        }
+            if(viewModel.isLoading){
+                LoadingView()
             }
         }
+
     }
 
     private var fuelTypePickerView: some View {

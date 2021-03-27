@@ -15,64 +15,66 @@ struct StationListView: View {
 
 
     var body: some View {
-        NavigationView {
-            List {
-                SearchBar(text: $searchText, placeholder: "Search all stations")
+        ZStack {
+            NavigationView {
+                List {
+                    SearchBar(text: $searchText, placeholder: "Search all stations")
 
-                ForEach((currentTag == "Price" ? viewModel.perthStations : viewModel.perthStationsSortedByDistance).filter {
-                    self.searchText.isEmpty ? true : $0.tradingName.lowercased().contains(self.searchText.lowercased())
-                }) { station in
+                    ForEach((currentTag == "Price" ? viewModel.perthStations : viewModel.perthStationsSortedByDistance).filter {
+                        self.searchText.isEmpty ? true : $0.tradingName.lowercased().contains(self.searchText.lowercased())
+                    }) { station in
 
-                    NavigationLink(destination: StationDetailView(station: station)) {
-                        StationRowView(petrolStation: station)
+                        NavigationLink(destination: StationDetailView(station: station)) {
+                            StationRowView(petrolStation: station)
+                        }
                     }
                 }
-
-
-            }
-                    .listStyle(PlainListStyle())
-                    .navigationTitle("Petrol Stations")
-                    //   .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Menu(content: {
-                                ForEach(Product.allCases, id: \.self) { p in
-                                    Button(action: {
-                                        viewModel.fetchPetrolStations(by: p)
-                                    }, label: {
-                                        Text(p.description)
-                                    })
-                                }
-                            }) {
-                                HStack(spacing:2) {
-                                    Text(viewModel.product.description)
-                                        .font(.FjallaOne(size: 18))
-                                    Image(systemName: "chevron.down")
+                        .listStyle(PlainListStyle())
+                        .navigationTitle("Petrol Stations")
+                        //   .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Menu(content: {
+                                    ForEach(Product.allCases, id: \.self) { p in
+                                        Button(action: {
+                                            viewModel.fetchPetrolStations(by: p)
+                                        }, label: {
+                                            Text(p.description)
+                                        })
+                                    }
+                                }) {
+                                    HStack(spacing:2) {
+                                        Text(viewModel.product.description)
+                                                .font(.FjallaOne(size: 18))
+                                        Image(systemName: "chevron.down")
+                                    }
                                 }
                             }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    self.isSortActionSheetPresented.toggle()
+                                }, label: {
+                                    Image(systemName: "line.horizontal.3.decrease.circle")
+                                            .resizable()
+                                            .frame(width: 25, height: 25)
+                                })
+                            }
                         }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                self.isSortActionSheetPresented.toggle()
-                            }, label: {
-                                Image(systemName: "line.horizontal.3.decrease.circle")
-                                        .resizable()
-                                        .frame(width: 25, height: 25)
-                            })
-                        }
-                    }
+            }.actionSheet(isPresented: $isSortActionSheetPresented) {
+                ActionSheet(title: Text("Sort stations by"), buttons: [
+                    .default(Text("Sort by price")) {
+                        currentTag = "Price"
+                    },
+                    .default(Text("Sort by distance")) {
+                        currentTag = "Distance"
+                    },
+                    .cancel()
+                ])
+            }
 
-
-        }.actionSheet(isPresented: $isSortActionSheetPresented) {
-            ActionSheet(title: Text("Sort stations by"), buttons: [
-                .default(Text("Sort by price")) {
-                    currentTag = "Price"
-                },
-                .default(Text("Sort by distance")) {
-                    currentTag = "Distance"
-                },
-                .cancel()
-            ])
+            if(viewModel.isLoading){
+                LoadingView()
+            }
         }
     }
 

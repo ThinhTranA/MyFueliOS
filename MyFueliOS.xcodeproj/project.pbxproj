@@ -12,6 +12,7 @@
 		699193C4CACEB17DC91E8050 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69919549189A98156A6890B3 /* PrivacyView.swift */; };
 		69919703ED2C5697CAC1CEE6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699198D4F68540E388BC855C /* AboutView.swift */; };
 		6991998BE206907163EAB1B9 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991970786518EAF210579F8 /* DisclaimerView.swift */; };
+		69919D209B55C5F50C398366 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69919D985B31AACF4E396F5F /* LoadingView.swift */; };
 		78A4CBCD43D84E01B7C21E2D /* Pods_MyFueliOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */; };
 		C99983BB25F600FA008EBC57 /* StationDetailMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BA25F600FA008EBC57 /* StationDetailMap.swift */; };
 		C99983BE25F60472008EBC57 /* StationDetailOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99983BD25F60472008EBC57 /* StationDetailOptions.swift */; };
@@ -58,6 +59,7 @@
 		69919549189A98156A6890B3 /* PrivacyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		6991970786518EAF210579F8 /* DisclaimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		699198D4F68540E388BC855C /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		69919D985B31AACF4E396F5F /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		BEBCA79CF5BFA31DF69EF105 /* Pods-MyFueliOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFueliOS.debug.xcconfig"; path = "Target Support Files/Pods-MyFueliOS/Pods-MyFueliOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C99983BA25F600FA008EBC57 /* StationDetailMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailMap.swift; sourceTree = "<group>"; };
 		C99983BD25F60472008EBC57 /* StationDetailOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailOptions.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69919BC0E9A401CB8E650F25 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				69919D985B31AACF4E396F5F /* LoadingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C4B19C7F464C4C7BDCE3AF4D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +308,7 @@
 			children = (
 				E532774525F45F3C0089D349 /* Annotation */,
 				E5664DAC25F30A51005EEA8E /* Modifier */,
+				69919BC0E9A401CB8E650F25 /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -464,6 +475,7 @@
 				6991938CB1D9478629997FB9 /* FuelWatchDataSourceView.swift in Sources */,
 				699193C4CACEB17DC91E8050 /* PrivacyView.swift in Sources */,
 				6991998BE206907163EAB1B9 /* DisclaimerView.swift in Sources */,
+				69919D209B55C5F50C398366 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
