@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     @ObservedObject var viewModel: DashboardViewModel
     @ObservedObject var locationManager = LocationManager()
+    @State private var datePrice = DatePrice.Today
     init() {
         self.viewModel = DashboardViewModel()
     }
@@ -18,11 +19,10 @@ struct DashboardView: View {
         NavigationView {
                 ZStack {
                     Color.gray.opacity(0.1).ignoresSafeArea()
-                    //TODO: Fix Navigation title stop working in the scroll view
-                    // Top 3 cheapst station distance in km text is cut off on iphone Xs, not happening on simulator though.
                     ScrollView {
                         VStack (spacing: 8){
-                       
+                        datePriceSegmentedView
+                        Spacer()
                         priceRangeView
                         Spacer()
                         averagePriceView
@@ -31,12 +31,23 @@ struct DashboardView: View {
                     
                     } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                 }
-            }.navigationTitle("Today")
+            }.navigationTitle("Dashboard")
                 .navigationBarItems(leading:  Text(Date(), style: .date).font(.AmericanCaptain(size: 16)).opacity(0.5))
         }
     }
     
-    
+    private var datePriceSegmentedView: some View {
+        Picker("DatePrice", selection: $datePrice) {
+            ForEach(DatePrice.allCases, id: \.self) { date in
+                Text(date.rawValue)
+                    .font(.FHACondFrenchNC(size: 18))
+                    .tag(date)
+            }
+        }.pickerStyle(SegmentedPickerStyle())
+        .onChange(of: datePrice, perform: { _ in
+            viewModel.fetchPerthPetrolStations(datePrice: datePrice)
+        })
+    }
     
     private var priceRangeView: some View {
         VStack (spacing: 16){
@@ -98,7 +109,7 @@ struct DashboardView: View {
     private var averagePriceView: some View {
         VStack (spacing: 8){
             HStack{
-                Text("Today's average").font(.FjallaOne(size: 22))
+                Text("\(datePrice.rawValue)'s average").font(.FjallaOne(size: 22))
                 Spacer()
             }
             Text(viewModel.averagePrice).font(.FjallaOne(size: 28))
@@ -190,9 +201,8 @@ struct StationRowView1:  View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StationRowView1()
-            
             DashboardView()
+            StationRowView1()
         }
     }
 }

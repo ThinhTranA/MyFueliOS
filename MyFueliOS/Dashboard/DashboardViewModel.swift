@@ -45,20 +45,27 @@ class DashboardViewModel: ObservableObject {
         }
     }
     
-    func fetchPerthPetrolStations()  {
+    func fetchPerthPetrolStations(datePrice: DatePrice = DatePrice.Today)  {
         
-        fuelWatchService.getPerthFuel(product: product) { stations in
+        fuelWatchService.getPerthFuel(product: product, datePrice: datePrice) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
-                    self.perthStations = stations
-                    self.lowestPrice = (stations.min {$0.price < $1.price})!.price
-                    self.highestPrice = (stations.min {$0.price > $1.price})!.price
-                    self.priceRange = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.lowestPrice)!)
-                    self.averagePrice = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.priceRange)!)
-                    self.cheapest3Stations = Array( stations.prefix(3)) //default return from FuelWatch order by cheapest price
+                    self.updateDashboardDetails(stations: stations)
                 }
             }
             self.isLoading = false
         }
+
+    }
+
+    private func updateDashboardDetails(stations: [PetrolStation]){
+        perthStations = stations
+        lowestPrice = (stations.min {$0.price < $1.price})!.price
+        highestPrice = (stations.min {$0.price > $1.price})!.price
+        priceRange = String(format: "%.1f" ,Double(self.highestPrice)! - Double(self.lowestPrice)!)
+        averagePrice = String(format: "%.1f" , stations.compactMap { Double($0.price) }.reduce(0, +) / Double(stations.count))
+        cheapest3Stations = Array( stations.prefix(3)) //default return from FuelWatch order by cheapest price
+
     }
 }
+

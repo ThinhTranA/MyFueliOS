@@ -42,6 +42,11 @@ enum Product: Int, CaseIterable {
     }
 }
 
+enum DatePrice: String, CaseIterable {
+    case Today
+    case Tomorrow
+}
+
 
 class FuelWatchService {
    static let shared = FuelWatchService()
@@ -53,88 +58,69 @@ class FuelWatchService {
     
    
     
-    func getSuburbFuel(product: Product, suburb: String, completion: @escaping ([PetrolStation]?) -> ()) {
-        let key = "\(product)\(suburb)"
-        if let sts = stations[key] {
-            completion(sts)
-            return
-        }
+    func getSuburbFuel(product: Product, suburb: String, datePrice: DatePrice = DatePrice.Today, completion: @escaping ([PetrolStation]?) -> ()) {
+        let key = "\(product)\(suburb)\(datePrice.rawValue)"
 
-        let url = URL(string: (baseAPIURL + "?Product=\(product.rawValue)&Suburb=\(suburb)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-        var petrolStations = [PetrolStation]()
-        
-        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy)
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
-            }
-        
-            if let returnData = String(data: data, encoding: .utf8) {
-                let xml = try! XML.parse(returnData)
-                var i = 1
-                
-                for item in xml["rss"]["channel"]["item"] {
-                    let ps = self.parseStation(stationXML: item, id: i, product: product)
-                    i += 1
-                    petrolStations.append(ps)
-                }
-                
-                self.stations.updateValue(petrolStations, forKey: key)
-                
-                completion(petrolStations)
-             }
-            else {
-                completion(nil)
-            }
-                
-        })
-        
-        task.resume()
+        var query = "?Product=\(product.rawValue)"
+        if (datePrice == DatePrice.Tomorrow){
+            query = "?Product=\(product.rawValue)&Day=tomorrow"
+        }
+        let url = URL(string: (baseAPIURL + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+
+        getFuelStations(key: key, urlWithQuery: url!, product: product, completion: completion)
     }
     
     
-    func getPerthFuel(product: Product, completion: @escaping ([PetrolStation]?) -> ()) {
-        let key = "\(product)PerthRegion"
+    func getPerthFuel(product: Product, datePrice: DatePrice = DatePrice.Today, completion: @escaping ([PetrolStation]?) -> ()) {
+        let key = "\(product)PerthRegion\(datePrice.rawValue)"
+
+        var query = "?Product=\(product.rawValue)"
+        if (datePrice == DatePrice.Tomorrow){
+            query = "?Product=\(product.rawValue)&Day=tomorrow"
+        }
+        let url = URL(string: (baseAPIURL + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+
+        getFuelStations(key: key, urlWithQuery: url!, product: product, completion: completion)
+    }
+
+    private func getFuelStations(key : String, urlWithQuery url: URL, product: Product, completion: @escaping ([PetrolStation]?) -> ()) {
+        //look in memory cache first
         if let sts = stations[key] {
             completion(sts)
             return
         }
 
-        let url = URL(string: (baseAPIURL + "?Product=\(product.rawValue)").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         var petrolStations = [PetrolStation]()
-        
-        let request = URLRequest(url: url!, cachePolicy: .useProtocolCachePolicy)
-        
+
+        let request = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy)
+
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            
+
             guard let data = data, error == nil else {
                 completion(nil)
                 return
             }
-        
+
             if let returnData = String(data: data, encoding: .utf8) {
                 let xml = try! XML.parse(returnData)
                 var i = 1
-                
+
                 for item in xml["rss"]["channel"]["item"] {
                     let ps = self.parseStation(stationXML: item, id: i, product: product)
                     i += 1
                     petrolStations.append(ps)
                 }
-                
+                //save in memory cache
                 self.stations.updateValue(petrolStations, forKey: key)
-                
+
                 completion(petrolStations)
-             }
+            }
             else {
                 completion(nil)
             }
-                
+
         })
-        
+
         task.resume()
     }
 
