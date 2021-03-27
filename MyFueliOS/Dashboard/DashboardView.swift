@@ -14,8 +14,7 @@ struct DashboardView: View {
     init() {
         self.viewModel = DashboardViewModel()
     }
-    //TODO: Tomorrow price only available after 2:30pm, hence need to display some placeholder view if user
-    //select tomorrow before 2:30pm, also add addtional checking if the data loaded is actual tomorrow.
+  
     var body: some View {
         ZStack{
             NavigationView {
@@ -25,26 +24,29 @@ struct DashboardView: View {
                     VStack (spacing: 8){
                         datePriceSegmentedView
                         Spacer()
-                        priceRangeView
-                        Spacer()
-                        averagePriceView
-                        Spacer()
-                        cheapestStationsView
-
+                        
+                        if(viewModel.perthStations.count < 2 && datePrice == DatePrice.Tomorrow){
+                            tomorrowPriceEmptyView
+                            Spacer()
+                        }
+                        else {
+                            priceRangeView
+                            Spacer()
+                            averagePriceView
+                            Spacer()
+                            cheapestStationsView
+                        }
                     } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-
-
-
                 }
             }.navigationTitle("Dashboard")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            fuelTypePickerView
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            dateTextView
-                        }
-                    }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    fuelTypePickerView
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    dateTextView
+                }
+            }
         }
             if(viewModel.isLoading){
                 LoadingView()
@@ -208,6 +210,14 @@ struct DashboardView: View {
                     .foregroundColor(Color.black.opacity(0.8))
             }
         }
+    }
+    
+    private var tomorrowPriceEmptyView: some View {
+        Text("Tomorrow Prices are only available after 2:30PM")
+            .font(.FjallaOne(size: 18))
+            .opacity(0.5)
+            .multilineTextAlignment(.center)
+            .padding(EdgeInsets(top: 32, leading: 24, bottom: 0, trailing: 24))
     }
     
 }

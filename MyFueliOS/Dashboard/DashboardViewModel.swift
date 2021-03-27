@@ -70,6 +70,16 @@ class DashboardViewModel: ObservableObject {
     }
 
     private func updateDashboardDetails(stations: [PetrolStation]){
+        if(stations.count < 2) {
+            var noData = "No Data"
+            perthStations = stations
+            lowestPrice = noData
+            highestPrice = noData
+            priceRange = noData
+            averagePrice = noData
+            cheapest3Stations = Array()
+            return
+        }
         perthStations = stations
         lowestPrice = (stations.min {Double($0.price) ?? 0 < Double($1.price) ?? 0})!.price
         highestPrice = (stations.min {Double($0.price) ?? 0 > Double($1.price) ?? 0})!.price
