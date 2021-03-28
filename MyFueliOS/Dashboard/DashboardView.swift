@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var viewModel: DashboardViewModel
-    @ObservedObject var locationManager = LocationManager()
     @State private var datePrice = DatePrice.Today
     init() {
         self.viewModel = DashboardViewModel()
@@ -67,7 +66,8 @@ struct DashboardView: View {
         }) {
             HStack(spacing:2) {
                 Text(viewModel.product.description)
-                        .font(.FjallaOne(size: 18))
+                        .font(.FjallaOne(size: 16))
+                    .fixedSize(horizontal: true, vertical: false)
                 Image(systemName: "chevron.down")
             }
         }
