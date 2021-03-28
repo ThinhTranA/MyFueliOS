@@ -63,7 +63,8 @@ struct StationListView: View {
         }) {
             HStack(spacing: 2) {
                 Text(viewModel.product.description)
-                        .font(.FjallaOne(size: 18))
+                        .font(.FjallaOne(size: 16))
+                        .fixedSize(horizontal: true, vertical: false)
                 Image(systemName: "chevron.down")
             }
         }
