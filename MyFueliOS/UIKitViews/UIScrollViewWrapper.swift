@@ -33,6 +33,7 @@ class UIScrollViewViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let v = UIScrollView()
         v.isPagingEnabled = true
+        v.showsHorizontalScrollIndicator = false
         return v
     }()
 
@@ -42,7 +43,6 @@ class UIScrollViewViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(self.scrollView)
         self.pinEdges(of: self.scrollView, to: self.view)
-      //  self.view.backgroundColor(UIColor(.green))
 
         self.hostingController.willMove(toParent: self)
         self.hostingController.view.backgroundColor = .clear

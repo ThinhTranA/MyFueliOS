@@ -22,7 +22,7 @@ struct StationsMapView: View {
                 SelectedStationDetailView(station: $selectedPetrolStation)
             }
 
-            VStack(spacing: 24) {
+            VStack(spacing: 8) {
                 fuelTypeSelectionView
                 focusToUserLocationButtonView
                 Spacer()
@@ -56,7 +56,7 @@ struct StationsMapView: View {
                             radius: 3, x: 3, y: 3)
                 }
             }
-        }
+        }.frame(maxHeight: 60)
     }
 
     private var focusToUserLocationButtonView: some View {
