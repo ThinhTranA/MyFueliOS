@@ -35,7 +35,7 @@ struct StationsMapView: View {
     }
 
     private var fuelTypeSelectionView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        UIScrollViewWrapper() {
             HStack(spacing: 8) {
                 ForEach(Product.allCases, id: \.self) { p in
                     Button(action: {

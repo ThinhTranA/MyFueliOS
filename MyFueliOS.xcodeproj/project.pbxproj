@@ -48,6 +48,7 @@
 		E5DE67042604E26E008C98DE /* FHACondFrenchNC.otf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FC2604DF4A008C98DE /* FHACondFrenchNC.otf */; };
 		E5DE67062604E2B4008C98DE /* FjallaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E5DE66FD2604DF4B008C98DE /* FjallaOne-Regular.ttf */; };
 		E5DE67092604E450008C98DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DE67082604E450008C98DE /* Color.swift */; };
+		E5FB3298260FFD16000BD552 /* UIScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FB3297260FFD16000BD552 /* UIScrollViewWrapper.swift */; };
 		E5FCDCB425EFD6A50099C107 /* StationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		E5DE66FE2604DF4B008C98DE /* American Captain.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "American Captain.otf"; sourceTree = "<group>"; };
 		E5DE66FF2604E068008C98DE /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		E5DE67082604E450008C98DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E5FB3297260FFD16000BD552 /* UIScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewWrapper.swift; sourceTree = "<group>"; };
 		E5FCDCB325EFD6A50099C107 /* StationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 			children = (
 				E551173325F0F4FB00DC9EF3 /* MapView.swift */,
 				E5403EBD26023F8D00FA3F73 /* SearchBar.swift */,
+				E5FB3297260FFD16000BD552 /* UIScrollViewWrapper.swift */,
 			);
 			path = UIKitViews;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				E5DE67002604E068008C98DE /* Font.swift in Sources */,
 				E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */,
 				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
+				E5FB3298260FFD16000BD552 /* UIScrollViewWrapper.swift in Sources */,
 				224A4CFCF5191720CD04ED75 /* FavouriteView.swift in Sources */,
 				69919703ED2C5697CAC1CEE6 /* AboutView.swift in Sources */,
 				6991938CB1D9478629997FB9 /* FuelWatchDataSourceView.swift in Sources */,
