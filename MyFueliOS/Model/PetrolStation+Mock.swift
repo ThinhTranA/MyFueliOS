@@ -32,7 +32,8 @@ extension PetrolStation {
                                latitude: item["latitude"].text ?? "",
                                longitude: item["longitude"].text ?? "",
                                siteFeatures: item["site-features"].text ?? "",
-                               fuelType: "BDiesel"
+                               fuelType: "BDiesel",
+                               fuelTypeDescription: "Brand Diesel"
                     )
                     i += 1
                     petrolStations.append(ps)

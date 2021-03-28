@@ -138,7 +138,8 @@ class FuelWatchService {
                 latitude: item["latitude"].text ?? "",
                 longitude: item["longitude"].text ?? "",
                 siteFeatures: item["site-features"].text ?? "",
-                fuelType: product.shortDescription
+                fuelType: product.shortDescription,
+                fuelTypeDescription: product.description
         )
     }
 }

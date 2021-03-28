@@ -24,8 +24,26 @@ struct PetrolStation: Decodable, Identifiable {
     let longitude: String
     let siteFeatures: String
     let fuelType: String
+    let fuelTypeDescription: String
 
     var dateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let theDate = dateFormatter.date(from: date)
+
+        if let theDate = theDate {
+            if(Calendar.current.isDateInToday(theDate)){
+                return "Today"
+            }
+            else if ( Calendar.current.isDateInTomorrow(theDate)){
+                return "Tomorrow"
+            }
+        }
+
+        return "InvalidDate"
+    }
+
+    var dateFormattedText: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let theDate = dateFormatter.date(from: date)

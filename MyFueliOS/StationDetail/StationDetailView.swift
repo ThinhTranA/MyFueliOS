@@ -9,7 +9,9 @@ import SwiftUI
 import MapKit
 
 struct StationDetailView: View {
+    @ObservedObject var viewModel = StationDetailViewModel()
     @State var station: PetrolStation
+    @State private var datePrice = DatePrice.Today
     @State var isInFav: Bool = false
     @State var isAddrCopied: Bool = false
     private let favService = CachedService.shared
@@ -21,8 +23,8 @@ struct StationDetailView: View {
                 VStack {
                     buttonsList
                     Divider()
-
-                    StationDetailPrice(station: station)
+                    datePriceSegmentedView
+                    stationOverview
 
                 }.padding()
                 Spacer()
@@ -113,6 +115,86 @@ struct StationDetailView: View {
             }
         }
     }
+    
+    
+    private var datePriceSegmentedView: some View {
+        Picker("DatePrice", selection: $datePrice) {
+            ForEach(DatePrice.allCases, id: \.self) { date in
+                Text(date.rawValue)
+                    .font(.FHACondFrenchNC(size: 18))
+                    .tag(date)
+            }
+        }.pickerStyle(SegmentedPickerStyle())
+        .onChange(of: datePrice, perform: { _ in
+            viewModel.datePrice = datePrice
+        })
+    }
+    
+    private var stationOverview: some View {
+    
+        return VStack (spacing: 8) {
+        
+            HStack(){
+                Image(station.logo)
+                    .resizable()
+                    .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+
+                VStack(spacing: 8) {
+                    HStack() {
+                        Text("\(station.fuelTypeDescription)")
+                            .font(.FjallaOne(size: 17))
+                            .opacity(0.8)
+                    
+                        Spacer()
+                        Text(station.price)
+                            .font(.FjallaOne(size: 25))
+                    }
+                    HStack() {
+                        Text(station.tradingName)
+                            .font(.FjallaOne(size: 22))
+                        Spacer()
+                       
+                    }
+                    HStack {
+                        Image(systemName: "mappin.and.ellipse")
+                        Text(station.distanceString)
+                        .font(.FjallaOne(size: 17))
+                        Spacer()
+                      
+                    }
+                    .foregroundColor(Color("SecondTextColor"))
+                }.padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
+            
+            }
+            
+            Divider()
+            
+            HStack {
+                Text("Today,")
+                Text(Date(), style: .date)
+                Spacer()
+            }  .font(.FjallaOne(size: 17))
+            .opacity(0.8)
+            
+            HStack() {
+                Text("Address: \(station.address), \(station.location)")
+                    .font(.FjallaOne(size: 17))
+                    .opacity(0.8)
+                Spacer()
+                
+            }
+            
+            HStack() {
+                Text("Phone: \(station.phone)")
+                    .font(.FjallaOne(size: 17))
+                    .opacity(0.8)
+                
+                
+                Spacer()
+                
+            }
+        }
+            }
 }
 
 struct StationDetailView_Previews: PreviewProvider {

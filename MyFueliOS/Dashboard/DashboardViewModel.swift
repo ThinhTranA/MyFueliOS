@@ -71,7 +71,7 @@ class DashboardViewModel: ObservableObject {
 
     private func updateDashboardDetails(stations: [PetrolStation]){
         if(stations.count < 2) {
-            var noData = "No Data"
+            let noData = "No Data"
             perthStations = stations
             lowestPrice = noData
             highestPrice = noData
