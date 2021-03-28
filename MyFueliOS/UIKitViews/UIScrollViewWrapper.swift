@@ -45,6 +45,7 @@ class UIScrollViewViewController: UIViewController {
       //  self.view.backgroundColor(UIColor(.green))
 
         self.hostingController.willMove(toParent: self)
+        self.hostingController.view.backgroundColor = .clear
         self.scrollView.addSubview(self.hostingController.view)
         self.pinEdges(of: self.hostingController.view, to: self.scrollView)
         self.hostingController.didMove(toParent: self)
