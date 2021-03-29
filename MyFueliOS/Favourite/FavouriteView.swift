@@ -35,15 +35,45 @@ struct FavouriteView: View {
                 
         //Binding List edit mode to isEditing var instead of using EditButton()
         .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
-        .navigationBarItems(trailing: Button(action: {
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                selectFuelTypeView
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                editButtonView
+            }
+          }
+    }
+
+}
+    private var selectFuelTypeView: some View {
+        Menu(content: {
+            ForEach(Product.allCases, id: \.self) { p in
+                Button(action: {
+                   viewModel.product = p
+                }, label: {
+                    Text(p.description)
+                })
+            }
+        }) {
+            HStack(spacing: 2) {
+                Text(viewModel.product.description)
+                        .font(.FjallaOne(size: 16))
+                        .fixedSize(horizontal: true, vertical: false)
+                Image(systemName: "chevron.down")
+            }
+        }
+    }
+
+    var editButtonView: some View {
+        Button(action: {
             isEditing.toggle()
         }, label: {
             Image(systemName: "wrench")
                     .resizable()
                     .frame(width: 28, height: 28)
-        }))
+        })
     }
-}
 }
 struct FavouriteScreen_Previews: PreviewProvider {
     static var previews: some View {

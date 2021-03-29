@@ -12,14 +12,21 @@ class FavouriteViewModel: ObservableObject {
     private let cachedService = CachedService.shared
     
     @Published var favStations = [PetrolStation]()
-    
+    //TODO: this can be set initaly using Enviroment object set from ContentView?
+    var product = Product.UnleadedPetrol {
+        //similar to @Published to we manually published to reload prices for different products
+        didSet {
+            fetchFavouriteStations()
+            objectWillChange.send()
+        }
+    }
     init() {
     }
     
     var isLoading: Bool = true;
     
     func fetchFavouriteStations()  {
-        fuelWatchService.getPerthFuel(product: cachedService.GetSelectedFuelType()) { stations in
+        fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 print("favourited stations \(self.cachedService.GetFavourites())")
                 let favs = self.cachedService.GetFavourites()
