@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
     @State var selectedProduct = Product.UnleadedPetrol
+    @State var selectedRegion = RegionCode.Perth
     @State var selectedDate: Int = 0
     let datesText = ["Today", "Tomorrow"]
 
@@ -35,11 +36,19 @@ struct SettingsView: View {
                         }
                     })
 
-            Picker(selection: $selectedDate,
-                    label: Text("Date of Displayed Prices"),
+//            Picker(selection: $selectedDate,
+//                    label: Text("Date of Displayed Prices"),
+//                    content: {
+//                        ForEach(0..<self.datesText.count) {
+//                            Text(self.datesText[$0]).tag($0)
+//                        }
+//                    })
+            
+            Picker(selection: $selectedRegion,
+                    label: Text("Region"),
                     content: {
-                        ForEach(0..<self.datesText.count) {
-                            Text(self.datesText[$0]).tag($0)
+                        ForEach(RegionCode.allCases, id: \.self) { rc in
+                            Text(rc.text)
                         }
                     })
         })
