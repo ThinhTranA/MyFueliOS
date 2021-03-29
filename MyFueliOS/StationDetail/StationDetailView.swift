@@ -11,6 +11,7 @@ import MapKit
 struct StationDetailView: View {
     @ObservedObject var viewModel = StationDetailViewModel()
     @State var station: PetrolStation
+    @State var tomorrowPrice = "Price available after 2:30pm"
     @State private var datePrice = DatePrice.Today
     @State var isInFav: Bool = false
     @State var isAddrCopied: Bool = false
@@ -126,7 +127,7 @@ struct StationDetailView: View {
             }
         }.pickerStyle(SegmentedPickerStyle())
         .onChange(of: datePrice, perform: { _ in
-            viewModel.datePrice = datePrice
+            viewModel.fetchTomorrowPrice(station: station)
         })
     }
     
@@ -146,8 +147,21 @@ struct StationDetailView: View {
                             .opacity(0.8)
                     
                         Spacer()
-                        Text(station.price)
-                            .font(.FjallaOne(size: 25))
+                        if(datePrice == DatePrice.Today){
+                            Text(station.price)
+                                    .font(.FjallaOne(size: 25))
+                        } else{
+                            if(tomorrowPrice.count > 10) {
+                                Text(tomorrowPrice)
+                                        .font(.FjallaOne(size: 14))
+                                        .opacity(0.5)
+                            } else {
+                                Text(tomorrowPrice)
+                                        .font(.FjallaOne(size: 25))
+                            }
+
+                        }
+
                     }
                     HStack() {
                         Text(station.tradingName)

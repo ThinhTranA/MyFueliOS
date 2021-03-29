@@ -26,6 +26,10 @@ struct PetrolStation: Decodable, Identifiable {
     let fuelType: String
     let fuelTypeDescription: String
 
+    var product: Product {
+        return Product.UnleadedPetrol
+    }
+
     var dateString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -109,6 +113,27 @@ struct PetrolStation: Decodable, Identifiable {
         }
         return logo
 
+    }
+
+    func GetProductType() -> Product {
+        switch fuelType {
+        case Product.UnleadedPetrol.shortDescription:
+            return Product.UnleadedPetrol
+        case Product.PremiumUnleaded.shortDescription:
+            return Product.PremiumUnleaded
+        case Product.Diesel.shortDescription:
+            return Product.Diesel
+        case Product.LPG.shortDescription:
+            return Product.LPG
+        case Product.Ron98.shortDescription:
+            return Product.Ron98
+        case Product.E85.shortDescription:
+            return Product.E85
+        case Product.BrandDiesel.shortDescription:
+            return Product.BrandDiesel
+        default:
+            return Product.UnleadedPetrol
+        }
     }
 
 }
