@@ -87,7 +87,7 @@ struct StationDetailView: View {
                             .frame(width: icSize, height: icSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .foregroundColor(isAddrCopied ? .white : .green)
 
-                    Text(isAddrCopied ? "Address Copied" : "Address").foregroundColor(isAddrCopied ? .white : .green)
+                    Text(isAddrCopied ? "Copied" : "Address").foregroundColor(isAddrCopied ? .white : .green)
                             .fixedSize(horizontal: false, vertical: true)
                 }
 
