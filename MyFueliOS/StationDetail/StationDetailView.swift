@@ -11,7 +11,6 @@ import MapKit
 struct StationDetailView: View {
     @ObservedObject var viewModel = StationDetailViewModel()
     @State var station: PetrolStation
-    @State var tomorrowPrice = "Price available after 2:30pm"
     @State private var datePrice = DatePrice.Today
     @State var isInFav: Bool = false
     @State var isAddrCopied: Bool = false
@@ -19,17 +18,23 @@ struct StationDetailView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                StationDetailMap(station: station).frame(maxHeight: geometry.size.height * 0.4)
-                VStack {
-                    buttonsList
-                    Divider()
-                    datePriceSegmentedView
-                    stationOverview
+            ZStack{
+                VStack(spacing: 0) {
+                    StationDetailMap(station: station).frame(maxHeight: geometry.size.height * 0.4)
+                    VStack {
+                        buttonsList
+                        Divider()
+                        datePriceSegmentedView
+                        stationOverview
 
-                }.padding()
-                Spacer()
-            }.navigationTitle(station.tradingName)
+                    }.padding()
+                    Spacer()
+                }.navigationTitle(station.tradingName)
+                if(viewModel.isLoading){
+                    LoadingView()
+                }
+            }
+
         }
     }
 
@@ -151,12 +156,12 @@ struct StationDetailView: View {
                             Text(station.price)
                                     .font(.FjallaOne(size: 25))
                         } else{
-                            if(tomorrowPrice.count > 10) {
-                                Text(tomorrowPrice)
+                            if(viewModel.tomorrowPrice.count > 10) {
+                                Text(viewModel.tomorrowPrice)
                                         .font(.FjallaOne(size: 14))
                                         .opacity(0.5)
                             } else {
-                                Text(tomorrowPrice)
+                                Text(viewModel.tomorrowPrice)
                                         .font(.FjallaOne(size: 25))
                             }
 
@@ -184,8 +189,14 @@ struct StationDetailView: View {
             Divider()
             
             HStack {
-                Text("Today,")
-                Text(Date(), style: .date)
+                if(datePrice == DatePrice.Today){
+                    Text("Today,")
+                    Text(Date(), style: .date)
+                } else {
+                    Text("Tomorrow,")
+                    Text(Date().addingTimeInterval(86400), style: .date)
+                }
+
                 Spacer()
             }  .font(.FjallaOne(size: 17))
             .opacity(0.8)

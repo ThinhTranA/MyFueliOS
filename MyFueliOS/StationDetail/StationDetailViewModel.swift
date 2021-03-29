@@ -16,17 +16,34 @@ class StationDetailViewModel: ObservableObject {
 
     func fetchTomorrowPrice(station: PetrolStation) {
         isLoading = true
-        //TODO: fetch perth station tomorrow first,
-        //if return empty list meaning before 2:30pm, display empty
-        //check if this station is in that list, then use it
-        //if station is not in that list, fetch Location/Suburb for tomorrow station
+        let product = station.GetProductType()
+        let suburb = station.location
 
-        fuelWatchService.getPerthFuel(product: station.GetProductType(), datePrice: DatePrice.Tomorrow) { stations in
+        fuelWatchService.getPerthFuel(product: product, datePrice: DatePrice.Tomorrow) { stations in
+            //fetch perth station for tomorrow first
             if let stations = stations {
-                if let sta = stations.first {$0.address == station.address} {
+                if let sta = stations.first(where: {$0.address == station.address}) {
+                    DispatchQueue.main.async{
+                        self.tomorrowPrice = sta.price
+                    }
 
+                    //if station is not in perth list, fetch Location/Suburb for tomorrow station
+                } else {
+                    //TODO: test if this block work by also load a suburb not in perth, save that station to favourtite
+                    self.fuelWatchService.getSuburbFuel(product: product, suburb: suburb){ subStations in
+                        if let subStation = subStations?.first(where: {$0.address == station.address}){
+                            DispatchQueue.main.async {
+                                self.tomorrowPrice = subStation.price
+                            }
+                        }
+                    }
+                  
                 }
             }
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+            
         }
 
     }
