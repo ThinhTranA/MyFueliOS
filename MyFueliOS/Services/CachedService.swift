@@ -11,9 +11,11 @@ class CachedService {
     static let shared = CachedService()
     
     private let favouriteListKey = "favouriteStations"
-    private let selectedProductFuelType = "selectedProductFuelType"
+    private let selectedProductFuelTypeKey = "selectedProductFuelType"
+    private let regionCodeKey = "regionCodeKey"
     private let userDefaults = UserDefaults.standard
-    
+
+    //MARK: Favourites
     func AddToFavourites(station: PetrolStation){
         print("\(station.tradingName) added to favourte")
         
@@ -37,14 +39,28 @@ class CachedService {
         let favList: [String] = userDefaults.object(forKey: favouriteListKey) as? [String] ?? []
         return favList
     }
-    
+
+    //MARK: Fuel Type / Product selected
     func GetSelectedFuelType() -> Product {
-        let product = userDefaults.object(forKey: selectedProductFuelType) as? Product ?? Product.UnleadedPetrol
+        var rawV = userDefaults.object(forKey: selectedProductFuelTypeKey)
+        let product = Product(rawValue: rawV as! Int) as? Product ?? Product.UnleadedPetrol
         return product
     }
     
     func SetSelectedFuelType(type product: Product) {
-        userDefaults.setValue(product, forKey: selectedProductFuelType)
+        userDefaults.setValue(product.rawValue, forKey: selectedProductFuelTypeKey)
+    }
+    
+    
+    //MARK: Selected Region
+    func GetRegion() -> RegionCode {
+        var rawV = userDefaults.object(forKey: regionCodeKey)
+        let region = RegionCode(rawValue: rawV as! Int) as? RegionCode ?? RegionCode.Perth
+        return region
+    }
+    
+    func SetRegion(region: RegionCode) {
+        userDefaults.setValue(region.rawValue, forKey: regionCodeKey)
     }
     
 }

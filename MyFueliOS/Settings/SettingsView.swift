@@ -21,6 +21,8 @@ struct SettingsView: View {
                 resetSection
                 shareThisAppSection
             }.navigationBarTitle("Settings")
+        }.onAppear{
+            viewModel.loadSettings()
         }
 
 
@@ -28,7 +30,7 @@ struct SettingsView: View {
 
     private var fuelsSection: some View {
         Section(header: Text("Fuel settings"), content: {
-            Picker(selection: $selectedProduct,
+            Picker(selection: $viewModel.product,
                     label: Text("Fuel Type"),
                     content: {
                         ForEach(Product.allCases, id: \.self) { p in
@@ -44,7 +46,7 @@ struct SettingsView: View {
 //                        }
 //                    })
             
-            Picker(selection: $selectedRegion,
+            Picker(selection: $viewModel.region,
                     label: Text("Region"),
                     content: {
                         ForEach(RegionCode.allCases, id: \.self) { rc in

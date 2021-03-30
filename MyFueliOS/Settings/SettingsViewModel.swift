@@ -9,6 +9,26 @@ import Foundation
 class SettingsViewModel: ObservableObject {
     private let fuelWatchService = FuelWatchService.shared
     private let cachedService = CachedService.shared
+    var region = RegionCode.Perth {
+        didSet {
+            cachedService.SetRegion(region: region)
+            objectWillChange.send()
+        }
+    }
+
+    var product = Product.UnleadedPetrol {
+        didSet {
+            cachedService.SetSelectedFuelType(type: product)
+            objectWillChange.send()
+        }
+    }
     
-  
+    init(){
+        loadSettings()
+    }
+
+    func loadSettings() {
+        product = cachedService.GetSelectedFuelType();
+        region = cachedService.GetRegion();
+    }
 }
