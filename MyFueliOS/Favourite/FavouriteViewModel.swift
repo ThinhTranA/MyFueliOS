@@ -8,9 +8,10 @@
 import Foundation
 
 class FavouriteViewModel: ObservableObject {
+    
     private let fuelWatchService = FuelWatchService.shared
     private let cachedService = CachedService.shared
-    
+    @Published var isLoading: Bool = false;
     @Published var favStations = [PetrolStation]()
     //TODO: this can be set initaly using Enviroment object set from ContentView?
     var product = Product.UnleadedPetrol {
@@ -23,9 +24,9 @@ class FavouriteViewModel: ObservableObject {
     init() {
     }
     
-    var isLoading: Bool = true;
     
     func fetchFavouriteStations()  {
+        isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 print("favourited stations \(self.cachedService.GetFavourites())")

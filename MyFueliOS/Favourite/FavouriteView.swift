@@ -15,35 +15,41 @@ struct FavouriteView: View {
   
     var body: some View {
      
-        NavigationView {
-                List {
-                    ForEach(viewModel.favStations){ station in
-                        NavigationLink (destination: StationDetailView(station: station)) {
-                            StationRowView(petrolStation: station)
-                        }
-                    }.onDelete(perform: { indexSet in
-                        let stationToDelete = indexSet.map { self.viewModel.favStations[$0] }[0]
-                        favService.RemoveFromFavourites(station: stationToDelete)
-                        viewModel.fetchFavouriteStations()
-                    })
+        ZStack {
+            NavigationView {
+                    List {
+                        ForEach(viewModel.favStations){ station in
+                            NavigationLink (destination: StationDetailView(station: station)) {
+                                StationRowView(petrolStation: station)
+                            }
+                        }.onDelete(perform: { indexSet in
+                            let stationToDelete = indexSet.map { self.viewModel.favStations[$0] }[0]
+                            favService.RemoveFromFavourites(station: stationToDelete)
+                            viewModel.fetchFavouriteStations()
+                        })
+                        
+            }.onAppear{
+                viewModel.fetchFavouriteStations()
+            }
+            .listStyle(PlainListStyle())
+            .navigationTitle("Favourites")
                     
-        }.onAppear{
-            viewModel.fetchFavouriteStations()
+            //Binding List edit mode to isEditing var instead of using EditButton()
+            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    selectFuelTypeView
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    editButtonView
+                }
+              }
+            }
+            
+            if(viewModel.isLoading){
+                LoadingView()
+            }
         }
-        .listStyle(PlainListStyle())
-        .navigationTitle("Favourites")
-                
-        //Binding List edit mode to isEditing var instead of using EditButton()
-        .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                selectFuelTypeView
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                editButtonView
-            }
-          }
-    }
 
 }
     private var selectFuelTypeView: some View {
