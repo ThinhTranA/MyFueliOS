@@ -50,6 +50,18 @@ class FuelWatchService {
         getFuelStations(key: key, urlWithQuery: url!, product: product, completion: completion)
     }
 
+    func getRegionFuel(product: Product, region: RegionCode, datePrice: DatePrice = DatePrice.Today, completion: @escaping ([PetrolStation]?) -> ()) {
+        let key = "\(product)\(region)\(datePrice.rawValue)"
+
+        var query = "?Product=\(product.rawValue)&Region=\(region.rawValue)"
+        if (datePrice == DatePrice.Tomorrow){
+            query = "?Product=\(product.rawValue)&Region=\(region.rawValue)&Day=tomorrow"
+        }
+        let url = URL(string: (baseAPIURL + query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+
+        getFuelStations(key: key, urlWithQuery: url!, product: product, completion: completion)
+    }
+
     private func getFuelStations(key : String, urlWithQuery url: URL, product: Product, completion: @escaping ([PetrolStation]?) -> ()) {
         //look in memory cache first
         if let sts = stations[key] {
