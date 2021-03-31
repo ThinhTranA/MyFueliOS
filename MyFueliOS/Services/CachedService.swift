@@ -42,8 +42,8 @@ class CachedService {
 
     //MARK: Fuel Type / Product selected
     func GetSelectedFuelType() -> Product {
-        var rawV = userDefaults.object(forKey: selectedProductFuelTypeKey)
-        let product = Product(rawValue: rawV as! Int) as? Product ?? Product.UnleadedPetrol
+        let rawV = userDefaults.object(forKey: selectedProductFuelTypeKey)
+        let product = Product(rawValue: rawV as? Int ?? Product.UnleadedPetrol.rawValue) ?? Product.UnleadedPetrol
         return product
     }
     
@@ -54,8 +54,8 @@ class CachedService {
     
     //MARK: Selected Region
     func GetRegion() -> RegionCode {
-        var rawV = userDefaults.object(forKey: regionCodeKey)
-        let region = RegionCode(rawValue: rawV as! Int) as? RegionCode ?? RegionCode.Perth
+        let rawV = userDefaults.object(forKey: regionCodeKey)
+        let region = RegionCode(rawValue: rawV as? Int ?? RegionCode.Perth.rawValue) ?? RegionCode.Perth
         return region
     }
     
