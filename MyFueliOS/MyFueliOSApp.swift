@@ -18,6 +18,7 @@ struct MyFueliOSApp: App {
 
         WindowGroup {
             ContentView().accentColor(.SteamGold)
+                .environmentObject(GlobalEnvironment())
         }
     }
 

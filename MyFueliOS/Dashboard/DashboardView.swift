@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var viewModel: DashboardViewModel
+    @EnvironmentObject var env: GlobalEnvironment
     @State private var datePrice = DatePrice.Today
     init() {
         self.viewModel = DashboardViewModel()
@@ -99,7 +100,7 @@ struct DashboardView: View {
     private var priceRangeView: some View {
         VStack (spacing: 16){
             HStack{
-                Text("Perth price range").font(.FjallaOne(size: 22))
+                Text("\(env.region.text) price range").font(.FjallaOne(size: 22))
                 Spacer()
             }
             

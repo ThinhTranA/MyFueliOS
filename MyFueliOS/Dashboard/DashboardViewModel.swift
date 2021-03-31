@@ -22,29 +22,49 @@ class DashboardViewModel: ObservableObject {
 
     var datePrice = DatePrice.Today {
         didSet {
-            fetchPerthPetrolStations()
+            fetchStations()
         }
     }
     var product = Product.UnleadedPetrol {
         //similar to @Published to we manually published to reload prices for different products
         didSet {
-            fetchPerthPetrolStations()
+            fetchStations()
             objectWillChange.send()
         }
     }
 
     init() {
         self.fuelWatchService = FuelWatchService.shared
-        fetchPerthPetrolStations()
+        fetchStations()
     }
 
     
     var count: String {
         return String(nearByStations.count)
     }
+
+    func fetchStations(){
+        var region = CachedService.shared.GetRegion()
+        if(region == RegionCode.Perth){
+            fetchPerthPetrolStations()
+        } else {
+            fetchRegionStations(region: region)
+        }
+    }
+
+    func fetchRegionStations(region: RegionCode)  {
+        isLoading = true
+        fuelWatchService.getRegionFuel(product: product, region: region){ stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.updateDashboardDetails(stations: stations)
+                    self.isLoading = false
+                }
+            }
+        }
+    }
     
-    
-    func fetchPetrolStations(near suburb: String)  {
+    func fetchSuburbStations(near suburb: String)  {
         isLoading = true
         fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
             if let stations = stations {
