@@ -13,19 +13,36 @@ import Foundation
 import SwiftUI
 
 class StationsMapViewModel: ObservableObject {
-    let fuelWatchService : FuelWatchService
+    let fuelWatchService = FuelWatchService.shared
 
     @Published var isLoading: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
+    @Published var region = CachedService.shared.GetRegion()
     
-    init() {
-        self.fuelWatchService = FuelWatchService.shared
-        fetchPerthPetrolStations()
-    }
     
     //TODO: Get user preference of petrol type
     var product: Product = Product.UnleadedPetrol
+    
+    func fetchStations(){
+         region = CachedService.shared.GetRegion()
+        if(region == RegionCode.Perth){
+            fetchPerthPetrolStations()
+        } else {
+            fetchRegionStations(region: region)
+        }
+    }
+    
+    func fetchRegionStations(region: RegionCode)  {
+        isLoading = true
+        fuelWatchService.getRegionFuel(product: product, region: region){ stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.updateModels(stations: stations)
+                }
+            }
+        }
+    }
     
     func fetchPetrolStations(near suburb: String)  {
         isLoading = true
@@ -59,10 +76,14 @@ class StationsMapViewModel: ObservableObject {
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
-                    self.perthStations = stations
-                    self.isLoading = false
+                    self.updateModels(stations: stations)
                 }
             }
         }
+    }
+    
+    private func updateModels(stations: [PetrolStation]){
+        self.perthStations = stations
+        self.isLoading = false
     }
 }

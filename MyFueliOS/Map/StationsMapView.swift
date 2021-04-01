@@ -32,6 +32,9 @@ struct StationsMapView: View {
                 LoadingView()
             }
         }
+        .onAppear{
+            viewModel.fetchStations()
+        }
     }
 
     private var fuelTypeSelectionView: some View {

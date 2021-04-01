@@ -30,7 +30,7 @@ struct StationListView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
-                .navigationTitle("Petrol Stations")
+                .navigationTitle("\(viewModel.region.text) Stations")
                 //   .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -48,6 +48,9 @@ struct StationListView: View {
                 LoadingView()
             }
         }
+        .onAppear{
+            viewModel.fetchStations()
+        }
     }
 
 
@@ -55,7 +58,8 @@ struct StationListView: View {
         Menu(content: {
             ForEach(Product.allCases, id: \.self) { p in
                 Button(action: {
-                    viewModel.fetchPetrolStations(by: p)
+                    viewModel.product = p
+                    viewModel.fetchStations()
                 }, label: {
                     Text(p.description)
                 })

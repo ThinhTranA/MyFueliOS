@@ -8,18 +8,22 @@
 import Foundation
 
 class StationListViewModel: ObservableObject {
-    let fuelWatchService : FuelWatchService
+    private let fuelWatchService = FuelWatchService.shared
 
     @Published var isLoading: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var perthStationsSortedByDistance = [PetrolStation]()
     @Published var product: Product = Product.UnleadedPetrol
+    @Published var region = CachedService.shared.GetRegion()
     
-    init() {
-        self.fuelWatchService = FuelWatchService.shared
-        fetchPerthPetrolStations()
-        
+    func fetchStations(){
+         region = CachedService.shared.GetRegion()
+        if(region == RegionCode.Perth){
+            fetchPerthPetrolStations()
+        } else {
+            fetchRegionStations(region: region)
+        }
     }
 
     func fetchPetrolStations(by product: Product){
@@ -54,11 +58,26 @@ class StationListViewModel: ObservableObject {
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
                 DispatchQueue.main.async {
-                    self.perthStations = stations.sorted{$0.price < $1.price} //defautl response is always sorted by price, this is just for consistency
-                    self.perthStationsSortedByDistance = stations.sorted{$0.distance < $1.distance}
-                    self.isLoading = false
+                    self.updateModels(stations: stations)
                 }
             }
         }
+    }
+    
+    func fetchRegionStations(region: RegionCode)  {
+        isLoading = true
+        fuelWatchService.getRegionFuel(product: product, region: region){ stations in
+            if let stations = stations {
+                DispatchQueue.main.async {
+                    self.updateModels(stations: stations)
+                }
+            }
+        }
+    }
+    
+    private func updateModels(stations: [PetrolStation]){
+        self.perthStations = stations.sorted{$0.price < $1.price} //defautl response is always sorted by price, this is just for consistency
+        self.perthStationsSortedByDistance = stations.sorted{$0.distance < $1.distance}
+        self.isLoading = false
     }
 }

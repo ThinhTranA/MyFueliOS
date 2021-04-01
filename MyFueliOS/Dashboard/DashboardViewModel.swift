@@ -44,7 +44,7 @@ class DashboardViewModel: ObservableObject {
     }
 
     func fetchStations(){
-        var region = CachedService.shared.GetRegion()
+        let region = CachedService.shared.GetRegion()
         if(region == RegionCode.Perth){
             fetchPerthPetrolStations()
         } else {
