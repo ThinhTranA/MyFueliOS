@@ -257,7 +257,7 @@ struct StationRowView1:  View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DashboardView()
+            DashboardView().environmentObject(GlobalEnvironment())
             StationRowView1()
         }
     }
