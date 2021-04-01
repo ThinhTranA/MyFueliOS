@@ -42,8 +42,8 @@ struct StationsMapView: View {
             HStack(spacing: 8) {
                 ForEach(Product.allCases, id: \.self) { p in
                     Button(action: {
-                        viewModel.fetchPetrolStations(by: p)
-                        //TODO only update this if success
+                        viewModel.product = p
+                        viewModel.fetchStations()
                         selectedProduct = p
                     }) {
                         Text(p.description)

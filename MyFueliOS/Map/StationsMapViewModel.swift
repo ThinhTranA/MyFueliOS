@@ -19,11 +19,8 @@ class StationsMapViewModel: ObservableObject {
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var region = CachedService.shared.GetRegion()
-    
-    
-    //TODO: Get user preference of petrol type
-    var product: Product = Product.UnleadedPetrol
-    
+    @Published var product = Product.UnleadedPetrol
+
     func fetchStations(){
          region = CachedService.shared.GetRegion()
         if(region == RegionCode.Perth){
