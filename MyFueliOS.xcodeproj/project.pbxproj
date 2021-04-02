@@ -19,6 +19,7 @@
 		E502442825FE4D9F003A5C6D /* StationsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E502442725FE4D9F003A5C6D /* StationsMapViewModel.swift */; };
 		E50C90D12600F922007269FD /* CachedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C90D02600F922007269FD /* CachedService.swift */; };
 		E50C90D42601007A007269FD /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50C90D32601007A007269FD /* FavouriteViewModel.swift */; };
+		E50F8E682617CA9700B526CA /* FavouriteEmptyViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50F8E672617CA9700B526CA /* FavouriteEmptyViewHolder.swift */; };
 		E515E5B226076DE600155795 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E515E5B126076DE600155795 /* SettingsView.swift */; };
 		E515E5B626076DFB00155795 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E515E5B526076DFB00155795 /* SettingsViewModel.swift */; };
 		E532774725F45F4F0089D349 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532774625F45F4F0089D349 /* StationAnnotation.swift */; };
@@ -70,6 +71,7 @@
 		E502442725FE4D9F003A5C6D /* StationsMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsMapViewModel.swift; sourceTree = "<group>"; };
 		E50C90D02600F922007269FD /* CachedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedService.swift; sourceTree = "<group>"; };
 		E50C90D32601007A007269FD /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
+		E50F8E672617CA9700B526CA /* FavouriteEmptyViewHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmptyViewHolder.swift; sourceTree = "<group>"; };
 		E515E5B126076DE600155795 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E515E5B526076DFB00155795 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E532774625F45F4F0089D349 /* StationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				224A48C7A82C72D31081AF62 /* FavouriteView.swift */,
 				E50C90D32601007A007269FD /* FavouriteViewModel.swift */,
+				E50F8E672617CA9700B526CA /* FavouriteEmptyViewHolder.swift */,
 			);
 			path = Favourite;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				E5664DA925F2EEFA005EEA8E /* SelectedStationDetailView.swift in Sources */,
 				E515E5B626076DFB00155795 /* SettingsViewModel.swift in Sources */,
 				E5403EC126024C8A00FA3F73 /* StationListViewModel.swift in Sources */,
+				E50F8E682617CA9700B526CA /* FavouriteEmptyViewHolder.swift in Sources */,
 				E50C90D12600F922007269FD /* CachedService.swift in Sources */,
 				E5690B6925EE67DB00CDC5DB /* PetrolStation.swift in Sources */,
 				E5403EBE26023F8D00FA3F73 /* SearchBar.swift in Sources */,
