@@ -134,6 +134,7 @@ struct MapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.shouldFocusUserLocation = false
+            parent.count = parent.stations.count
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
