@@ -9,8 +9,9 @@ import SwiftUI
 import FontAwesome_swift
 
 struct ContentView: View {
+    @State private var selection = 2
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             DashboardView()
                 .tabItem {
                     VStack {
