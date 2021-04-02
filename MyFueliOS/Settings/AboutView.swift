@@ -56,9 +56,7 @@ struct AboutView: View {
                 Text("SwiftUI").font(.title3)
                 Text("SwiftXMLParser").font(.title3)
             }
-      
-       // Text("please email for any feedback, feature request or other enquiry: myfuellens@gmail.com")
-        
+
         Spacer()
        }
     
