@@ -42,7 +42,14 @@ class FavouriteViewModel: ObservableObject {
                     self.favStations = favouriteStations
                 }
             }
-            self.isLoading = false
+            else {
+                DispatchQueue.main.async {
+                    self.favStations = [PetrolStation]()
+                }
+            }
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
     }
 }
