@@ -69,7 +69,7 @@ struct StationDetailView: View {
                                 RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color.red, lineWidth: 1.6)
                         )
-                        .background(isInFav ? Color.red : Color.white)
+                .background(isInFav ? Color.red : Color.clear)
                         .cornerRadius(12)
             }.onAppear {
                 isInFav = favService.GetFavourites().contains(station.address)
@@ -96,7 +96,7 @@ struct StationDetailView: View {
                                 RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color.green, lineWidth: 1.6)
                         )
-            }.background(isAddrCopied ? Color.green : Color.white)
+            }.background(isAddrCopied ? Color.green : Color.clear)
                     .cornerRadius(12)
 
             Button(action: {
@@ -224,6 +224,6 @@ struct StationDetailView: View {
 struct StationDetailView_Previews: PreviewProvider {
 
     static var previews: some View {
-        StationDetailView(station: PetrolStation.mockPetrolStations[1])
+        StationDetailView(station: PetrolStation.mockPetrolStations[1]).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
     }
 }

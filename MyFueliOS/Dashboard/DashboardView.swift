@@ -155,7 +155,7 @@ struct DashboardView: View {
             }
         }
         .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
-        .background(Color.white)
+        .background(Color.CardBackground)
         .cornerRadius(16)
     }
     
@@ -169,7 +169,7 @@ struct DashboardView: View {
             Text(viewModel.product.description).font(.FjallaOne(size: 17))
         }
         .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
-        .background(Color.white)
+        .background(Color.CardBackground)
         .cornerRadius(16)
     }
     
@@ -188,7 +188,7 @@ struct DashboardView: View {
             
             Spacer()
         } .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
-        .background(Color.white)
+        .background(Color.CardBackground)
         .cornerRadius(16)
     }
     
@@ -204,7 +204,7 @@ struct DashboardView: View {
                 }
                 HStack {
                     Text(station.tradingName).font(.FjallaOne(size: 14))
-                        .foregroundColor(Color.black.opacity(0.8))
+                        .opacity(0.8)
                     Spacer()
                 }
             }
@@ -212,8 +212,9 @@ struct DashboardView: View {
             Spacer()
             VStack(spacing: 8){
                 Image(systemName: "mappin.and.ellipse")
-                Text(station.distanceString).font(.FjallaOne(size: 14))
-                    .foregroundColor(Color.black.opacity(0.8))
+                Text(station.distanceString)
+                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    .font(.FjallaOne(size: 14))
             }
         }
     }
@@ -243,7 +244,7 @@ struct StationRowView1:  View {
                 }
                 HStack {
                     Text(station.tradingName).font(.FjallaOne(size: 14))
-                        .foregroundColor(Color.black.opacity(0.8))
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                     Spacer()
                 }
             }
@@ -262,8 +263,7 @@ struct StationRowView1:  View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DashboardView()
-            StationRowView1()
+            DashboardView().preferredColorScheme(.dark)
         }
     }
 }

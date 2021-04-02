@@ -48,7 +48,7 @@ struct SelectedStationDetailView: View {
             
             }
             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .background(Color.white)
+            .background(Color.CardBackground)
             .cornerRadius(32, corners: [.topLeft, .topRight])
             .shadow(color: Color.black.opacity(0.3),
                 radius: 5, x: 3,y: -3)
@@ -95,7 +95,7 @@ struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.white.opacity(0.5)
-            SelectedStationDetailView(station: Binding(station))
+            SelectedStationDetailView(station: Binding(station)).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         }
     }
 }

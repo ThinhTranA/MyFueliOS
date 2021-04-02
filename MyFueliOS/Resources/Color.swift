@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 extension Color{
+    public static var CardBackground: Color {
+        Color("CardBackground", bundle: nil)
+    }
     public static var SteamGold: Color {
         Color("SteamGold", bundle: nil)
     }
