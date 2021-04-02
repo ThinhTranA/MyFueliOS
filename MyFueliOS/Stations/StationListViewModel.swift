@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class StationListViewModel: ObservableObject {
     private let fuelWatchService = FuelWatchService.shared
 
     @Published var isLoading: Bool = false;
     @Published var hasError: Bool = false;
+    @Published var isLocationDeniedAlert: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var perthStationsSortedByDistance = [PetrolStation]()
@@ -81,6 +83,12 @@ class StationListViewModel: ObservableObject {
                 self.perthStationsSortedByDistance = self.perthStations
             }
             self.isLoading = false
+
+
+            if(LocationManager.shared.locationStatus == CLAuthorizationStatus.denied){
+                self.isLocationDeniedAlert = true
+            }
         }
+
     }
 }

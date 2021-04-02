@@ -31,6 +31,21 @@ struct StationListView: View {
                 }
                 .listStyle(PlainListStyle())
                 .navigationTitle("\(viewModel.region.text) Stations")
+                .alert(isPresented: $viewModel.isLocationDeniedAlert) {
+                    Alert(
+                            title: Text("Location permission is denied"),
+                            message: Text("Failed to calculate distance due to unknown location. Enable location permission in settings."),
+                            primaryButton: .default(Text("Ok")) {
+                                //UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                                if let bundleId = Bundle.main.bundleIdentifier,
+                                   let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)")
+                                {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                }
+                            },
+                            secondaryButton: .cancel()
+                    )
+                }
                 //   .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -43,6 +58,7 @@ struct StationListView: View {
             }.actionSheet(isPresented: $isSortActionSheetPresented) {
                 sortActionSheet
             }
+
             
             if(!viewModel.isLoading && viewModel.perthStations.count == 0){
                 VStack{
