@@ -14,7 +14,7 @@ class FavouriteViewModel: ObservableObject {
     @Published var isLoading: Bool = false;
     @Published var favStations = [PetrolStation]()
     //TODO: this can be set initaly using Enviroment object set from ContentView?
-    var product = Product.UnleadedPetrol {
+    var product = CachedService.shared.GetSelectedFuelType() {
         //similar to @Published to we manually published to reload prices for different products
         didSet {
             fetchFavouriteStations()

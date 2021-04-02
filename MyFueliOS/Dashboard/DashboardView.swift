@@ -59,13 +59,16 @@ struct DashboardView: View {
 
     private var fuelTypePickerView: some View {
         Menu(content: {
-            ForEach(Product.allCases, id: \.self) { p in
-                Button(action: {
-                    viewModel.product = p
-                }, label: {
-                    Text(p.description)
-                })
+            Picker("product",selection: $viewModel.product){
+                ForEach(Product.allCases, id: \.self) { p in
+                    Button(action: {
+                        viewModel.product = p
+                    }, label: {
+                        Text(p.description)
+                    })
+                }
             }
+       
         }) {
             HStack(spacing:2) {
                 Text(viewModel.product.description)

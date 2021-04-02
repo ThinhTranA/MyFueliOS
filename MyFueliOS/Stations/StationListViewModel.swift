@@ -14,7 +14,7 @@ class StationListViewModel: ObservableObject {
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var perthStationsSortedByDistance = [PetrolStation]()
-    @Published var product: Product = Product.UnleadedPetrol
+    @Published var product: Product = CachedService.shared.GetSelectedFuelType()
     @Published var region = CachedService.shared.GetRegion()
     
     func fetchStations(){

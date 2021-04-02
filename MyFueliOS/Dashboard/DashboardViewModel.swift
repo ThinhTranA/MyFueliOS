@@ -26,7 +26,7 @@ class DashboardViewModel: ObservableObject {
             fetchStations()
         }
     }
-    var product = Product.UnleadedPetrol {
+    var product = CachedService.shared.GetSelectedFuelType() {
         //similar to @Published to we manually published to reload prices for different products
         didSet {
             fetchStations()

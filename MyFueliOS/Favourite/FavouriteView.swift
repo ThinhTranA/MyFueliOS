@@ -54,12 +54,14 @@ struct FavouriteView: View {
 }
     private var selectFuelTypeView: some View {
         Menu(content: {
-            ForEach(Product.allCases, id: \.self) { p in
-                Button(action: {
-                   viewModel.product = p
-                }, label: {
-                    Text(p.description)
-                })
+            Picker("product", selection: $viewModel.product){
+                ForEach(Product.allCases, id: \.self) { p in
+                    Button(action: {
+                       viewModel.product = p
+                    }, label: {
+                        Text(p.description)
+                    })
+                }
             }
         }) {
             HStack(spacing: 2) {

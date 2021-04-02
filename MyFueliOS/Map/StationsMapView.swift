@@ -11,7 +11,7 @@ struct StationsMapView: View {
     @ObservedObject var viewModel = StationsMapViewModel()
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
-    @State var selectedProduct = Product.UnleadedPetrol
+    @State var selectedProduct = CachedService.shared.GetSelectedFuelType()
     @State var currentRegion = LocationManager.shared.selectedRegionCoordinate
 
     var body: some View {

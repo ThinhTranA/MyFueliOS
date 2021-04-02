@@ -62,10 +62,12 @@ struct SettingsView: View {
     
 
     private var shareThisAppSection: some View {
-        Section(header: Text("FAQ & Others"), content: {
+        Section(header: Text("FAQs & Others"), content: {
             NavigationLink(destination: AboutView()) {
                 Text("Why stations are not showing in my area?")
                 //Answer, try to select the region manually, fuel lens tried to detect your location if you are outside of Perth region and make fuel request but there could be error and not load, so try manually. Also station might not be on fuelwatch database.
+                Text("Why a favourite staion is not showing for some fuel type in Favourites list")
+                //Answer, not every fuel type are alvaible at the station.
             }
 
             NavigationLink(destination: DisclaimerView()) {
