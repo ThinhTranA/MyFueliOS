@@ -16,6 +16,7 @@ class StationsMapViewModel: ObservableObject {
     let fuelWatchService = FuelWatchService.shared
 
     @Published var isLoading: Bool = false;
+    @Published var hasError: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var region = CachedService.shared.GetRegion()
@@ -34,53 +35,35 @@ class StationsMapViewModel: ObservableObject {
         isLoading = true
         fuelWatchService.getRegionFuel(product: product, region: region){ stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateModels(stations: stations)
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
-    }
-    
-    func fetchPetrolStations(near suburb: String)  {
-        isLoading = true
-        fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
-            if let stations = stations {
-                DispatchQueue.main.async {
-                    self.nearByStations = stations
-                    self.isLoading = false
-                }
-            }
-        }
-    }
-
-    func fetchPetrolStations(by product: Product){
-        isLoading = true
-        fuelWatchService.getPerthFuel(product: product) { stations in
-            if let stations = stations {
-                DispatchQueue.main.async {
-                    self.perthStations = stations
-                    self.product = product
-                    self.isLoading = false
-                }
-            }
-        }
-
-        self.product = product
     }
     
     func fetchPerthPetrolStations()  {
         isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateModels(stations: stations)
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
     }
     
-    private func updateModels(stations: [PetrolStation]){
-        self.perthStations = stations
-        self.isLoading = false
+    private func handleOnFailure(){
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.hasError = true
+        }
+    }
+    
+    private func handleSuccessRequest(stations: [PetrolStation]){
+        DispatchQueue.main.async {
+            self.perthStations = stations
+            self.isLoading = false
+        }
     }
 }

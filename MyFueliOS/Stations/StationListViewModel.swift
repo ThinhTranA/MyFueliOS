@@ -11,6 +11,7 @@ class StationListViewModel: ObservableObject {
     private let fuelWatchService = FuelWatchService.shared
 
     @Published var isLoading: Bool = false;
+    @Published var hasError: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var perthStationsSortedByDistance = [PetrolStation]()
@@ -40,26 +41,14 @@ class StationListViewModel: ObservableObject {
 
         self.product = product
     }
-
-    func fetchPetrolStations(near suburb: String)  {
-        isLoading = true
-        fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
-            if let stations = stations {
-                DispatchQueue.main.async {
-                    self.nearByStations = stations
-                    self.isLoading = false
-                }
-            }
-        }
-    }
     
     func fetchPerthPetrolStations()  {
         isLoading = true
         fuelWatchService.getPerthFuel(product: product) { stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateModels(stations: stations)
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
     }
@@ -68,21 +57,30 @@ class StationListViewModel: ObservableObject {
         isLoading = true
         fuelWatchService.getRegionFuel(product: product, region: region){ stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateModels(stations: stations)
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
     }
     
-    private func updateModels(stations: [PetrolStation]){
-        self.perthStations = stations.sorted{$0.price < $1.price}
-        //defautl response is always sorted by price, this is just for consistency
-        if(stations.count > 0 && stations[0].distance != nil){
-            self.perthStationsSortedByDistance = stations.sorted{$0.distance! < $1.distance!}
-        } else {
-            self.perthStationsSortedByDistance = self.perthStations
+    private func handleOnFailure(){
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.hasError = true
         }
-        self.isLoading = false
+    }
+    
+    private func handleSuccessRequest(stations: [PetrolStation]){
+        DispatchQueue.main.async {
+            self.perthStations = stations.sorted{$0.price < $1.price}
+            //defautl response is always sorted by price, this is just for consistency
+            if(stations.count > 0 && stations[0].distance != nil){
+                self.perthStationsSortedByDistance = stations.sorted{$0.distance! < $1.distance!}
+            } else {
+                self.perthStationsSortedByDistance = self.perthStations
+            }
+            self.isLoading = false
+        }
     }
 }

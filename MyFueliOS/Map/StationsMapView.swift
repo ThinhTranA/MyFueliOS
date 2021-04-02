@@ -33,6 +33,16 @@ struct StationsMapView: View {
                 LoadingView()
             }
         }
+        .alert(isPresented: $viewModel.hasError) {
+            Alert(
+                title: Text("Some thing went wrong!"),
+                        message: Text("Failed to load data at this time. Please try again."),
+                primaryButton: .default(Text("Try again")) {
+                    viewModel.fetchStations()
+                },
+                secondaryButton: .cancel()
+            )
+        }
         .onAppear{
             viewModel.fetchStations()
             let didChanged = LocationManager.shared.didRegionChanged(regionCoordinate: currentRegion)

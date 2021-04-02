@@ -41,6 +41,8 @@
 		E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */; };
 		E59892CE2610CBC7007042D2 /* StationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59892CD2610CBC7007042D2 /* StationDetailViewModel.swift */; };
 		E5C510D426170EA5002B43BA /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C510D326170EA5002B43BA /* MailView.swift */; };
+		E5C510D7261753E9002B43BA /* NoDataErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C510D6261753E9002B43BA /* NoDataErrorView.swift */; };
+		E5C510DB261756A6002B43BA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C510DA261756A6002B43BA /* DateExtension.swift */; };
 		E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */; };
 		E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */; };
 		E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */; };
@@ -92,6 +94,8 @@
 		E5690B7B25EE7DB200CDC5DB /* StationRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationRowView.swift; sourceTree = "<group>"; };
 		E59892CD2610CBC7007042D2 /* StationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailViewModel.swift; sourceTree = "<group>"; };
 		E5C510D326170EA5002B43BA /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		E5C510D6261753E9002B43BA /* NoDataErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataErrorView.swift; sourceTree = "<group>"; };
+		E5C510DA261756A6002B43BA /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		E5D5D1EF25F7A03D00528D11 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		E5D5D1F325F7A4E400528D11 /* FuelWatchAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelWatchAPIService.swift; sourceTree = "<group>"; };
 		E5D5D1F625F7AA5100528D11 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				69919D985B31AACF4E396F5F /* LoadingView.swift */,
+				E5C510D6261753E9002B43BA /* NoDataErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -280,6 +285,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		E5C510D926175686002B43BA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E5C510DA261756A6002B43BA /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E5D5D1EE25F7A00D00528D11 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +328,7 @@
 			children = (
 				E532774525F45F3C0089D349 /* Annotation */,
 				E5664DAC25F30A51005EEA8E /* Modifier */,
+				E5C510D926175686002B43BA /* Extension */,
 				69919BC0E9A401CB8E650F25 /* View */,
 			);
 			path = Common;
@@ -468,6 +482,7 @@
 				E59892CE2610CBC7007042D2 /* StationDetailViewModel.swift in Sources */,
 				E515E5B226076DE600155795 /* SettingsView.swift in Sources */,
 				E5690B7C25EE7DB200CDC5DB /* StationRowView.swift in Sources */,
+				E5C510D7261753E9002B43BA /* NoDataErrorView.swift in Sources */,
 				E5D5D1F025F7A03D00528D11 /* DashboardView.swift in Sources */,
 				E5D5D1F725F7AA5100528D11 /* DashboardViewModel.swift in Sources */,
 				E5419B0525EB096C00ACD0B9 /* StationsMapView.swift in Sources */,
@@ -477,6 +492,7 @@
 				E5D5D1F425F7A4E400528D11 /* FuelWatchAPIService.swift in Sources */,
 				E5419B0225EB096000ACD0B9 /* StationListView.swift in Sources */,
 				E5FB3298260FFD16000BD552 /* UIScrollViewWrapper.swift in Sources */,
+				E5C510DB261756A6002B43BA /* DateExtension.swift in Sources */,
 				224A4CFCF5191720CD04ED75 /* FavouriteView.swift in Sources */,
 				69919703ED2C5697CAC1CEE6 /* AboutView.swift in Sources */,
 				6991938CB1D9478629997FB9 /* FuelWatchDataSourceView.swift in Sources */,

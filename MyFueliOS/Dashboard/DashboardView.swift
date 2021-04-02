@@ -19,23 +19,25 @@ struct DashboardView: View {
             NavigationView {
             ZStack {
                 Color.gray.opacity(0.1).ignoresSafeArea()
-                ScrollView {
-                    VStack (spacing: 8){
-                        datePriceSegmentedView
-                        Spacer()
-                        
-                        if(viewModel.perthStations.count < 2 && datePrice == DatePrice.Tomorrow){
-                            tomorrowPriceEmptyView
+                if(viewModel.perthStations.count > 0){
+                    ScrollView {
+                        VStack (spacing: 8){
+                            datePriceSegmentedView
                             Spacer()
-                        }
-                        else {
-                            priceRangeView
-                            Spacer()
-                            averagePriceView
-                            Spacer()
-                            cheapestStationsView
-                        }
-                    } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                            
+                            if(viewModel.perthStations.count < 2 && datePrice == DatePrice.Tomorrow){
+                                tomorrowPriceEmptyView
+                                Spacer()
+                            }
+                            else {
+                                priceRangeView
+                                Spacer()
+                                averagePriceView
+                                Spacer()
+                                cheapestStationsView
+                            }
+                        } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                    }
                 }
             }.navigationTitle("Dashboard")
             .toolbar {
@@ -47,9 +49,35 @@ struct DashboardView: View {
                 }
             }
         }
+            
+            if(!viewModel.isLoading && viewModel.perthStations.count == 0){
+                VStack{
+                    NoDataErrorView()
+                    Button(action: {
+                        viewModel.fetchStations()
+                    }, label: {
+                    HStack(spacing: 10) {
+                          Spacer()
+                          Text("Try Again ")
+                          Image(systemName: "arrow.clockwise.circle")
+                              .resizable()
+                              .frame(width: 24, height: 24, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                          Spacer()
+                        }
+                      .frame( height: 42, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                      .background(Color.SteamGold)
+                      .foregroundColor(.white)
+                      .cornerRadius(22)
+                })
+                }.padding()
+            }
+            
             if(viewModel.isLoading){
                 LoadingView()
             }
+        }
+        .alert(isPresented: $viewModel.hasError) {
+            Alert(title: Text("Some thing went wrong!"), message: Text("Failed to load data at this time. Please try again later."), dismissButton: .default(Text("Ok")))
         }
         .onAppear{
             viewModel.fetchStations()

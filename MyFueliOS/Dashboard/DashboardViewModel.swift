@@ -12,6 +12,7 @@ import SwiftUI
 class DashboardViewModel: ObservableObject {
     let fuelWatchService : FuelWatchService
     @Published var isLoading: Bool = false;
+    @Published var hasError: Bool = false;
     @Published var nearByStations = [PetrolStation]()
     @Published var perthStations = [PetrolStation]()
     @Published var cheapest3Stations = [PetrolStation]()
@@ -57,39 +58,40 @@ class DashboardViewModel: ObservableObject {
         isLoading = true
         fuelWatchService.getRegionFuel(product: product, region: region){ stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateDashboardDetails(stations: stations)
-                    self.isLoading = false
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
     }
     
-    func fetchSuburbStations(near suburb: String)  {
-        isLoading = true
-        fuelWatchService.getSuburbFuel(product: product, suburb: suburb) { stations in
-            if let stations = stations {
-                DispatchQueue.main.async {
-                    self.nearByStations = stations
-                    self.isLoading = false
-                }
-            }
-        }
-    }
     
     func fetchPerthPetrolStations()  {
         isLoading = true
         fuelWatchService.getPerthFuel(product: product, datePrice: datePrice) { stations in
             if let stations = stations {
-                DispatchQueue.main.async {
-                    self.updateDashboardDetails(stations: stations)
-                    self.isLoading = false
-                }
+                self.handleSuccessRequest(stations: stations)
+            } else {
+                self.handleOnFailure()
             }
         }
 
     }
 
+    private func handleOnFailure(){
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.hasError = true
+        }
+    }
+    
+    private func handleSuccessRequest(stations: [PetrolStation]){
+        DispatchQueue.main.async {
+            self.updateDashboardDetails(stations: stations)
+            self.isLoading = false
+        }
+    }
+    
     private func updateDashboardDetails(stations: [PetrolStation]){
         if(stations.count < 2) {
             let noData = "No Data"
