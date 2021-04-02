@@ -82,6 +82,7 @@ class DashboardViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = false
             self.hasError = true
+            self.updateDashboardDetails(stations: [PetrolStation]())
         }
     }
     

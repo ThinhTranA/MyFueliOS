@@ -57,6 +57,7 @@ class StationsMapViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.isLoading = false
             self.hasError = true
+            self.perthStations = [PetrolStation]()
         }
     }
     
