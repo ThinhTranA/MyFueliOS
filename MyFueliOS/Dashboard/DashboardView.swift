@@ -19,7 +19,7 @@ struct DashboardView: View {
             NavigationView {
             ZStack {
                 Color.gray.opacity(0.1).ignoresSafeArea()
-                if(viewModel.perthStations.count > 0){
+             
                     ScrollView {
                         VStack (spacing: 8){
                             datePriceSegmentedView
@@ -30,20 +30,22 @@ struct DashboardView: View {
                                 Spacer()
                             }
                             else {
-                                priceRangeView
-                                    .shadow(color: Color.black.opacity(0.3),
-                                                   radius: 5, x: 3,y: -3)
-                                Spacer()
-                                averagePriceView
-                                    .shadow(color: Color.black.opacity(0.3),
-                                                   radius: 5, x: 3,y: -3)
-                                Spacer()
-                                cheapestStationsView
-                                    .shadow(color: Color.black.opacity(0.3),
-                                                   radius: 5, x: 3,y: -3)
+                                if(viewModel.perthStations.count > 0){
+                                    priceRangeView
+                                        .shadow(color: Color.black.opacity(0.3),
+                                                       radius: 5, x: 3,y: -3)
+                                    Spacer()
+                                    averagePriceView
+                                        .shadow(color: Color.black.opacity(0.3),
+                                                       radius: 5, x: 3,y: -3)
+                                    Spacer()
+                                    cheapestStationsView
+                                        .shadow(color: Color.black.opacity(0.3),
+                                                       radius: 5, x: 3,y: -3)
+                                }
                             }
                         } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                    }
+                   
                 }
             }.navigationTitle("Dashboard")
             .toolbar {
@@ -56,7 +58,7 @@ struct DashboardView: View {
             }
         }
             
-            if(!viewModel.isLoading && viewModel.perthStations.count == 0){
+            if(!viewModel.isLoading && viewModel.perthStations.count == 0 && datePrice != DatePrice.Tomorrow){
                 VStack{
                     NoDataErrorView()
                     Button(action: {
