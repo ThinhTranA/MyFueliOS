@@ -65,15 +65,21 @@ struct SettingsView: View {
     let disclaimerText = "While I makes every efforts to ensure the data in Fuel Lens app is current and accurate, however, you acknowledge there are may be errors and will not rely on the application as a guaranteed source of information. You agree to use it only as a guide."
     let fqa1 = "Why stations are not showing in my area?"
     let fqa2 = "Why a favourite station is not showing for some fuel type in favourites list?"
+    let fqa3 = "Why distance is displaying Unknown?"
     
     private var shareThisAppSection: some View {
         Section(header: Text("FAQs & Others"), content: {
-            NavigationLink(destination: LongTextView(title: fqa1, text: "Ans: Fuel lens will try to detect your suburb given location permission when you are outside of Perth region and make corresponding request to Fuel Watch API. However, there are some instances where it failed to detect your suburb. In that case, please try manually select your region on the Fuel Setting sections.")) {
+            NavigationLink(destination: LongTextView(title: fqa1, text: "Ans: Fuel lens will try to detect your suburb given location permission when you are outside of Perth region, and make corresponding request to Fuel Watch API. However, there are some instances where it failed to detect your suburb. In that case, please try manually select your region on the Fuel Setting sections.")) {
                 Text(fqa1)
             }
             
             NavigationLink(destination: LongTextView(title: fqa2, text: "Ans: Not every fuel type are available at the station. Fuel Lens app will not display the station in favourite list if the selected fuel type is not available for that specific station on favourite screen.")) {
                 Text(fqa2)
+                //Answer, not every fuel type are alvaible at the station.
+            }
+            
+            NavigationLink(destination: LongTextView(title: fqa3, text: "Ans: Location permission is required to calculate distance. When location permission is denied, distance will be displayed as unknown")) {
+                Text(fqa3)
                 //Answer, not every fuel type are alvaible at the station.
             }
 
