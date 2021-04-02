@@ -13,6 +13,7 @@ struct SettingsView: View {
     @State var selectedRegion = RegionCode.Perth
     @State var selectedDate: Int = 0
     let datesText = ["Today", "Tomorrow"]
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
 
     var body: some View {
         NavigationView {
@@ -51,7 +52,7 @@ struct SettingsView: View {
     private var resetSection: some View {
         Section(header: Text("About"), content: {
             NavigationLink(destination: AboutView()) {
-                Text("About Fuel Lens 1.0.0")
+                Text("About Fuel Lens v\(appVersion ?? "")")
             }
 
             NavigationLink(destination: FuelWatchDataSourceView()) {
@@ -66,6 +67,9 @@ struct SettingsView: View {
             NavigationLink(destination: AboutView()) {
                 Text("Why stations are not showing in my area?")
                 //Answer, try to select the region manually, fuel lens tried to detect your location if you are outside of Perth region and make fuel request but there could be error and not load, so try manually. Also station might not be on fuelwatch database.
+            }
+            
+            NavigationLink(destination: DisclaimerView()) {
                 Text("Why a favourite staion is not showing for some fuel type in Favourites list")
                 //Answer, not every fuel type are alvaible at the station.
             }
