@@ -19,6 +19,7 @@ class DashboardViewModel: ObservableObject {
     @Published var highestPrice: String = ""
     @Published var averagePrice: String = ""
     @Published var priceRange: String = ""
+    @Published var region = CachedService.shared.GetRegion()
 
     var datePrice = DatePrice.Today {
         didSet {
@@ -44,7 +45,7 @@ class DashboardViewModel: ObservableObject {
     }
 
     func fetchStations(){
-        let region = CachedService.shared.GetRegion()
+        region = CachedService.shared.GetRegion()
         if(region == RegionCode.Perth){
             fetchPerthPetrolStations()
         } else {

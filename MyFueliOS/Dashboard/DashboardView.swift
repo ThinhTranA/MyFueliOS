@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DashboardView: View {
     @ObservedObject var viewModel: DashboardViewModel
-    @EnvironmentObject var env: GlobalEnvironment
     @State private var datePrice = DatePrice.Today
     init() {
         self.viewModel = DashboardViewModel()
@@ -53,7 +52,7 @@ struct DashboardView: View {
             }
         }
         .onAppear{
-        
+            viewModel.fetchStations()
         }
 
     }
@@ -103,7 +102,7 @@ struct DashboardView: View {
     private var priceRangeView: some View {
         VStack (spacing: 16){
             HStack{
-                Text("\(env.region.text) price range").font(.FjallaOne(size: 22))
+                Text("\(viewModel.region.text) price range").font(.FjallaOne(size: 22))
                 Spacer()
             }
             
@@ -260,7 +259,7 @@ struct StationRowView1:  View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DashboardView().environmentObject(GlobalEnvironment())
+            DashboardView()
             StationRowView1()
         }
     }

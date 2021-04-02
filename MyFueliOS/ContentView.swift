@@ -8,10 +8,6 @@
 import SwiftUI
 import FontAwesome_swift
 
-class GlobalEnvironment: ObservableObject {
-    @Published var region = CachedService.shared.GetRegion()
-}
-
 struct ContentView: View {
     var body: some View {
         TabView {
@@ -53,12 +49,12 @@ struct ContentView: View {
                     }
                 }.tag(4)
         }
-        .environmentObject(GlobalEnvironment())
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(GlobalEnvironment())
+        ContentView()
     }
 }
