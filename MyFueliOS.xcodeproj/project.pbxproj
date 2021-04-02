@@ -10,7 +10,6 @@
 		224A4CFCF5191720CD04ED75 /* FavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A48C7A82C72D31081AF62 /* FavouriteView.swift */; };
 		6991902A41DFDF8EF03A1EA7 /* RegionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69919A776A862F9B9EB9A3B3 /* RegionCode.swift */; };
 		6991938CB1D9478629997FB9 /* FuelWatchDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699191DCD5B94FE59EFBBFA3 /* FuelWatchDataSourceView.swift */; };
-		699193C4CACEB17DC91E8050 /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69919549189A98156A6890B3 /* PrivacyView.swift */; };
 		69919703ED2C5697CAC1CEE6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699198D4F68540E388BC855C /* AboutView.swift */; };
 		6991998BE206907163EAB1B9 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991970786518EAF210579F8 /* DisclaimerView.swift */; };
 		69919D209B55C5F50C398366 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69919D985B31AACF4E396F5F /* LoadingView.swift */; };
@@ -58,7 +57,6 @@
 		224A48C7A82C72D31081AF62 /* FavouriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteView.swift; sourceTree = "<group>"; };
 		4BC3DA1A912BF8CAC72BA444 /* Pods_MyFueliOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyFueliOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		699191DCD5B94FE59EFBBFA3 /* FuelWatchDataSourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuelWatchDataSourceView.swift; sourceTree = "<group>"; };
-		69919549189A98156A6890B3 /* PrivacyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		6991970786518EAF210579F8 /* DisclaimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		699198D4F68540E388BC855C /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		69919A776A862F9B9EB9A3B3 /* RegionCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionCode.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				E515E5B526076DFB00155795 /* SettingsViewModel.swift */,
 				699198D4F68540E388BC855C /* AboutView.swift */,
 				699191DCD5B94FE59EFBBFA3 /* FuelWatchDataSourceView.swift */,
-				69919549189A98156A6890B3 /* PrivacyView.swift */,
 				6991970786518EAF210579F8 /* DisclaimerView.swift */,
 			);
 			path = Settings;
@@ -479,7 +476,6 @@
 				224A4CFCF5191720CD04ED75 /* FavouriteView.swift in Sources */,
 				69919703ED2C5697CAC1CEE6 /* AboutView.swift in Sources */,
 				6991938CB1D9478629997FB9 /* FuelWatchDataSourceView.swift in Sources */,
-				699193C4CACEB17DC91E8050 /* PrivacyView.swift in Sources */,
 				6991998BE206907163EAB1B9 /* DisclaimerView.swift in Sources */,
 				69919D209B55C5F50C398366 /* LoadingView.swift in Sources */,
 				6991902A41DFDF8EF03A1EA7 /* RegionCode.swift in Sources */,
