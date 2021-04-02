@@ -10,6 +10,7 @@ struct AboutView: View {
     var body: some View {
        VStack{
            Text("about")
+        Text("please email for any feedback, feature request or other enquiry: myfuellens@gmail.com")
        }
 
     }
