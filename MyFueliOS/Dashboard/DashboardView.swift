@@ -31,10 +31,16 @@ struct DashboardView: View {
                             }
                             else {
                                 priceRangeView
+                                    .shadow(color: Color.black.opacity(0.3),
+                                                   radius: 5, x: 3,y: -3)
                                 Spacer()
                                 averagePriceView
+                                    .shadow(color: Color.black.opacity(0.3),
+                                                   radius: 5, x: 3,y: -3)
                                 Spacer()
                                 cheapestStationsView
+                                    .shadow(color: Color.black.opacity(0.3),
+                                                   radius: 5, x: 3,y: -3)
                             }
                         } .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                     }
@@ -291,7 +297,7 @@ struct StationRowView1:  View {
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DashboardView().preferredColorScheme(.dark)
+            DashboardView()
         }
     }
 }
