@@ -105,12 +105,18 @@ struct PetrolStation: Decodable, Identifiable {
                 logo = "BP"
             case "Caltex":
                 logo = "Caltex"
+            case "Caltex Woolworths":
+                logo = "Woolworths"
+            case "Costco":
+                logo = "Costco"
             case "Coles Express":
                 logo = "Coles"
             case "Puma":
                 logo = "Puma"
             case "Shell":
                 logo = "Shell"
+            case "Vibe":
+                logo = "Vibe"
             default:
                 logo = "Fuel"
         }
