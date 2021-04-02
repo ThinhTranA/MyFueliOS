@@ -76,8 +76,13 @@ class StationListViewModel: ObservableObject {
     }
     
     private func updateModels(stations: [PetrolStation]){
-        self.perthStations = stations.sorted{$0.price < $1.price} //defautl response is always sorted by price, this is just for consistency
-        self.perthStationsSortedByDistance = stations.sorted{$0.distance < $1.distance}
+        self.perthStations = stations.sorted{$0.price < $1.price}
+        //defautl response is always sorted by price, this is just for consistency
+        if(stations.count > 0 && stations[0].distance != nil){
+            self.perthStationsSortedByDistance = stations.sorted{$0.distance! < $1.distance!}
+        } else {
+            self.perthStationsSortedByDistance = self.perthStations
+        }
         self.isLoading = false
     }
 }

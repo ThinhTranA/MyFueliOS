@@ -71,24 +71,27 @@ struct PetrolStation: Decodable, Identifiable {
     var logo : String {
         return makeLogo()
     }
-    var distance: Double{
+    var distance: Double?{
        return calDistance()
     }
     var distanceString: String {
-        //TODO: calculate from user GPS location
         let distance = calDistance()
-        return distance > 1000 ? String(format: "%.2f km", distance/1000) : String(format: "%.0f m", distance)
+        if let distance = distance {
+            return distance > 1000 ? String(format: "%.2f km", distance/1000) : String(format: "%.0f m", distance)
+        }
+        return "Unknown"
     }
     
-    func calDistance() -> Double {
-//        <latitude>-31.925213</latitude>
-//        <longitude>115.951987</longitude>
-        //TODO: User GPS not granted??? , also replace with user coordinate
-        let userCoordinate = CLLocation(latitude: -31.925213, longitude: 115.951987)
-        let stationCoordinate = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+    func calDistance() -> Double? {
+        if let userLocation = LocationManager.shared.location?.coordinate {
+            let userCoordinate = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+            let stationCoordinate = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
 
-        let distanceInMeters = userCoordinate.distance(from: stationCoordinate)
-        return distanceInMeters
+            let distanceInMeters = userCoordinate.distance(from: stationCoordinate)
+            return distanceInMeters
+        }
+        
+        return nil
     }
 
 
