@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct SettingsView: View {
     @ObservedObject var viewModel = SettingsViewModel()
@@ -86,9 +87,11 @@ struct SettingsView: View {
             }
 
             Button(action: {
-                print("todo: share this app")
+                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
             }) {
-                Text("Share this App")
+                Text("Give app review")
             }
         })
     }
