@@ -58,13 +58,13 @@ struct StationDetailView: View {
                             .resizable()
                             .frame(width: icSize, height: icSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .foregroundColor(isInFav ? .white : .red)
-                    Text(isInFav ? "In Favourite" : "Favourite")
+                    Text(isInFav ? "Saved" : "Favourite")
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
                             .foregroundColor(isInFav ? .white : .red)
                 }
 
-                        .frame(minWidth: 0, maxWidth: btnMaxWidth, minHeight: 28, maxHeight: btnMaxHeight)
+                        .frame(minWidth: 0, maxWidth: btnMaxWidth, minHeight: 36, maxHeight: btnMaxHeight)
                         .overlay(
                                 RoundedRectangle(cornerRadius: 12)
                                         .stroke(Color.red, lineWidth: 1.6)
@@ -105,7 +105,6 @@ struct StationDetailView: View {
                     UIApplication.shared.open(url)
                 }
             }) {
-
                 HStack(spacing: 4) {
 
                     Image(systemName: "car")
