@@ -12,6 +12,9 @@ class SettingsViewModel: ObservableObject {
     var region = RegionCode.Perth {
         didSet {
             cachedService.SetRegion(region: region)
+
+            LocationManager.shared.lookupGPSFromLocationName()
+
             objectWillChange.send()
         }
     }

@@ -22,10 +22,20 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         
         //TODO: replace with user current gps location if available
-        let coords = CLLocationCoordinate2D(latitude: -31.873768, longitude: 115.917665)
+        var coords: CLLocationCoordinate2D?
+        if(false){
+            coords = CLLocationCoordinate2D(latitude: -31.873768, longitude: 115.917665)
+        }else {
+            coords = LocationManager.shared.selectedRegionCoordinate
+        }
+        
+        if(coords == nil){
+            coords = CLLocationCoordinate2D(latitude: -31.9523, longitude: 115.8613) //Perth
+        }
+     
         // set span (radius of points)
         let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
-        let region = MKCoordinateRegion(center: coords, span: span)
+        let region = MKCoordinateRegion(center: coords!, span: span)
 
         // set the view
         mapView.setRegion(region, animated: true)
@@ -48,16 +58,24 @@ struct MapView: UIViewRepresentable {
        // when focus button is tapped, unlikely that fuel type also changed. so, only re draw if necessary
         if(shouldFocusUserLocation){
             let locationManager = LocationManager.shared
-
+            let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
               //Zoom to user location
               if let userLocation = locationManager.location?.coordinate {
                 // set span (radius of points)
-                let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
                 let region = MKCoordinateRegion(center: userLocation, span: span)
 
                 // set the view
                 mapView.setRegion(region, animated: true)
                 shouldFocusUserLocation = true
+              } else if let regionLocation = locationManager.selectedRegionCoordinate {
+                let region = MKCoordinateRegion(center: regionLocation, span: span)
+                // set the view
+                mapView.setRegion(region, animated: true)
+              } else {
+                let coords = CLLocationCoordinate2D(latitude: -31.9523, longitude: 115.8613) //Perth
+                let region = MKCoordinateRegion(center: coords, span: span)
+                // set the view
+                mapView.setRegion(region, animated: true)
               }
             return
         }
@@ -66,7 +84,7 @@ struct MapView: UIViewRepresentable {
         if mapView.annotations.count > 1 {
             if let currentFirstStationAnnotation = mapView.annotations[0] as? StationAnnotation {
                 //TODO: cannot find self in scope crash trait here
-                if(currentFirstStationAnnotation.fuelType == stations[0].fuelType && count == stations.count) {
+                if(stations.count > 0 && currentFirstStationAnnotation.fuelType == stations[0].fuelType && count == stations.count) {
                     return
                 }
             }
@@ -133,7 +151,7 @@ struct MapView: UIViewRepresentable {
     
     }
     
-   
+  
     
     
 }

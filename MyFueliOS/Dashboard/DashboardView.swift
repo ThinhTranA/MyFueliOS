@@ -52,6 +52,9 @@ struct DashboardView: View {
                 LoadingView()
             }
         }
+        .onAppear{
+        
+        }
 
     }
 

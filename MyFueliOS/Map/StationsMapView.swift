@@ -12,6 +12,7 @@ struct StationsMapView: View {
     @State var selectedPetrolStation: PetrolStation?
     @State var mapFocusToUserLocation = true
     @State var selectedProduct = Product.UnleadedPetrol
+    @State var currentRegion = LocationManager.shared.selectedRegionCoordinate
 
     var body: some View {
 
@@ -34,6 +35,10 @@ struct StationsMapView: View {
         }
         .onAppear{
             viewModel.fetchStations()
+            let didChanged = LocationManager.shared.didRegionChanged(regionCoordinate: currentRegion)
+            if(didChanged){
+                mapFocusToUserLocation = true
+            }
         }
     }
 

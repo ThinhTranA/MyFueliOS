@@ -37,6 +37,8 @@ class LocationManager: NSObject, ObservableObject {
             objectWillChange.send()
         }
     }
+    
+    var selectedRegionCoordinate: CLLocationCoordinate2D?
 
     var statusString: String {
         guard let status = locationStatus else {
@@ -70,6 +72,34 @@ class LocationManager: NSObject, ObservableObject {
           }
         })
       }
+    
+    public func lookupGPSFromLocationName(){
+        let region = CachedService.shared.GetRegion()
+        if (region == RegionCode.Perth){
+            selectedRegionCoordinate = CLLocationCoordinate2D(latitude: -31.9523, longitude: 115.8613)
+            return
+        }
+        let geocoder = CLGeocoder()
+        let area = region.text.contains("/") ? region.text.components(separatedBy: "/").last : region.text
+        geocoder.geocodeAddressString("\(area ?? "Perth"), Western Australia", completionHandler: {(places, error) in
+            if error == nil {
+                let placemark = places?[0]
+                self.selectedRegionCoordinate = placemark?.location?.coordinate
+            }
+        })
+    }
+    
+    public func didRegionChanged(regionCoordinate: CLLocationCoordinate2D?) -> Bool {
+        if(selectedRegionCoordinate == nil || regionCoordinate == nil){
+            return true
+        }
+        let c1 = CLLocation(latitude: regionCoordinate!.latitude, longitude: regionCoordinate!.longitude)
+        let c2 = CLLocation(latitude: selectedRegionCoordinate!.latitude,longitude: selectedRegionCoordinate!.longitude)
+        if(c1.distance(from: c2) < 1000){
+            return false
+        }
+        return true
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
