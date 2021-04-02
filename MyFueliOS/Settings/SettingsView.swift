@@ -51,7 +51,7 @@ struct SettingsView: View {
     private var resetSection: some View {
         Section(header: Text("About"), content: {
             NavigationLink(destination: AboutView()) {
-                Text("About Fuel Lens")
+                Text("About Fuel Lens 1.0.0")
             }
 
             NavigationLink(destination: FuelWatchDataSourceView()) {
@@ -71,8 +71,6 @@ struct SettingsView: View {
             NavigationLink(destination: DisclaimerView()) {
                 Text("Disclaimer")
             }
-
-            Text("Fuel Lens version 1.0")
 
             Button(action: {
                 print("todo: share this app")
