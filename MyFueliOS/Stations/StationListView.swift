@@ -36,12 +36,7 @@ struct StationListView: View {
                             title: Text("Location permission is denied"),
                             message: Text("Failed to calculate distance due to unknown location. Enable location permission in settings."),
                             primaryButton: .default(Text("Ok")) {
-                                //UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                                if let bundleId = Bundle.main.bundleIdentifier,
-                                   let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)")
-                                {
-                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                }
+                                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                             },
                             secondaryButton: .cancel()
                     )
