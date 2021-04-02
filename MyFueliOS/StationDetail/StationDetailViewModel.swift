@@ -29,7 +29,7 @@ class StationDetailViewModel: ObservableObject {
 
                     //if station is not in perth list, fetch Location/Suburb for tomorrow station
                 } else {
-                    //TODO: test if this block work by also load a suburb not in perth, save that station to favourtite
+
                     self.fuelWatchService.getSuburbFuel(product: product, suburb: suburb){ subStations in
                         if let subStation = subStations?.first(where: {$0.address == station.address}){
                             DispatchQueue.main.async {

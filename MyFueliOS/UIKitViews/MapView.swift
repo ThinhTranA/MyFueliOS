@@ -20,15 +20,8 @@ struct MapView: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<MapView>) -> MKMapView {
         let mapView = MKMapView()
-        
-        //TODO: replace with user current gps location if available
-        var coords: CLLocationCoordinate2D?
-        if(false){
-            coords = CLLocationCoordinate2D(latitude: -31.873768, longitude: 115.917665)
-        }else {
-            coords = LocationManager.shared.selectedRegionCoordinate
-        }
-        
+
+        var  coords = LocationManager.shared.selectedRegionCoordinate
         if(coords == nil){
             coords = CLLocationCoordinate2D(latitude: -31.9523, longitude: 115.8613) //Perth
         }
@@ -46,10 +39,6 @@ struct MapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.showsUserLocation = true
 
-    /*    let places = stations.map { StationAnnotation(station: $0)}
-
-        mapView.annotations.forEach { mapView.removeAnnotation($0) }
-        mapView.addAnnotations(places)*/
 
         return mapView
     }
@@ -83,7 +72,6 @@ struct MapView: UIViewRepresentable {
         //To avoid updating annotations of the same data on the map
         if mapView.annotations.count > 1 {
             if let currentFirstStationAnnotation = mapView.annotations[0] as? StationAnnotation {
-                //TODO: cannot find self in scope crash trait here
                 if(stations.count > 0 && currentFirstStationAnnotation.fuelType == stations[0].fuelType && count == stations.count) {
                     return
                 }

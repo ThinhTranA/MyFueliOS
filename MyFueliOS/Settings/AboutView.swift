@@ -32,7 +32,7 @@ struct AboutView: View {
                   Text("Email support")
                   Image(systemName: "envelope")
                       .resizable()
-                      .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                      .frame(width: 28, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                   Spacer()
                 }
               .frame( height: 42, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
