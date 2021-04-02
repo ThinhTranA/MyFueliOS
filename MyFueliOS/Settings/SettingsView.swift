@@ -25,8 +25,6 @@ struct SettingsView: View {
         }.onAppear{
             viewModel.loadSettings()
         }
-
-
     }
 
     private var fuelsSection: some View {
