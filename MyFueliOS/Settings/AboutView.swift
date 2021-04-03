@@ -16,6 +16,7 @@ struct AboutView: View {
         VStack (alignment: .leading, spacing: 32){
             VStack (alignment: .leading, spacing: 16){
                 Text("Thanks for using Fuel Lens").font(.title)
+                Text("Currently Fuel Lens is only showing fuel prices in Perth and areas in Western Australia.").font(.title3)
                 Text("If you run into any issues or have a suggestion, please send me an email at myfuellens@gmail.com by using the email support button below.").font(.title3)
             }
      
