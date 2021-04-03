@@ -79,10 +79,11 @@ Fuel lens will try to detect your suburb given location permission when you are 
             NavigationLink(destination: LongTextView(title: "Disclaimer", text: disclaimerText)) {
                 Text("Disclaimer")
             }
-            
-            NavigationLink(destination: BuyMeACoffeeView()) {
-                Text("Buy me a coffee 🥰 ☕️")
-            }
+           
+            //TODO: disabled due to needing to register GST tax form.
+//            NavigationLink(destination: BuyMeACoffeeView()) {
+//                Text("Buy me a coffee 🥰 ☕️")
+//            }
 
             Button(action: {
                 if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
