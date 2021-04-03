@@ -21,7 +21,8 @@ struct SettingsView: View {
             Form {
                 fuelsSection
                 resetSection
-                shareThisAppSection
+                othersSection
+                privacySection
             }.navigationBarTitle("Settings")
         }.onAppear{
             viewModel.loadSettings()
@@ -64,7 +65,7 @@ struct SettingsView: View {
     let disclaimerText = "While I makes every efforts to ensure the data in Fuel Lens app is current and accurate, however, you acknowledge there are may be errors and will not rely on the application as a guaranteed source of information. You agree to use it only as a guide."
     let fqa1 = "Stations not showing in your area?"
     
-    private var shareThisAppSection: some View {
+    private var othersSection: some View {
         Section(header: Text("Others"), content: {
             NavigationLink(destination: LongTextView(title: fqa1, text: """
 Answer:
@@ -92,6 +93,22 @@ Fuel lens will try to detect your suburb given location permission when you are 
             }) {
                 Text("Give app review ⭐️⭐️⭐️⭐️⭐️")
             }
+        })
+    }
+    
+    
+    private var privacySection: some View {
+        Section(header: Text("Privacy policy"), content: {
+            
+            Button(action: {
+                    //Open privacy Url
+                    let url = URL(string: "https://myfuellens.wordpress.com/")
+                    if let url = url {
+                        UIApplication.shared.open(url)
+                    }            }) {
+                Text("Privacy policy")
+            }
+
         })
     }
 
