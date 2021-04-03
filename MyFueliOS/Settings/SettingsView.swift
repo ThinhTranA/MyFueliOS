@@ -80,7 +80,7 @@ Fuel lens will try to detect your suburb given location permission when you are 
                 Text("Disclaimer")
             }
             
-            NavigationLink(destination: LongTextView(title: "Disclaimer", text: disclaimerText)) {
+            NavigationLink(destination: BuyMeACoffeeView()) {
                 Text("Buy me a coffee 🥰 ☕️")
             }
 
