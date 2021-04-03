@@ -30,7 +30,7 @@ class StationDetailViewModel: ObservableObject {
                     //if station is not in perth list, fetch Location/Suburb for tomorrow station
                 } else {
 
-                    self.fuelWatchService.getSuburbFuel(product: product, suburb: suburb){ subStations in
+                    self.fuelWatchService.getSuburbFuel(product: product, suburb: suburb, datePrice: DatePrice.Tomorrow){ subStations in
                         if let subStation = subStations?.first(where: {$0.address == station.address}){
                             DispatchQueue.main.async {
                                 self.tomorrowPrice = subStation.price
