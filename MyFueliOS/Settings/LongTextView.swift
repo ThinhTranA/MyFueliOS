@@ -11,15 +11,17 @@ struct LongTextView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 16){
-                Text(title)
-                    .font(.title).bold()
-                Text(text)
-                    .font(.title3)
-                Spacer()
+            ScrollView {
+                VStack(spacing: 16){
+                    Text(title)
+                        .font(.title).bold()
+                    Text(text)
+                        .font(.title3)
+                    Spacer()
+                }
+                .padding()
             }
-            .padding()
-        }
+        }.navigationBarTitleDisplayMode(.inline)
     }
 
 }
