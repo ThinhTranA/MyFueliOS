@@ -18,7 +18,7 @@ class StationAnnotation: NSObject, MKAnnotation {
     let fuelType: String
     
     init(station: PetrolStation) {
-        self.id = station.phone
+        self.id = station.address
         self.title = station.tradingName
         self.price = station.price
         self.logo = station.logo

@@ -131,7 +131,7 @@ struct MapView: UIViewRepresentable {
             }
             let identifer = anno.id
             print("phone selected: \(identifer)")
-            if let selectedStation = parent.stations.first(where: {$0.phone == identifer}) {
+            if let selectedStation = parent.stations.first(where: {$0.address == identifer}) {
                 parent.selectedStation = selectedStation
             }
             
