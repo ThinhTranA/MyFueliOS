@@ -64,8 +64,12 @@ struct PetrolStation: Decodable, Identifiable {
         return "InvalidDate"
     }
   
-    var coordinate2D: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
+    var coordinate2D: CLLocationCoordinate2D? {
+        if let lat = Double(latitude),
+           let long = Double(longitude){
+           return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        }
+      return nil
     }
 
     var logo : String {
@@ -83,9 +87,12 @@ struct PetrolStation: Decodable, Identifiable {
     }
     
     func calDistance() -> Double? {
-        if let userLocation = LocationManager.shared.location?.coordinate {
+        if let userLocation = LocationManager.shared.location?.coordinate,
+           let lat = Double(latitude),
+           let long = Double(longitude)
+        {
             let userCoordinate = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
-            let stationCoordinate = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+            let stationCoordinate = CLLocation(latitude: lat, longitude: long)
 
             let distanceInMeters = userCoordinate.distance(from: stationCoordinate)
             return distanceInMeters

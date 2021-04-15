@@ -18,16 +18,18 @@ struct StationDetailMap: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         view.mapType = MKMapType.standard
       
-        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-        let region = MKCoordinateRegion(center: station.coordinate2D, span: span)
-        view.setRegion(region, animated: true)
+        if let coord2D = station.coordinate2D {
+            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            let region = MKCoordinateRegion(center: coord2D, span: span)
+            view.setRegion(region, animated: true)
 
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = station.coordinate2D
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coord2D
 
-        annotation.title = station.address
-        annotation.subtitle = station.description
-        view.addAnnotation(annotation)
+            annotation.title = station.address
+            annotation.subtitle = station.description
+            view.addAnnotation(annotation)
+        }
     }
 }
 

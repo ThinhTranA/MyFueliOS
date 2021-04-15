@@ -76,10 +76,11 @@ class StationListViewModel: ObservableObject {
     
     private func handleSuccessRequest(stations: [PetrolStation]){
         DispatchQueue.main.async {
+            let aLargePlaceHolderNumber = 9999999.0
             self.perthStations = stations.sorted{$0.price < $1.price}
             //defautl response is always sorted by price, this is just for consistency
             if(stations.count > 0 && stations[0].distance != nil){
-                self.perthStationsSortedByDistance = stations.sorted{$0.distance! < $1.distance!}
+                self.perthStationsSortedByDistance = stations.sorted{$0.distance ?? aLargePlaceHolderNumber < $1.distance ?? aLargePlaceHolderNumber}
             } else {
                 self.perthStationsSortedByDistance = self.perthStations
             }
